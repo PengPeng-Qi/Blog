@@ -2,7 +2,7 @@ module.exports = {
   lang: 'zh-CN',
   title: 'PengPengQ 的博客',
   description: '个人博客 漆鹏 PengPengQ 碰碰漆',
-  base: '/blog/',
+  base: '/Blog/',
 
   themeConfig: {
     navbar: [{
