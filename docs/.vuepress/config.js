@@ -40,6 +40,9 @@ module.exports = {
           children: [{
             text: 'echo 命令',
             link: '/notes/Others/echo',
+          }, {
+            text: '浅谈深浅拷贝',
+            link: '/notes/Others/深浅拷贝',
           }],
         }
       ],
