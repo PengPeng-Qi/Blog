@@ -10,6 +10,5 @@
   "devDependencies": {
     "vuepress": "^2.0.0-beta.26"
   },
-  "dependencies": {},
-  "homepage": "https://pengpeng-qi.github.com/Blog"
+  "dependencies": {}
 }
