@@ -3,6 +3,12 @@ module.exports = {
   title: 'PengPengQ 的博客',
   description: '个人博客 漆鹏 PengPengQ 碰碰漆',
   base: '/Blog/',
+  head: [
+    ['link', {
+      rel: 'icon',
+      href: 'main/docs/.vuepress/public/images/favicon.ico'
+    }]
+  ],
 
   themeConfig: {
     navbar: [{
