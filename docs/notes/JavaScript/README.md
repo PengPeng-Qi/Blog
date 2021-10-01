@@ -1,1 +1,3 @@
-## JavaScript 模块
+# JavaScript
+## 数组
+[数组的扁平化](./数组/数组的扁平化.md)
