@@ -10,4 +10,4 @@ footerHtml: true
 
 这是我的第二个博客，第一个博客在这里👉&nbsp; <a href='https://pengpeng-qi.github.io/' style='font-size: 20px'>🔗</a>&nbsp;&nbsp;很多文章还需要时间来迁移，正在一步一步完善之中，感谢你的关注
 
-查看笔记请点击右侧小飞机&nbsp;&nbsp;&nbsp; <a href='./notes/HTML/#html-模块' style='font-size: 20px'>✈️</a>
+查看笔记请点击右侧小飞机&nbsp;&nbsp;&nbsp; <a href='./notes/JavaScript/#数组' style='font-size: 20px'>✈️</a>
