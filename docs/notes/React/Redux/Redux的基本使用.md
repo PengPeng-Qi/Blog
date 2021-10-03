@@ -7,19 +7,17 @@ Redux的使用场景：
 ![Redux的原理图](./redux原理图.png)
 ## 使用Redux
 - 1、安装Redux
-:::details
 ```shell
 yarn add redux
 # or
 npm install redux
 ```
-:::
 - 2、新建文件夹 `src/redux`
 - 3、在`redux` 文件夹📂 下新建`xxx_action` 文件 `xxx_action.js` 
 :::details
 @[code](./xxx_action.js)
 :::
-> 这一步可以省略，通过在组件中给<code>store</code> 创建并发送<code>action</code> 对象
+> 这一步可以省略，通过在组件中给<code>store</code> 创建并发送<code>action</code> 对象, 关于<code>redux-thunk</code> 的基本使用可见 [✈️](./Redux的基本使用.html#redux-thunk-的基本使用)
 - 4、在`redux` 文件夹📂 下新建`store` 文件 `store.js` 
 :::details 点击查看<code>sotre.js</code> 的详细信息
 @[code](./store.js)
@@ -40,3 +38,24 @@ npm install redux
 :::details 点击查看<code>constant.js</code> 的详细信息
 @[code](./constant.js)
 :::
+## <code>redux-thunk</code> 的基本使用
+- 1、安装  
+```shell
+npm install redux-thunk
+# or
+yarn add redux-thunk
+```
+- 2、在<code>store.js</code> 中引入<code>redux-thunk</code>
+```js
+/* src/redux/store.js */
+/* 引入 applyMiddleware */
+import { createStore, applyMiddleware } from 'redux'
+
+/* 引入为组件服务的reducer */
+import xxx_reducer from './xxx_reducer'
+
+// 引入redux-thunk 用于支持异步action
+import thunk from 'redux-thunk'
+
+export default createStore(xxx_reducer, applyMiddleware(thunk))
+```
