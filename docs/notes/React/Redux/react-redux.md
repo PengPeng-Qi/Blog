@@ -23,4 +23,41 @@ yarn add react-redux
 @[code](./整合容器组件和UI组件.js)
 :::
 - UI组件一般放在 `components` 文件夹下，不做任何redux 的操作，接受方法以及状态通过<code>this.props.xxx</code> 接收
+---
+## 多个`react-redux`管理的组件
+目录结构：
+```
+├─ src
+|  |- containers 
+|  |- redux 
+|  │  |- actions
+|  │  │  |─ Xxx.js
+|  |  |  └─ Xxxx.js
+|  |  |
+|  │  |- reducers
+|  │  |  |─ Xxx.js
+|  |  |  └─ Xxxx.js
+|  |  |- constant.js
+|  |  └─ store.js
+```
+合并多个reducer，`store.js`文件需要做一些修改：
+:::details
+@[code](./合并多个reducer的store.js)
+:::
+> 1、可以将所有的reducer 汇总到一个文件下：`reducers/index.js`  
+> 2、修改了reducers，在容器组件`mapStateToProps` 读取的时候也需要读取到 `state.key`
+```js
+const mapStateToProps = function (state) { 
+  // return { number: state.Xxxx }
+  // or
+  return { number: state.Xxx }
+}
+```
+## React思想中的纯函数
+纯函数：
+- 相同的输入会有相同的输出
+- 不修改原数据
+  
+React会对数组做浅比较，如果数组使用`push、unshift...` 改变了元数组页面不会刷新，如果使用`[...state, data]` 重新编写新数组，则会对页面进行重新渲染
 
+> redux 和 reducer 必须是纯函数

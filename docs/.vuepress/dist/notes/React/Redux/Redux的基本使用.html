@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="generator" content="VuePress 2.0.0-beta.26">
     <link rel="icon" href="main/docs/.vuepress/public/images/favicon.ico"><title>Redux | PengPengQ 的博客</title><meta name="description" content="个人博客 漆鹏 PengPengQ 碰碰漆">
-    <link rel="preload" href="/Blog/assets/js/runtime~app.368ede65.js" as="script"><link rel="preload" href="/Blog/assets/css/styles.61ee4480.css" as="style"><link rel="preload" href="/Blog/assets/js/812.51630aeb.js" as="script"><link rel="preload" href="/Blog/assets/js/app.8cfbb61a.js" as="script">
+    <link rel="preload" href="/Blog/assets/js/runtime~app.bd00be97.js" as="script"><link rel="preload" href="/Blog/assets/css/styles.61ee4480.css" as="style"><link rel="preload" href="/Blog/assets/js/812.51630aeb.js" as="script"><link rel="preload" href="/Blog/assets/js/app.309cda45.js" as="script">
     <link rel="stylesheet" href="/Blog/assets/css/styles.61ee4480.css">
   </head>
   <body>
@@ -112,18 +112,8 @@ store<span class="token punctuation">.</span><span class="token function">subscr
 </code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></details><h2 id="redux-thunk-的基本使用" tabindex="-1"><a class="header-anchor" href="#redux-thunk-的基本使用" aria-hidden="true">#</a> <code>redux-thunk</code> 的基本使用</h2><ul><li>1、安装</li></ul><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> redux-thunk
 <span class="token comment"># or</span>
 <span class="token function">yarn</span> <span class="token function">add</span> redux-thunk
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>2、在<code>store.js</code> 中引入<code>redux-thunk</code></li></ul><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">/* src/redux/store.js */</span>
-<span class="token comment">/* 引入 applyMiddleware */</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> createStore<span class="token punctuation">,</span> applyMiddleware <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&#39;redux&#39;</span>
-
-<span class="token comment">/* 引入为组件服务的reducer */</span>
-<span class="token keyword">import</span> xxx_reducer <span class="token keyword">from</span> <span class="token string">&#39;./xxx_reducer&#39;</span>
-
-<span class="token comment">// 引入redux-thunk 用于支持异步action</span>
-<span class="token keyword">import</span> thunk <span class="token keyword">from</span> <span class="token string">&#39;redux-thunk&#39;</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createStore</span><span class="token punctuation">(</span>xxx_reducer<span class="token punctuation">,</span> <span class="token function">applyMiddleware</span><span class="token punctuation">(</span>thunk<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><span class="meta-item-info">2021/10/2下午6:25:47</span></div><div class="meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 1747447034@qq.com">PengPengQ</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
-    <script src="/Blog/assets/js/runtime~app.368ede65.js" defer></script><script src="/Blog/assets/js/812.51630aeb.js" defer></script><script src="/Blog/assets/js/app.8cfbb61a.js" defer></script>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>2、在<code>store.js</code> 中引入<code>redux-thunk</code></li></ul><div class="language-javascript ext-js line-numbers-mode"><pre class="language-javascript"><code>@<span class="token punctuation">[</span>code<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token operator">/</span>redux<span class="token operator">-</span>thunk的基本使用<span class="token punctuation">.</span>js<span class="token punctuation">)</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">Last Updated: </span><span class="meta-item-info">2021/10/3下午5:56:46</span></div><div class="meta-item contributors"><span class="meta-item-label">Contributors: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: 1747447034@qq.com">PengPengQ</span><!----><!--]--><!--]--></span></div></footer><!----><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script src="/Blog/assets/js/runtime~app.bd00be97.js" defer></script><script src="/Blog/assets/js/812.51630aeb.js" defer></script><script src="/Blog/assets/js/app.309cda45.js" defer></script>
   </body>
 </html>
