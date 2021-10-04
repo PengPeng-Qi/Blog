@@ -46,6 +46,4 @@ npm install redux-thunk
 yarn add redux-thunk
 ```
 - 2、在<code>store.js</code> 中引入<code>redux-thunk</code>
-```js
 @[code](./redux-thunk的基本使用.js)
-```
