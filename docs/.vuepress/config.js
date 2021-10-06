@@ -11,6 +11,7 @@ module.exports = {
   ],
 
   themeConfig: {
+    sidebar: 'auto',
     navbar: [{
         text: '笔记',
         link: '/notes/HTML/',

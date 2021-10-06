@@ -1,3 +1,6 @@
+---
+sidebar: auto
+---
 # React-Redux
 ## React-Redux 原理图
 ![react-redux模型图](./react-redux模型图.png)

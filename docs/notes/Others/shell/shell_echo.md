@@ -1,3 +1,6 @@
+---
+sidebar: auto
+---
 ## shell echo 命令
 echo的基本用法：
 ```shell

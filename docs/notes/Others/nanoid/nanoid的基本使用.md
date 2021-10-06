@@ -1,3 +1,6 @@
+---
+sidebar: auto
+---
 # nanoid的基本使用
 ## 安装
 ```shell

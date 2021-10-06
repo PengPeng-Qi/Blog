@@ -1,5 +1,5 @@
 /* 将UI组件和容器组件整合在一个文件 src/containers/Xxx/index.jsx */
-import { connent } from 'react-redux'
+import { connect } from 'react-redux'
 import { createXxxAction } from './xxx_action'
 
 import React, { Component } from 'react'
@@ -19,7 +19,7 @@ class XxxUI extends Component {
 }
 
 
-export default connent(
+export default connect(
   (state) => ({ number: state }), 
   { Increament: createXxxAction }
 )(XxxUI)

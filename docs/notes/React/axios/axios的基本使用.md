@@ -1,3 +1,6 @@
+---
+sidebar: auto
+---
 ## axios
 - 封装 XmlHttpRequest 对象的ajax
 - promise风格

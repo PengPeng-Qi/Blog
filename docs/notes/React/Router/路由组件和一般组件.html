@@ -1,0 +1,25 @@
+<!--  
+  一般组件：src/components 
+  写组件标签时，传递什么this.props 就接收到什么
+-->
+<Demo />
+
+<!--  路由组件：src/pages  -->
+<!-- 
+  路由组件可以通过this.props 接收到路由器传递的三个常用对象：
+    history:
+      go: ƒ go(n)
+      goBack: ƒ goBack()
+      goForward: ƒ goForward()
+      push: ƒ push(path, state)
+      replace: ƒ replace(path, state)
+    location:
+      pathname: "/about"
+      search: ""
+      state: undefined
+    match:
+      params: {}
+      path: "/about"
+      url: "/about"
+-->
+<Route path="/demo" component={Demo}>
