@@ -48,7 +48,7 @@ module.exports = {
         },
       ],
       '/projects/': [{
-        text: 'Reference',
+        text: '项目',
       }, ],
     },
     editLink: true,
