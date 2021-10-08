@@ -3,7 +3,8 @@ sidebar: auto
 ---
 # Webpack
 是一种构建工具，将程序员写的源代码生成浏览器可以高效、稳定运行的兼容性较强的代码
-> webpack.config.js: 用于存储webpack配置信息
+> 1、webpack.config.js: 用于存储webpack配置信息  
+> 2、本地安装webpack: `npm i webpack@4 webpack-cli@3 -D`  
 ## 五个基本概念
 ### 入口 Entry
 指示webpack应该使用哪个模块，来作为构建其内部依赖图的开始
@@ -56,11 +57,56 @@ npm i style-loader -D
 @[code js{11-27}](./配置css解析为js.js)
 :::
 参考自[css-loader](https://webpack.docschina.org/loaders/css-loader/)
+## 配置webpack解析less为js
+安装`loader`：
+```shell
+npm i less-loader less -D
+```
+:::details 点击查看将less转为js的配置文件
+@[code js{14,15,19,20}](./配置less解析为js.js)
+:::
+参考自[less-loader](https://webpack.docschina.org/loaders/less-loader/)
+### 合并less、css配置
+:::details 点击查看将less与js合并的配置文件
+@[code js{3-4,11,15}](./配置less和css.js)
+:::
+## 配置webpack生成html
+安装`plugin`：
+```shell
+npm i html-webpack-plugin -D
+```
+:::details 点击查看生成html的配置文件
+@[code js{4-5,10-28}](./配置webpack生成html.js)
+:::
+参考自[HtmlWebpackPlugin](https://www.webpackjs.com/plugins/html-webpack-plugin/)
+## 配置处理样式中的图片
+安装`loader`：
+```shell
+npm i file-loader -D
+# 如果需要优化图片大小，需要安装url-loader
+# url-loader只比file-loader多了一个limit，可在下面点击查看
+npm i url-loader -D
+```
+:::details 点击查看处理样式中的图片的配置文件
+@[code js{15-29}](./配置处理样式中的图片文件.js)
+:::
+参考自[file-loader](https://www.webpackjs.com/loaders/file-loader/)
+## 配置处理html中的图片
+安装`loader`：
+```shell
+npm i html-loader -D
+```
+:::details 点击查看解析html中的图片的配置文件
+@[code js{26-30}](./配置处理html中的图片.js)
+:::
+参考自[html-loader](https://www.webpackjs.com/loaders/html-loader/)
 ## 结论
 - 1、`webpack` 能编译打包`js` 和`json` 文件
 - 2、能将**es6的模块化语法转换成浏览器能识别的语法**
 - 3、能压缩代码
 
-### 缺点
-- 1、不能打包img、css等文件
-- 2、不能将js的es6转换为es5以下语法(需要借助loader)
+## loader版本参考
+> webpack配置各安装loader版本可参考
+:::details loader版本参考
+@[code](./配置.json)
+:::
