@@ -3,8 +3,6 @@
 [在React中使用axios发送网络请求](./axios/axios的基本使用.md)
 ## React Router
 [React路由的基本使用](./Router/README.md)
-## React Transition
-[React Transition Group的基本使用](./Transition/README.md)
 ## Redux
 [Redux](./Redux/Redux的基本使用.md)  
 [React-Redux](./Redux/react-redux.md)  
