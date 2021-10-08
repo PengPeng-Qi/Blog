@@ -18,7 +18,7 @@ sidebar: auto
 ```js
 /* 
   setState可接受两个参数：
-  states是当前组件的state，props是父组件传递的对象 
+  state是当前组件的state，props是父组件传递的对象 
 */
 this.setState((state, props) => {
   return {xxx: state.xxx + 1}
