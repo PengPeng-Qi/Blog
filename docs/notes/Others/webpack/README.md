@@ -100,6 +100,48 @@ npm i html-loader -D
 @[code js{26-30}](./配置处理html中的图片.js)
 :::
 参考自[html-loader](https://www.webpackjs.com/loaders/html-loader/)
+## 配置处理其他文件
+安装`loader`：
+```shell
+npm i file-loader -D
+```
+:::details 点击查看其他资源的配置文件
+@[code js{15-20}](./配置处理其他文件.js)
+:::
+## 配置DevServer
+安装：
+```shell
+npm i webpack-dev-server -D
+# 建议同时全局安装
+npm i webpack-dev-server -g
+```
+@[code](./配置devServer.js)
+> 启动不能再输入 `webpack`了，输入`webpack-dev-server` 启动，**生成的文件不会显示出来，存储在内存中。**  
+  
+可以在`package.json` 中配置短命令：
+```js
+/* package.json */
+/* 将文件放置在config文件夹📂下，注意需要修改webpack.dev.js的输出路径 这是开发模式 */
+"start": "webpack-dev-server --config ./config/webpack.dev.js",
+
+/* 生产模式 */
+"build": "webpack --config ./config/webpack.prod.js"
+
+/* build里面不需要配置devServer */
+```
+参考自[dev-server](https://webpack.docschina.org/configuration/dev-server/)
+### 模块热更新(热模替换)
+哪里改变更新哪里
+@[code js{6}](./配置模块热更新.js)
+## 提取css为单独的文件
+安装插件：
+```shell
+npm i mini-css-extract-plugin -D
+```
+:::details 点击查看提取css为单独文件的配置文件
+@[code](./生产模式/提取css为单独的文件.js)
+:::
+参考自[mini-css-extract-plugin](https://webpack.docschina.org/plugins/mini-css-extract-plugin/#root)
 ## 结论
 - 1、`webpack` 能编译打包`js` 和`json` 文件
 - 2、能将**es6的模块化语法转换成浏览器能识别的语法**
