@@ -78,7 +78,7 @@ npm i html-webpack-plugin -D
 :::details 点击查看生成html的配置文件
 @[code js{4-5,10-28}](./配置webpack生成html.js)
 :::
-参考自[HtmlWebpackPlugin](https://www.webpackjs.com/plugins/html-webpack-plugin/)
+参考自[HtmlWebpackPlugin](https://www.webpackjs.com/plugins/html-webpack-plugin/)修改`model` 为`production` 的时候，会自动压缩`html`、`js`文件
 ## 配置处理样式中的图片
 安装`loader`：
 ```shell
@@ -139,13 +139,80 @@ npm i webpack-dev-server -g
 npm i mini-css-extract-plugin -D
 ```
 :::details 点击查看提取css为单独文件的配置文件
-@[code](./生产模式/提取css为单独的文件.js)
+@[code](./提取css为单独的文件.js)
 :::
 参考自[mini-css-extract-plugin](https://webpack.docschina.org/plugins/mini-css-extract-plugin/#root)
+## 配置css兼容性问题
+安装`loader`：
+```shell
+npm i postcss postcss-loader postcss-preset-env -D
+```
+:::details 点击查看处理css兼容性问题的配置文件
+@[code](./配置处理css兼容性问题.js)
+在`package.json`中追加
+@[code](./在package.json追加.json)
+更多配置可查看[browserslist](https://github.com/browserslist/browserslist)
+:::
+## 配置js语法检查
+安装`loader`：
+```shell
+npm i eslint-loader eslint -D
+# and
+npm i eslint-config-airbnb-base selint-plugin-import
+```
+:::details 点击查看eslint语法检查的配置文件
+@[code](./配置eslint进行语法检查.js)
+在`package.json`中追加
+```json
+"eslintConfig": {
+  "extends": "airbnb-base", // 直接使用airbnb-base提供的规则 需要下载的
+  "env": {
+   "browser": true // 如果运行环境不是浏览器 则运行环境为node  此时需要将这个改为false
+  }
+}
+```
+:::
+## 配置js语法转换
+安装`loader`：
+```shell
+npm i babel-loader @babel/core @babel/preset-env -D
+```
+:::details 点击查看babel语法转换的配置文件
+@[code](./配置js语法转换.js)
+:::
+参考自[babel-loader](https://webpack.docschina.org/loaders/babel-loader/)
+## 配置js兼容性问题
+安装`loader`：
+```shell
+# 包含es6的高级语法的转换
+npm i @babel/polyfill -D 
+```
+```js
+/* app.js */
+import '@babel/polyfill';
+```
+## 配置压缩css
+安装`loader`：
+```shell
+npm i optimize-css-assets-webpack-plugin -D 
+```
+:::details 点击查看压缩css的配置文件
+@[code](./配置压缩css.js)
+:::
+## webpack中的tree-shaking
+**概述**：有些时候，我们一个模块向外暴露了n个函数、对象、或其他一些数据，但是我们只是用到了其中的一个或几个，那在最终打包的时候，我们只希望把我们所用的打包进去，这时候就要`tree-shaking`，即：去除无用代码。  
+**配置**：同时满足两个条件`webpack` 会自动开启`tree-shaking`
+- 1、使用ES6模块化  
+- 2、开启`production` 环境
+
 ## 结论
 - 1、`webpack` 能编译打包`js` 和`json` 文件
 - 2、能将**es6的模块化语法转换成浏览器能识别的语法**
 - 3、能压缩代码
+
+### 比较loader与plugins
+- `loader`: 用于加载特定类型的资源文件, webpack本身只能打包js和json。
+- `plugin`: 用来扩展webpack其它方面的功能, 一般loader处理不了的资源、完成不了的操作交给插件处理。
 
 ## loader版本参考
 > webpack配置各安装loader版本可参考
