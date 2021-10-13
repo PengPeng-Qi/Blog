@@ -1,6 +1,7 @@
 # React 模块
 ## React Ajax
-[在React中使用axios发送网络请求](./axios/axios的基本使用.md)
+[在React中使用axios发送网络请求](./axios/axios的基本使用.md)  
+[在React中使用fetch发送网络请求](./fetch/README.md)
 ## React Router
 [React路由的基本使用](./Router/README.md)
 ## Redux
