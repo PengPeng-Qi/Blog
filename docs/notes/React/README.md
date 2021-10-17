@@ -14,6 +14,7 @@
 [Hooks](./Hooks/README.md)  
 [路由组件的lazyLoad](./Router/路由组件的lazyLoad.md)  
 [Context的基本使用](./Context/Context的基本使用.md)  
+[组件优化](./组件优化/README.md)
 
 ---
 > [字节跳动青训营React笔记](./字节跳动青训营.md)
