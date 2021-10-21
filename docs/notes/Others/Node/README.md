@@ -40,3 +40,56 @@ fs.readFile(path[, options], callback);
 
 @[code](./fs模块/test1.js)
 ### fs.writeFile()
+```js
+fs.writeFile(file, data[, options], callback)
+```
+- 参数1：**必选**，需要指定一个**文件路径的字符串**，表示文件的存放路径
+- 参数2：**必选**，表示要写入的内容
+- 参数3：可选，表示以什么格式写入文件内容，默认值是utf8
+- 参数4：**必选**，文件写入完成后的回调函数
+
+@[code](./fs模块/test2.js)
+
+> `__dirname`：表示当前文件所在的目录
+
+## path路径模块
+**path**模块是Node.js 官方提供的、用来**处理路径**的模块。  
+- `path.join()`，用来**将多个路径片段拼接成一个完整的路径字符串**
+- `path.basename()`，用来从路径字符串中，将文件名解析出来
+
+```js
+const path = require('path')
+```
+### path.join()
+@[code](./path模块/join.js)
+### path.basename()
+获取路径中的文件名
+```js
+path.basename(path[, ext])
+```
+- path：**必选**，表示一个路径的字符串
+- ext：可选，表示文件拓展名
+- 返回一个string表示路径中的最后一部分
+
+@[code](./path模块/basename.js)
+### path.extname()
+获取路径中的文件拓展名
+```js
+path.extname(path)
+```
+返回拓展名字符串
+@[code](./path模块/extname.js)
+## http模块
+创建Web 服务器的模块
+- `http.createServer()`：把一台普通的电脑，变成一个Web 服务器，对外提供Web 服务
+
+```js
+const http = require('http');
+```
+### 创建web 服务器
+- 1、导入http 模块
+- 2、创建web 服务器实例
+- 3、为服务器实例绑定request 事件，**监听客户端的请求**
+- 4、启动服务器
+
+@[code](./http模块/创建web服务器.js)
