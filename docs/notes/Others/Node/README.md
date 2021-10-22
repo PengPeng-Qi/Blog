@@ -93,3 +93,36 @@ const http = require('http');
 - 4、启动服务器
 
 @[code](./http模块/创建web服务器.js)
+
+## 模块化
+### 模块加载
+@[code](./模块化/模块加载.js)
+
+### 模块暴露
+每个`.js` 自定义模块都有一个`module` 对象，它里面**存储了和当前模块有关的信息**，可以使用`module.export` 对象，将模块内的成员暴露出去。  
+  
+为了简化向外共享成员的代码，Node 提供了`exports` 对象。默认情况 下，`exports` 和 `module.exports` 指向同一个对象。最终共享的结果，还是以`module.exports` 指向的对象为准。  
+
+### npm
+```shell
+# 查看当前的下包镜像源
+npm config get registry
+
+# 将下包的镜像源切换为淘宝镜像源
+npm config set registry=http://registry.npm.taobao.com
+
+# 检查镜像源修改下载成功
+npm config get registry
+```
+也可以使用`nrm` 来切换
+```shell
+# 查看所有可用的镜像源
+nrm ls
+
+# 将下包的镜像源切换为taobao 镜像
+nrm use taobao
+```
+### 模块的加载机制
+**模块在第一次加载后会被缓存**。 这也意味着多次调用`require()` 不会导致模块的代码被执行多次。  
+  
+**内置模块的加载优先级最高。**
