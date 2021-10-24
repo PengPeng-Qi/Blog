@@ -11,20 +11,20 @@ BFC是`Block Formatting Context` (块级格式化上下文)，是块盒子的布
 ## 触发BFC
 只要满足一下条件任意一个便可以触发BFC：
 - 根元素
-- 浮动元素
+- 设置为浮动元素（不推荐）
 - 绝对定位元素
-- 行内块元素
-- `overflow` 计算值不为`visible` 的块元素
+- 将元素设置为行内块元素（不推荐）
+- `overflow` 计算值不为`visible` 的块元素（推荐）
 - ...
 
 ## BFC特性及应用
-1、同一个BFC下外边距会发生折叠  
+1、开启BFC的元素外边距不会发生重叠  
 > 如果想避免外边距折叠，可以将其放在不同的BFC容器中
 
 - 1、[代码演示外边距折叠](https://codepen.io/pengpeng-qi/pen/yLoJoGz)
 - 2、[解决方案](https://codepen.io/pengpeng-qi/pen/JjyKyxw)
 
-2、BFC可以包含浮动的元素（清除元素）  
-3、BFC可以阻止元素被浮动元素覆盖  
+2、开启BFC可以包含浮动的元素（清除元素）  
+3、开启BFC的元素不会被浮动元素所覆盖    
 
 具体详细例子参考 [🔗](https://zhuanlan.zhihu.com/p/25321647)
