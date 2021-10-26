@@ -4,7 +4,7 @@ function insertSort(array) {
     return array
   }
   /* 
-    right: 表示有序序列的边界
+    right: 表示有序序列的边界，即需要插入的值
   */
   for (let right = 1; right < array.length; right++) {
     /* 
