@@ -1,4 +1,3 @@
-/* 升序排列 */
 function insertSort(array) {
   if (array.length <= 1) {
     return array
@@ -15,7 +14,7 @@ function insertSort(array) {
     for (let j = right - 1; j >= 0; j--) {
       if (array[j] > array[target]) {
         [array[j], array[target]] = [array[target], array[j]]
-        /* 令target的索引为原来索引 */
+        /* 改变索引的值，继续进行比较 */
         target = j
       }
     }
@@ -23,3 +22,4 @@ function insertSort(array) {
   console.log(array);
 }
 insertSort([1, 34, 23, 6, 2])
+// [ 1, 2, 6, 23, 34 ]
