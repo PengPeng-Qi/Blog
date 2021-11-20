@@ -5,13 +5,13 @@ sidebar: auto
 ## 浏览器内核
 最初内核的概念包括渲染引擎与JS引擎，目前习惯直接称渲染引擎为内核，JS引擎独立。  
   
-| 浏览器  | 内核           |
-| ------- | -------------- |
-| Chrome  | Webkit -> Bink |
-| Opera   | Bink           |
-| Safari  | Webkit         |
-| Firefox | Gecko          |
-| IE      | Trident        |
+| 浏览器  | 内核           | 简写     |
+| ------- | -------------- | -------- |
+| Chrome  | Webkit -> Bink | -webkit- |
+| Opera   | Bink           | -o-      |
+| Safari  | Webkit         | -webkit- |
+| Firefox | Gecko          | -moz-    |
+| IE      | Trident        | -ms-     |
 | Edge    | EdgeHTML       |
 
 ## JS引擎
