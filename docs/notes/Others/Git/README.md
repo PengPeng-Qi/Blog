@@ -35,12 +35,16 @@ sidebar: auto
   - 如果想查看提交所带来的的改动，可以加上`-p` 参数，文件的前后差别就会显示在提交信息之后  
   
 `git log -p README.md` **只查看`README.md` 文件的提交日志以及提交前后的差别**  
+### git log --graph 
+`git log --graph` -- 以图标的形式查看分支
 ### git diff
 **查看工作树与暂存区的区别**：`git diff`  
   
 **查看工作树与最新提交的区别**：`git diff HEAD`
 ### git branch
 `git branch` -- 命令可以将分支名列表显示，同时可以确认当前所在分支。  
+### git branch -a
+`git branch -a` -- 查看当前分支的相关信息，添加 `-a` 可以同时显示本地仓库和远程仓库的分支信息
 ### git checkout -b
 `git checkout -b xxx` -- 创建并切换到xxx分支
   
@@ -60,8 +64,6 @@ git checkout feature-A
 
 > 注意📢：合并分支需要先切换到主分支
 
-### git log --graph 
-`git log --graph` -- 以图标的形式查看分支
 ### git reset --hard xxxx(哈希值)
 `git reset --hard xxxx(哈希值)` -- 回溯到特性分支 xxx
 ### git reflog
