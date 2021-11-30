@@ -16,6 +16,7 @@
 [学习Javascript闭包（Closure）](https://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)  
 [破解前端面试（80% 应聘者不及格系列）：从闭包说起](https://juejin.cn/post/6844903474212143117#heading-0)  
 ## ES6
+[Promise](./Promise/README.md)  
 [连续的解构赋值](./ES6/连续的解构赋值.md)  
 [深入理解箭头函数](./ES6/深入理解箭头函数.md)  
 [关于 const 和 let 声明的变量不在 window 上](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/30)  
