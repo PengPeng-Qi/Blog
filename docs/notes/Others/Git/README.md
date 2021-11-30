@@ -29,7 +29,7 @@ sidebar: auto
    
 **只显示指定目录、文件的日志**：
   - 只需要在`git log` 命令后加上目录名，便会只显示改目录下的日志。
-  - 如果加的是文件名，就会只显示该文件相关的日志 `git log README.md`
+  - 如果加的是文件名，就会只显示该文件相关的日志 `git log README.md` 
   
 **显示文件的改动**：  
   - 如果想查看提交所带来的的改动，可以加上`-p` 参数，文件的前后差别就会显示在提交信息之后  
@@ -39,3 +39,49 @@ sidebar: auto
 **查看工作树与暂存区的区别**：`git diff`  
   
 **查看工作树与最新提交的区别**：`git diff HEAD`
+### git branch
+`git branch` -- 命令可以将分支名列表显示，同时可以确认当前所在分支。  
+### git checkout -b
+`git checkout -b xxx` -- 创建并切换到xxx分支
+  
+等同于：
+```shell
+git branch feature-A
+git checkout feature-A
+```
+  
+不断对一个分支进行提交，我们进行这样的操作，我们称为**培育分支**。  
+### git checkout -
+`git checkout -` -- 切换回上一个分支
+### git merge
+`git merge` -- 合并分支
+### git merge --no-ff xxx
+`git merge --no-ff xxx` 合并xxx 分支，为了在历史记录中明确记录下本次分支合并，我们需要创建合并提交。因此，在合并时加上 `--no-ff` 参数。随后保存合并信息。  
+
+> 注意📢：合并分支需要先切换到主分支
+
+### git log --graph 
+`git log --graph` -- 以图标的形式查看分支
+### git reset --hard xxxx(哈希值)
+`git reset --hard xxxx(哈希值)` -- 回溯到特性分支 xxx
+### git reflog
+`git reflog` -- 查看当前仓库的操作日志
+
+> `git log` 只能查看以当前状态为终点的历史日志
+
+### git commit --amend
+`git commit --amend` -- 修改提交信息
+### git commit -am
+`git commit -am` -- 直接commit 不需要再add
+
+### git remote add
+`git remote add` -- 将链接地址设置为本地仓库的远程仓库  
+  
+在本地上创建的仓库的路径为`git@github.com: 用户名/git-tutorial.git`  
+  
+`git remote add origin git@github.com: 用户名/git-tutorial.git` Git会自动将远程仓库名称设置 为origin
+### git push
+推送至master 分支 `git push -u origin master`  
+  
+`-u` 参数可以在推送的同时，将origin 仓库的master分支设置为本地仓库当前分支的上游。  
+  
