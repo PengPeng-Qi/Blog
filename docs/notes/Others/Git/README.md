@@ -27,16 +27,19 @@ sidebar: auto
 `git commit -am` -- 直接commit 不需要再add
 ## git reset -- files
 `git reset -- files` 用来撤销最后一次 `git add files`，也可以使用`git reset` 撤销所有暂存区域的文件。
-## git checkout -- files
+## git checkout
+### git checkout -- files
 `git checkout -- files`  把文件从暂存区复制到工作目录，用来丢弃本地修改。
-## git checkout -b
+### git checkout -b xxx
 `git checkout -b xxx` -- 创建并切换到xxx分支
   
 等同于：`git branch feature-A  &&  git checkout feature-A`  
   
 不断对一个分支进行提交，我们进行这样的操作，我们称为**培育分支**。  
-## git checkout -
+### git checkout -
 `git checkout -` -- 切换回上一个分支
+### git checkout xxx
+`git checkout xxx` -- 切换到xxx分支
 ## git log
 ### git log
 `git log` -- 查看提交日志(查看以往仓库中提交的日志，包括可以看什么人在什么时候进行了提交或合并，以及操作前后的差别)  
@@ -65,6 +68,8 @@ sidebar: auto
 ## git branch
 ### git branch
 `git branch` -- 命令可以将分支名列表显示，同时可以确认当前所在分支。  
+### git branch xxx
+`git branch xxx` -- 新建xxx分支
 ### git branch -a
 `git branch -a` -- 查看当前分支的相关信息，添加 `-a` 可以同时显示本地仓库和远程仓库的分支信息
 ## git merge
