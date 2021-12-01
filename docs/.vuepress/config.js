@@ -14,7 +14,7 @@ module.exports = {
     sidebar: 'auto',
     navbar: [{
         text: '笔记',
-        link: '/notes/HTML/',
+        link: '/notes/CSS/',
       },
       {
         text: '项目',
@@ -24,9 +24,6 @@ module.exports = {
     ],
     sidebar: {
       '/notes/': [{
-          text: 'HTML',
-          link: '/notes/HTML/',
-        }, {
           text: 'CSS',
           link: '/notes/CSS/',
         }, {
