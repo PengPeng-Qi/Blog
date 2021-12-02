@@ -26,7 +26,9 @@ foo(); // 可以调用
 ```
 
 ## 补充
-这里补充一个关于声明的知识点：
+这里补充几个关于声明的知识点：  
+  
+**知识点一**：
 ```js
 var x;
 var x; // 正常
@@ -39,4 +41,21 @@ let z; // 报错
 
 let m;
 var m; // 报错
+```
+  
+**知识点二**：
+```js
+/* 
+  catch 也拥有同样的作用域规则
+*/
+
+try {
+    throw "oh no!";
+}
+catch (e) {
+    console.log("Oh well.");
+}
+
+// Error: 'e' doesn't exist here
+console.log(e);
 ```
