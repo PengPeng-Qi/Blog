@@ -22,6 +22,8 @@ sidebar: auto
 :::details 点击查看<code>useState</code> 的详细使用案例
 @[code jsx{4,11}](./useState的基本使用.jsx)
 :::
+> `setXxx`: 值是替换，不是合并
+
 ## Effect Hook
 `Effect Hook` 可以在函数组件中执行副作用操作(用于**模拟类组件中的生命周期钩子**)
 :::details 点击查看<code>useEffect</code>的详细使用
@@ -31,4 +33,11 @@ sidebar: auto
 `Ref Hook` 可以在函数组件中存储/查找组件内的标签或任意其它数据，功能与`React.createRef()` 一样
 :::details 点击查看<code>useRef</code>的详细使用
 @[code jsx{5,13}](./useRef的基本使用.jsx)
+:::
+## Context Hook
+`Context Hook` 接收一个`context` 对象（`React.createContext` 的返回值）并返回该`context` 的当前值。  
+  
+当前的`context` 值由上层组件中距离当前组件最近的`<MyContext.Provider>` 的`value prop` 决定。  
+:::details 点击查看<code>useContext</code>的详细使用
+@[code jsx{3-4,6-10,18-20}](./useContext的基本使用.jsx)
 :::
