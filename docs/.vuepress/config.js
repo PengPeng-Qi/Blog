@@ -30,6 +30,9 @@ module.exports = {
           text: 'JavaScript',
           link: '/notes/JavaScript/',
         }, {
+          text: 'TypeScript',
+          link: '/notes/TypeScript/',
+        }, {
           text: 'Vue',
           link: '/notes/Vue/',
         }, {
