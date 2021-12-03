@@ -131,3 +131,66 @@ function sum() {
     let args: IArguments = arguments;
 }
 ```
+## 函数的类型
+### 函数表达式
+```ts
+let mySum = function (x: number, y: number): number {
+    return x + y;
+};
+```
+这是可以通过编译的，不过事实上，上面的代码只对等号右侧的匿名函数进行了类型定义。完整版：
+```ts
+/* 
+    => 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。
+ */
+let mySum: (x: number, y: number) => number = function (x: number, y: number): number {
+    return x + y;
+};
+```
+### 用接口定义函数的形状
+```ts
+interface SearchFunc{
+    (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) {
+    return source.search(subString) !== -1;
+}
+```
+### 可选参数
+**可选参数必须放在必须参数后面**
+### 参数默认值
+Ts会将添加了默认值的参数识别为可选参数。  
+  
+但是，此时不受**可选参数必须接在必需参数后面**的限制了。
+### 函数重载
+重载允许一个函数接受不同数量或类型的参数时，作不同的处理。
+  
+比如，我们需要实现一个函数`reverse`，输入数字`123` 的时候，输出反转的数字`321`，输入字符串`'hello'` 的时候，输出反转的字符串`'olleh'`。
+```ts
+function reverse(x: number | string): number | string | void {
+    if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    } else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
+}
+```
+**然而这样有一个缺点，就是不能够精确的表达，输入为数字的时候，输出也应该为数字，输入为字符串的时候，输出也应该为字符串。**
+  
+这时，我们可以使用重载定义多个`reverse` 的函数类型：
+```ts
+function reverse(x: number): number;
+function reverse(x: string): string;
+function reverse(x: number | string): number | string | void {
+    if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    } else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
+}
+```
+我们重复定义了多次函数`reverse`，前几次都是函数定义，最后一次是函数实现。
+
+> 注意📢：T**S会优先从最前面的函数定义开始匹配**，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
