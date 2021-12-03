@@ -99,3 +99,35 @@ interface Person{
   readonly id: number;
 }
 ```
+## 数组的类型
+### 用接口表示数组
+```ts
+interface NumberArray {
+  [index: number]: number;
+}
+let num: NumberArray = [1, 2, 3, 4]
+```
+`NumberArray` 表示： 只要索引的类型是数字时，那么值的类型必须是数字。
+### 类数组
+类数组不是数组类型，比如`arguments`: 
+```ts
+function sum() {
+    let args: number[] = arguments; // error
+}
+```
+`arguments` 实际上是一个类数组，不能用普通的方式来描述，而应该用接口：
+```ts
+function sum() {
+    let args: {
+        [index: number]: number;
+        length: number;
+        callee: Function;
+    } = arguments;
+}
+```
+常用的类数组都有自己的接口定义，如`IArguments, NodeList, HTMLCollection` 等：
+```ts
+function sum() {
+    let args: IArguments = arguments;
+}
+```
