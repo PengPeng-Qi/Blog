@@ -194,3 +194,73 @@ function reverse(x: number | string): number | string | void {
 我们重复定义了多次函数`reverse`，前几次都是函数定义，最后一次是函数实现。
 
 > 注意📢：T**S会优先从最前面的函数定义开始匹配**，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
+
+## 类型断言
+手动指定一个值的类型
+### 语法
+```ts
+值 as 类型  // 推荐使用
+```
+或
+```ts
+<类型>值
+```
+在`JSX`中必须使用前者，即`值 as 类型`
+### 类型断言的用途
+#### 将一个联合类型断言为其中一个类型
+**当TS不确定一个联合类型的变量到底是哪个类型的时候，我们只能访问此联合类型的所有类型中共有的属性和方法。**
+```ts
+interface Cat {
+    name: string;
+    run(): void;
+}
+interface Fish {
+    name: string;
+    swim(): void;
+}
+
+function getName(animal: Cat | Fish) {
+    return animal.name;
+}
+```
+而有时候，我们确实需要在不确定的类型的时候访问其中一个类型特有的属性或方法
+```ts{11}
+interface Cat {
+    name: string;
+    run(): void;
+}
+interface Fish {
+    name: string;
+    swim(): void;
+}
+
+function isFish(animal: Cat | Fish) {
+    if (typeof animal.swim === 'function') {
+        return true;
+    }
+    return false;
+}
+
+// Property 'swim' does not exist on type 'Cat | Fish'.
+```
+此时可以使用类型断言，将`animal` 断言成 `Fish`：
+```ts{11}
+interface Cat {
+    name: string;
+    run(): void;
+}
+interface Fish {
+    name: string;
+    swim(): void;
+}
+
+function isFish(animal: Cat | Fish) {
+    if (typeof (animal as Fish).swim === 'function') {
+        return true;
+    }
+    return false;
+}
+```
+> 类型断言只能欺骗TS 编译器，无法避免运行时的错误，反而滥用类型断言可能会导致运行时的错误 ❌
+
+#### 将一个父类断言为更加具体的子类
