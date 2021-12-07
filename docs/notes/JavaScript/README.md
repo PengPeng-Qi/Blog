@@ -20,7 +20,7 @@
 [连续的解构赋值](./ES6/连续的解构赋值.md)  
 [深入理解箭头函数](./ES6/深入理解箭头函数.md)  
 [关于 const 和 let 声明的变量不在 window 上](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/30)  
-[关于Let 暂时性死区的理解]
+[关于Let 暂时性死区的理解](./ES6/Let暂时性死区的理解.md)  
 [Object.is](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is)  
 ## Web Storage
 [localStorage、sessionStorage](./Web_Storage/localStorage、sessionStorage.md)  
