@@ -27,6 +27,7 @@
 [localStorage、sessionStorage](./Web_Storage/localStorage、sessionStorage.md)  
 [cookie](./Web_Storage/cookie.md)
 ## 客户端JavaScript
+[浏览器的交互](./ES6/关于变量声明的理解.md)  
 [Web浏览器的javaScript](./客户端JavaScript/Web浏览器的javaScript.md)  
 [Window对象](./客户端JavaScript/Window对象.md)
 ## 奇淫技巧
