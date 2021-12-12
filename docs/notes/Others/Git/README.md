@@ -78,7 +78,7 @@ sidebar: auto
 ### git merge --no-ff xxx
 `git merge --no-ff xxx` 合并xxx 分支，为了在历史记录中明确记录下本次分支合并，我们需要创建合并提交。因此，在合并时加上 `--no-ff` 参数。随后保存合并信息。  
 
-> 注意📢：合并分支需要先切换到主分支
+> 注意📢：合并分支需要先切换到主分支(main)
 
 ## git reset --hard xxxx(哈希值)
 `git reset --hard xxxx(哈希值)` -- 回溯到特性分支 xxx
