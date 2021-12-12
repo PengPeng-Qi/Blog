@@ -42,7 +42,7 @@ sidebar: auto
 `git checkout xxx` -- 切换到xxx分支
 ## git log
 ### git log
-`git log` -- 查看提交日志(查看以往仓库中提交的日志，包括可以看什么人在什么时候进行了提交或合并，以及操作前后的差别)  
+`git log` -- 查看提交日志(查看以往仓库中提交的日志，包括可以看什么人在什么时候进行了提交或合并，以及操作前后的差别)、只能查看以当前状态为终点的历史日志。  
   
 **只显示提交信息的第一行**，可以使用`git log --pretty=short`，这样开发人员就可以轻松把握多个提交。  
    
@@ -78,14 +78,19 @@ sidebar: auto
 ### git merge --no-ff xxx
 `git merge --no-ff xxx` 合并xxx 分支，为了在历史记录中明确记录下本次分支合并，我们需要创建合并提交。因此，在合并时加上 `--no-ff` 参数。随后保存合并信息。  
 
-> 注意📢：合并分支需要先切换到主分支(main)
+> 注意📢：合并分支需要先切换到主分支(main)、这样xxx分支的内容就合并到了main分支上
 
 ## git reset --hard xxxx(哈希值)
 `git reset --hard xxxx(哈希值)` -- 回溯到特性分支 xxx
 ## git reflog
-`git reflog` -- 查看当前仓库的操作日志
+`git reflog` -- **查看当前仓库的操作日志**
 
 > `git log` 只能查看以当前状态为终点的历史日志
+
+## git rebase -i HEAD~2
+`git rebase -i HEAD~2` 合并最近两次的`commit` 为一次`commit`  
+  
+执行完后，将`pick` 后的提交信息保存为`commit`，需要删除的`commit` 信息前修改为`fixup`  
 
 ## git remote add
 `git remote add` -- 将链接地址设置为本地仓库的远程仓库  
