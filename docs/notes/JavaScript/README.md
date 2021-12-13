@@ -13,6 +13,9 @@
 [break的基本使用](./数据类型/break.md)  
 ## 类
 [Class基本语法](./类/Class基本语法.md)
+## 函数
+[函数定义的注意事项](./函数/函数定义的细节.md)  
+[return的注意事项](./函数/return.md)  
 ## 执行上下文
 [理解 JavaScript 中的执行上下文和执行栈](https://juejin.cn/post/6844903682283143181#heading-4)
 ## 闭包
@@ -24,7 +27,7 @@
 [深入理解箭头函数](./ES6/深入理解箭头函数.md)  
 [关于 const 和 let 声明的变量不在 window 上](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/30)  
 [关于Let 暂时性死区的理解](./ES6/Let暂时性死区的理解.md)  
-[连续赋值Const](./ES6/关于变量声明的理解.md)  
+[关于变量声明的理解](./ES6/关于变量声明的理解.md)  
 [Object.is](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is)  
 ## Web Storage
 [localStorage、sessionStorage](./Web_Storage/localStorage、sessionStorage.md)  

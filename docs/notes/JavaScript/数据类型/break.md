@@ -71,3 +71,21 @@ for (let i = 2; i <= n; i++) { // 对每个自然数 i
   console.log( i ); // 输出素数
 }
 ```
+函数分离模式：
+```js
+function showPrimes(n) {
+
+  for (let i = 2; i < n; i++) {
+    if (!isPrime(i)) continue;
+
+    alert(i);  // 一个素数
+  }
+}
+
+function isPrime(n) {
+  for (let i = 2; i < n; i++) {
+    if ( n % i == 0) return false;
+  }
+  return true;
+}
+```
