@@ -29,6 +29,7 @@
 [关于Let 暂时性死区的理解](./ES6/Let暂时性死区的理解.md)  
 [关于变量声明的理解](./ES6/关于变量声明的理解.md)  
 [Object.is](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is)  
+[Symbol的基本使用](./ES6/symbol.md)  
 ## Web Storage
 [localStorage、sessionStorage](./Web_Storage/localStorage、sessionStorage.md)  
 [cookie](./Web_Storage/cookie.md)
