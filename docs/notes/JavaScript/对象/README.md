@@ -288,4 +288,5 @@ let user = makeUser();
 console.log( user.ref().name ); // John
 ```
 > 这里的`this` 指向`user`，因为`this` 是被`user.ref()` 调用的，所以`this` 指向`user`
-
+  
+关于对象的转换可参考[对象-原始值转换](https://zh.javascript.info/object-toprimitive)  
