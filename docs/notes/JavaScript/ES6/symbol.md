@@ -89,7 +89,7 @@ let mySymbol = Symbol();
 let a = {};
 a[mySymbol] = 'Hello!';
 
-// 第二种写法
+// 第二种写法，需要使用方括号把它括起来，因为我们需要mySymbol作为键，而不是字符串'mySymbol'
 let a = {
   [mySymbol]: 'Hello!'
 };
@@ -127,3 +127,87 @@ let obj = {
 
 obj[s](123);
 ```
+## Symbol在for...in中会被跳过
+`Symbol` 属性不参与`for...in` 循环  
+```js
+let id = Symbol("id");
+let user = {
+  name: "John",
+  age: 30,
+  [id]: 123
+};
+
+for (let key in user) alert(key); // name, age (no symbols)
+
+// 使用 Symbol 任务直接访问
+alert( "Direct: " + user[id] );
+```
+> `Object.keys()` 也会忽略他们，这是一般**隐藏符号属性**原则的一部分  
+  
+相反：`Object.assign()` 会同时复制字符串和`symbol` 属性：
+```js
+let id = Symbol("id");
+let user = {
+  [id]: 123
+};
+
+let clone = Object.assign({}, user);
+
+alert( clone[id] ); // 123
+```
+## 全局Symbol
+**全局Symbol注册表**，我们可以在其中创建`Symbol` 并在稍后访问他们，可以确保每次访问相同名字的`Symbol`时，返回的都是相同的。  
+  
+想从注册表中获取`Symbol`， 请使用`Symbol.for(key)`，如果有一个描述为`key` 的`Symbol`，否则将创建一个新的`Symbol`，并通过给定的`key` 将其存储在注册表中。
+```js
+// 从全局注册表中读取
+let id = Symbol.for("id"); // 如果该 Symbol 不存在，则创建它
+
+// 再次读取（可能是在代码中的另一个位置）
+let idAgain = Symbol.for("id");
+
+// 相同的 Symbol
+alert( id === idAgain ); // true
+```
+注册表中的`Symbol` 被称为**全局`Symbol`**
+### Symbol.keyFor
+对于全局`Symbol`，不仅有`Symbol.for(key)` 按名字返回一个`Symbol`，还有一个反向调用：`Symbol.keyFor(sym)`，它的作用完全反过来：通过全局`Symbol` 返回一个名字。  
+  
+```js
+// 通过 name 获取 Symbol
+let sym = Symbol.for("name");
+let sym2 = Symbol.for("id");
+
+// 通过 Symbol 获取 name
+alert( Symbol.keyFor(sym) ); // name
+alert( Symbol.keyFor(sym2) ); // id
+```
+`Symbol.keyFor` 内部使用全局`Symbol` 注册表来查找`Symbol` 的键。所以它不适用于非全局`Symbol`。如果`Symbol` 不是全局的，它将无法找到它并返回 `undefined`。  
+```js
+let globalSymbol = Symbol.for("name");
+let localSymbol = Symbol("name");
+
+console.log( Symbol.keyFor(globalSymbol) ); // name，全局 Symbol
+console.log( Symbol.keyFor(localSymbol) ); // undefined，非全局
+
+console.log( localSymbol.description ); // name
+```
+## 注意点
+**`Symbol` 不会被自动转换为字符串**  
+  
+js中大多数值都支持字符串的隐式转换，例如：我们可以`alert` 任何值，都可以生效。`Symbol` 比较特殊，他不会自动转换。
+```js
+let id = Symbol("id");
+alert(id); // 类型错误：无法将 Symbol 值转换为字符串。
+```
+如果真的想显示一个`Symbol` ，我们需要在它上面调用`.toString()`，如下：
+```js
+let id = Symbol("id");
+console.log(id.toString()); // Symbol(id)，现在它有效了
+```
+或者获取`symbol.description` 属性，只显示描述
+```js
+let id = Symbol("id");
+alert(id.description); // id
+```
+> 更多请参阅[Symbol](https://tc39.es/ecma262/#sec-well-known-symbols)
