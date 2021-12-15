@@ -2,8 +2,79 @@
 sidebar: auto
 ---
 # 对象
+## 创建对象
+```js
+let user = new Object(); // 构造函数的语法
+let user = {};           // 字面量的语法
+```
+通常，我们用花括号，这种方式就叫做**字面量**  
+  
+也可以使用多字词语作为属性名，但必须为他们加上引号：
+```js {3}
+let user = {
+  name: "John",
+  "likes birds": true,  // 多词属性名必须加引号
+};
+
+// 读取
+user['likes birds'];
+```
+> 列表中最后一个属性应以逗号结尾，这叫做尾随或悬挂逗号
+
+```js {8}
+let user = {
+  name: 'kok',
+  age: 20,
+}
+let key = 'age';
+
+// 访问变量，不能使用点号
+console.log(user[key]);
+```
+**属性名没有限制，属性名可以是任何字符串或者`Symbol`、其他类型会被自动转换为字符串**
+```js
+let obj = {
+  0: "test"        // 等同于 "0": "test"
+};
+
+// 都会输出相同的属性（数字 0 被转为字符串 "0"）
+alert( obj["0"] ); // test
+alert( obj[0] );   // test (相同的属性)
+```
+**特殊：名为`__proto__` 的属性，不能将它设置为非对象的值**
 ## 继承
 @[code](./继承.js)
+## 计算属性
+当创建一个对象时，我们在对象字面量中使用方括号。这叫做**计算属性**
+```js
+let fruit = prompt("Which fruit to buy?", "apple");
+
+let bag = {
+  [fruit]: 5, // 属性名是从 fruit 变量中得到的
+};
+
+alert( bag.apple ); // 5 如果 fruit="apple"
+```
+计算属性的含义很简单：`[fruit]` 含义是属性名应该从`fruit` 变量中获取。  
+  
+也可以使用更加复杂的表达式：
+```js
+let fruit = 'apple';
+let bag = {
+  [fruit + 'Computers']: 5 // bag.appleComputers = 5
+};
+```
+**方括号比点符号更强大。它允许任何属性名和变量，但写起来也更加麻烦。**
+## 属性值简写
+如果用已存在的变量当做属性名，课使用**属性值缩写**
+```js {3,4}
+function makeUser(name, age) {
+  return {
+    name, // 与 name: name 相同
+    age,  // 与 age: age 相同
+  };
+}
+```
 ## 删除属性
 `delete` 属性只能删除自有属性，不能删除继承属性
 
@@ -26,13 +97,30 @@ delete this.f;           // 不能删除全局函数
 - 3、`propertyIsEnumerable()` 检测属性是自有属性且这个属性是可枚举的
 
 ## 枚举属性
-`for/in` 循环可以在循环体中遍历对象中所有可枚举的属性（包括自有属性和继承的属性）  
+`for/in` 循环可以在循环体中**遍历对象中所有可枚举的属性（包括自有属性和继承的属性）**  
   
-对象继承的内置方法不可枚举的，在代码中给对象添加的属性都是可枚举的。  
-  
-`Object.keys()` 返回对象的所有可枚举的自有属性的名称组成的数组。  
+**对象继承的内置方法不可枚举的，在代码中给对象添加的属性都是可枚举的**。  
 ```js
-let obj = {a: 1, b: 2};
+let obj = {
+  a: 1,
+  b: 2,
+}
+obj.__proto__.c = 3;
+
+for(let key in obj){
+  console.log(key);
+}
+/* 
+  a b c
+*/
+```
+`Object.keys()` 返回对象的**所有可枚举的自有属性的名称组成的数组**。  
+```js
+let obj = {
+  a: 1,
+  b: 2,
+}
+obj.__proto__.c = 3;
 
 Object.keys(obj); // ['a', 'b']
 ```
@@ -51,4 +139,67 @@ var o = Object.create(p);
 p.isPrototypeOf(o)  // p 是否是 o 的原型 => true 
 Object.prototype.isPrototypeOf(p) // => true p 继承自Object.prototype
 Object.prototype.isPrototypeOf(Object); // => true
+```
+## 对象的排序
+**整数属性**指的是一个可以在不做任何更改的情况下与一个整数进行相互交换的字符串。
+```js
+// Math.trunc 是内建的去除小数部分的方法。
+alert( String(Math.trunc(Number("49"))) ); // "49"，相同，整数属性
+alert( String(Math.trunc(Number("+49"))) ); // "49"，不同于 "+49" => 不是整数属性
+alert( String(Math.trunc(Number("1.2"))) ); // "1"，不同于 "1.2" => 不是整数属性
+```
+  
+**整数属性**会被进行排序，其他属性则按照创建的顺序显示  
+```js
+let codes = {
+  "49": "Germany",
+  "41": "Switzerland",
+  "44": "Great Britain",
+  // ..,
+  "1": "USA"
+};
+
+for(let code in codes) {
+  alert(code); // 1, 41, 44, 49
+}
+```
+```js
+let user = {
+  name: "John",
+  surname: "Smith"
+};
+user.age = 25; // 增加一个
+
+// 非整数属性是按照创建的顺序来排列的
+for (let prop in user) {
+  console.log( prop ); // name, surname, age
+}
+```
+## 对象的克隆
+### 浅拷贝
+```js {9-11}
+let user = {
+  name: "John",
+  age: 30
+};
+
+let clone = {}; // 新的空对象
+
+// 将 user 中所有的属性拷贝到其中
+for (let key in user) {
+  clone[key] = user[key];
+}
+
+clone.name = "Pete";      // 改变了其中的数据
+
+console.log( user.name ); // John
+```
+也可以使用[`Object.assign`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) 代替`for...in` 循环来进行简单克隆
+```js
+let user = {
+  name: "John",
+  age: 30
+};
+
+let clone = Object.assign({}, user);
 ```
