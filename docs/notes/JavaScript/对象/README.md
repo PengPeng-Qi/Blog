@@ -203,3 +203,89 @@ let user = {
 
 let clone = Object.assign({}, user);
 ```
+## 对象方法
+存储在对象属性值的函数被称为**方法**
+### 方法简写
+在对象字面量中，有一种更短方法的语法：
+```js {2,8}
+user = {
+  sayHi: function() {
+    alert("Hello");
+  }
+};
+
+let user = {
+  sayHi() { // 与 "sayHi: function(){...}" 一样
+    alert("Hello");
+  }
+};
+```
+## 对象中的this
+`this` 只有在函数被调用时才会有值，所以`this` 的规则不考虑对象定义，只有调用的那一刻才重要
+```js
+let user = { name: "John" };
+let admin = { name: "Admin" };
+
+function sayHi() {
+  console.log('1', this );
+}
+
+user.f = sayHi;
+admin.f = sayHi;
+
+user.f();  // user
+admin.f(); // admin
+
+let fn = user.f;
+fn();     // window
+```
+> 上例`fn`，`this` 在非严格模式下指向window、严格模式下指向`undefined`
+
+### 箭头函数没有自己的this
+箭头函数有些特别，没有自己的`this`，取决于外部**正常的**函数
+```js
+let user = {
+  firstName: "Ilya",
+  sayHi() {
+    // 这里的this 来自于外部的 user.sayHi() 方法
+    let arrow = () => alert(this.firstName);
+    arrow();
+  }
+};
+
+user.sayHi(); // Ilya
+```
+### 测试题
+```js
+function makeUser() {
+  return {
+    name: "John",
+    ref: this
+  };
+}
+
+let user = makeUser();
+
+console.log( user.ref.name ); // 结果是什么？
+```
+答案：错误❌  
+  
+**解析：**`this` 的规则不考虑对象定义、只有调用那一刻才重要。  
+  
+这里`makrUser()` 中的`this` 的值在严格模式下是`undefined`，因为他是被作为函数调用的，而不是通过点符号作为方法调用的。  
+```js
+function makeUser() {
+  return {
+    name: "John",
+    ref() {
+      return this;
+    }
+  };
+}
+
+let user = makeUser();
+
+console.log( user.ref().name ); // John
+```
+> 这里的`this` 指向`user`，因为`this` 是被`user.ref()` 调用的，所以`this` 指向`user`
+
