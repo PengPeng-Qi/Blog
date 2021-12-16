@@ -17,7 +17,4 @@
 [组件优化](./组件优化/README.md)  
 [renderProps的基本使用](./renderProps的基本使用.md)  
 [错误边界](./错误边界.md)
-
----
-> [字节跳动青训营React笔记](./字节跳动青训营.md)
  
