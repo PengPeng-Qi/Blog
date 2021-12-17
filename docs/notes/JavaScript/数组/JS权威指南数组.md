@@ -22,19 +22,20 @@ let undefs = [,,]   // undefs.length = 2 数组有两个元素，都是undefined
 ### 构造函数
 1、调用时没有参数
 ```js
-let a = new Array();
+let arr = new Array();
 ```
 > 返回一个没有任何元素的空数组，等同于数组直接量`[]`
 
 2、调用时有一个数值参数
 ```js
-let a = new Array(5);
+let arr = new Array(5);
 ```
-> 只有一个参数，相当于指定数组长度`a.length = 5`
+> **只有一个参数，相当于指定数组长度`arr.length = 5`**
 
 3、显示指定两个或多个数组元素
 ```js
-let a = new Array(1, 2, 3, 'hello', 'world!');
+let arr = new Array(1, 2, 3, 'hello', 'world!');
+// [1, 2, 3, 'hello', 'world!']
 ```
 ## 数组的读与写
 📢：可以使用负数或非整数来索引数组。在这种情况下，数组转换为字符串，字符串作为属性名来使用。  
@@ -58,11 +59,19 @@ console.log(arr);       // [1, 2, 3, -1: -1]
 arr['3'] = 4;
 console.log(arr);       // [1, 2, 3, 4, -1: -1]
 ```
+使用`alert 来显示整个数组
+```js
+let fruits = ["Apple", "Orange", "Plum"];
+
+alert( fruits ); // Apple,Orange,Plum
+```
 ## 数组长度
 ```js
 a = [1, 2, 3, 4, 5];
 a.length = 3;           // a: [1, 2, 3]
 ```
+> 可使用`arr.length = 0` 来清空数组。
+  
 可以使用`Object.definexProperty()` 让数组的`length` 属性变为只读的
 ```js
 a = [1, 2, 3];
@@ -73,8 +82,30 @@ Object.defineProperty(a, "length", {
 a.length = 0;          // 无效
 ```
 ## 数组方法
+### toString
+返回以逗号隔开的元素列表
+```js
+let arr = [1, 2, 3];
+
+alert( arr ); // 1,2,3
+alert( String(arr) === '1,2,3' ); // true
+
+alert( [] + 1 ); // "1"
+alert( [1] + 1 ); // "11"
+alert( [1,2] + 1 ); // "1,21"
+
+// [] 变成了一个空字符串
+// [1] 变成了'1'
+```
+**数组`[]` 和原始类型进行比较的时候，数组会被转换为原始对象进行比较**，被转换为空字符串`''`，接下来比较的就是原始类型之间的比较。  
+  
+```js
+alert( 0 == [] );  // [] => '' true 
+
+alert('0' == [] ); // [] => '' false
+```
 ### 遍历数组
-`for..in...` 循环能够枚举继承的属性名
+`for..in...` 循环能够枚举继承的属性名，不推荐，`for...of...`效率更高
 ### 翻转数组
 `reverse()` 可以翻转数组的顺序，且会改变原数组
 ```js
@@ -95,14 +126,51 @@ console.log(arr);  // [1, 3, 5, 7, 8]
 ```
 ### 合并数组
 @[code](./concat的基本使用.js)
-
+  
 > `concat` 不会递归扁平化、也不会修改调用的数组
+  
+```js
+/**
+ * 他只复制数组中的元素，其他对象，即使他们看起来像数组一样，但仍然会被作为一个整体添加
+ */
+let arr = [1, 2, 3];
 
+let arrayLike = {
+  0: 'something',
+  length: 1
+};
+
+console.log( arr.concat(arrayLike) );  // [1, 2, 3, {...}]]
+```
+如果类似数组的对象具有`Symbol.isConcatSpreadable` 属性，则他就会被`concat` 当做一个数组处理
+```js
+let arr = [1, 2];
+
+let arrayLike = {
+  0: "something",
+  1: "else",
+  [Symbol.isConcatSpreadable]: true,
+  length: 2
+};
+
+console.log( arr.concat(arrayLike) ); // [1, 2, 'something', 'else']
+```
 ### splice
 `splice` 如果省略第二个参数。从起始点开始到数组结尾的所有元素都将被删除，`splice()` 会返回一个有删除元素组成的数组
 ```js
 let a = [1, 2, 3, 4, 5, 6];
 a.splice(4)  //  返回[5, 6], a 是[1, 2, 3, 4]
+```
+允许负向索引
+```js
+let arr = [1, 2, 5];
+
+// 从索引 -1（尾端前一位）
+// 删除 0 个元素，
+// 然后插入 3 和 4
+arr.splice(-1, 0, 3, 4);
+
+alert( arr ); // 1,2,3,4,5
 ```
 ## ES5
 ### forEach
