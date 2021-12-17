@@ -117,7 +117,7 @@ console.log(a);   // [3, 2, 1]
 console.log(b);   // [3, 2, 1]
 ```
 ### 排序数组
-会改变原数组
+**会改变原数组**
 ```js
 let arr = [5, 7, 8, 1, 3];
 
@@ -172,6 +172,101 @@ arr.splice(-1, 0, 3, 4);
 
 alert( arr ); // 1,2,3,4,5
 ```
+> 注意：`sort，reverse 和 splice` 方法修改的是数组本身。  
+  
+## includes/indexOf
+`includes` 能处理`NaN`
+```js
+const arr = [NaN];
+
+console.log( arr.indexOf(NaN) );   // -1
+console.log( arr.includes(NaN) );  // true
+```
+## find/findIndex
+如果我们有一个**对象数组**，可以使用`find/findIndex` 方法，`find` 方法搜索的是使函数返回`true` 的第一个元素。
+```js
+let result = arr.find(function(item, index, array){
+  // 如果返回 true，则返回 item 并停止迭代
+  // 对于假值 false，则返回undefined
+});
+```
+```js
+let users = [
+  {id: 1, name: "John"},
+  {id: 2, name: "Pete"},
+  {id: 3, name: "Mary"}
+];
+
+let user = users.find(item => item.id == 1);
+
+alert(user.name); // John
+```
+> `arr.findIndex` 方法返回找到元素的索引，而不是元素本身，并且未找到任何内容时返回`-1`
+  
+## filter
+`find` 方法搜索的是使函数返回`true` 的第一个元素。如果需要匹配更多，我们可以使用`arr.filter`，可以返回所有匹配元素组成的元素。  
+  
+```js
+let users = [
+  {id: 1, name: "John"},
+  {id: 2, name: "Pete"},
+  {id: 3, name: "Mary"}
+];
+
+// 返回前两个用户的数组
+let someUsers = users.filter(item => item.id < 3);
+
+alert(someUsers.length); // 2
+```
+## split/join
+`str.split(delim, [length])` 通过给定的分隔符`delim` 将字符串分割成一个数组
+```js
+let names = 'Bilbo, Gandalf, Nazgul';
+let arr = names.split(', ');
+
+console.log(arr);  // ['Bilbo', 'Gandalf', 'Nazgul']
+```
+`length` 对数组长度的限制
+```js
+let arr = 'Bilbo, Gandalf, Nazgul, Saruman'.split(', ', 2);
+
+console.log(arr); // ['Bilbo', 'Gandalf']
+```
+## 大多数方法都支持thisArg
+几乎所有调用函数的数组方法 -- 比如`find`、`filter`、`map`，除了`sort` 是一个特例，都接受一个可选的附加参数`thisArg`：  
+```js
+arr.find(func, thisArg);
+arr.filter(func, thisArg);
+arr.map(func, thisArg);
+// ...
+// thisArg 是可选的最后一个参数，他的值在func 中变为this
+```
+```js
+let army = {
+  minAge: 18,
+  maxAge: 27,
+  canJoin(user) {
+    return user.age >= this.minAge && user.age < this.maxAge;
+  }
+};
+
+let users = [
+  {age: 16},
+  {age: 20},
+  {age: 23},
+  {age: 30}
+];
+
+// 找到 army.canJoin 返回 true 的 user
+let soldiers = users.filter(army.canJoin, army);
+
+alert(soldiers.length); // 2
+alert(soldiers[0].age); // 20
+alert(soldiers[1].age); // 23
+```
+如果在上面的示例中我们使用了`users.filter(army.canJoin)`，那么`army.canJoin` 将被作为独立函数调用，并且这时`this=undefined`，从而会导致即时错误。  
+  
+可以用`users.filter(user => army.canJoin(user))` 替换对`users.filter(army.canJoin, army)` 的调用。
 ## ES5
 ### forEach
 无法在所有元素都传递给调用的函数之前终止遍历。如果要提前终止，必须把`forEach()` 方法放在一个`try` 块中，并能抛出一个异常。
