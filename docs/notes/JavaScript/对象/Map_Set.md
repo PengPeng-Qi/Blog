@@ -92,3 +92,17 @@ alert(obj.orange); // 2
 调用`map.entries()` 将**返回一个可迭代的键/值对**，这刚好是`Object.fromEntries` 所需要的格式。  
   
 `Object.fromEntries` 期望得到一个**可迭代对象作为参数**，而不一定是数组，并且`map` 的标准迭代会返回跟`map.entries()` 一样的键/值对。  
+## Set
+可以使用`for...of` 或`forEach` 来遍历`Set`:
+```js
+let set = new Set(["oranges", "apples", "bananas"]);
+
+for (let value of set) alert(value);
+
+set.forEach((value, valueAgain, set) => {
+  alert(value);
+});
+```
+`forEach` 的回调函数有三个参数：一个`value`，然后是同一个值`valueAgain`，**最后是目标对象。**  
+  
+`forEach` 的回调函数有三个参数，是为了与`Map` 兼容。在特定情况下轻松地用`Set` 代替`Map` 很有帮助。  
