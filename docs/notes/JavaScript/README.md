@@ -27,6 +27,7 @@
 [函数定义的注意事项](./函数/函数定义的细节.md)  
 [return的注意事项](./函数/return.md)  
 [构造函数和new](./函数/构造函数和new.md)  
+[Rest参数与Spread语法](./函数/Rest参数与Spread语法.md)  
 ## 执行上下文
 [理解 JavaScript 中的执行上下文和执行栈](https://juejin.cn/post/6844903682283143181#heading-4)
 ## 闭包
