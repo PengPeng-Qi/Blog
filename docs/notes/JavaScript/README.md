@@ -31,6 +31,7 @@
 [词法环境，闭包](./函数/变量作用域，闭包.md)  
 [旧时的Var与IIFE](./函数/有趣的Var.md)  
 [全局对象](./函数/全局对象.md)  
+[函数对象](./函数/函数对象.md)  
 [学习Javascript闭包（Closure）](https://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html)  
 [破解前端面试（80% 应聘者不及格系列）：从闭包说起](https://juejin.cn/post/6844903474212143117#heading-0)  
 [理解 JavaScript 中的执行上下文和执行栈](https://juejin.cn/post/6844903682283143181#heading-4)  
