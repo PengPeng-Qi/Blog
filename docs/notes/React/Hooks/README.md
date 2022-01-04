@@ -2,9 +2,15 @@
 sidebar: auto
 ---
 # Hooks
-`Hook` 是`React 16.8.0` 版本增加的新特性，可以在函数组件中使用`state` 以及其他的`React` 特性。
+`Hook` 是`React 16.8.0` 版本增加的新特性，**可以在函数组件中使用`state` 以及其他的`React` 特性**。
 
 > Hooks只能在函数的最顶层控制流中调用hook
+
+## 优点
+为了解决编写组件时遇到的各种看起来不相关的问题：
+1. clase组件复用麻烦(高阶组件、`render props`)、自定义`hook`可解决
+2. 复杂组件难以理解(各种不想管的代码均放在声明周期中)、`useEffect` 可解决
+3. class组件的this难以理解
 
 ## State Hook
 `State Hook`让函数组件也可以有`state` 状态, 并进行状态数据的读写操作  
