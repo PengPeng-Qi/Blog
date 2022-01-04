@@ -5,7 +5,7 @@ sidebar: auto
 > 类的方法之间没有逗号
 
 ## 什么是class？
-类是一种函数
+**类是一种函数**
 ```js
 class User {
   constructor(name){
@@ -40,7 +40,7 @@ alert(User === User.prototype.constructor); // true
 alert(User.prototype.sayHi); // alert(this.name);
 
 // 在原型中实际上有两个方法
-alert(Object.getOwnPropertyNames(User.prototype)); // ['constructor', 'sayHi']
+console.log(Object.getOwnPropertyNames(User.prototype)); // ['constructor', 'sayHi']
 ```
 ## 实现一个类
 ```js
@@ -63,9 +63,6 @@ let user = new User("John");
 user.sayHi();
 ```
 这个定义的结果与使用类得到的结果基本相同。不过这之前存在重大差异，详情可见[🔗](https://zh.javascript.info/class#bu-jin-jin-shi-yu-fa-tang)
-
-> 类总是使用`use strict`
-
 ## 类表达式
 ```js
 let User = class {
@@ -74,10 +71,10 @@ let User = class {
   }
 }
 ```
-类似于命名函数表达式。  
+类似于**命名函数表达式**。  
   
 如果类表达式有名字，那么该名字仅在类内部可见：
-```js
+```js {1,7,9}
 let User = class MyClass {
   sayHi() {
     alert(MyClass); // MyClass 这个名字仅在类内部可见
@@ -106,9 +103,8 @@ new User().sayHi(); // Hello
 ```
 ## Getters/setters
 就像对象字面量，类可能包括`getters/setters`，计算属性（computed properties）等。
-```js
+```js {3,7,11}
 class User {
-
   constructor(name) {
     // 调用 setter
     this.name = name;
@@ -125,7 +121,6 @@ class User {
     }
     this._name = value;
   }
-
 }
 
 let user = new User("John");
@@ -134,6 +129,7 @@ alert(user.name); // John
 user = new User(""); // Name is too short.
 ```
 ## 计算属性名称
+使用中括号`[...]` 的计算方法
 ```js
 class User {
   ['say' + 'Hi'](){
@@ -145,19 +141,19 @@ new User().sayHi();
 ```
 ## Class 字段
 **类字段**是一种允许添加任何属性的语法。  
-```js
+```js {3}
 /* 在 class User 中添加一个 name 属性 */
 class User {
   name = 'John';
 
-  sayHIi(){
+  sayHi(){
     console.log(`Hi, ${this.name}!`);
   }
 }
 
 new User().sayHi();
 ```
-类字段重要的不同之处在于，它们会在每个独立对象中被设好，而不是设在 `User.prototype`:
+**类字段**重要的不同之处在于，它们会在每个独立对象中被设好，而**不是设在 `User.prototype`**:
 ```js
 class User {
   name = "John";
@@ -168,7 +164,7 @@ alert(user.name); // John
 alert(User.prototype.name); // undefined
 ```
 可以在赋值时使用更复杂的表达式和函数调用：
-```js
+```js {2}
 class User {
   name = prompt("Name, please?", "John");
 }
@@ -176,21 +172,60 @@ class User {
 let user = new User();
 alert(user.name); // John
 ```
+## 使用类字段制作绑定方法
+```js {13}
+class Button {
+  constructor(value) {
+    this.value = value;
+  }
+
+  click() {
+    alert(this.value);
+  }
+}
+
+let button = new Button("hello");
+
+setTimeout(button.click, 1000); // undefined
+```
+改变`this`指向：
+```js {6,10}
+class Button {
+  constructor(value) {
+    this.value = value;
+  }
+
+  // click 不在 prototype 上
+  click = () => {
+    /* 
+      button、因为click是基于每一个对象创建的，所以指向该对象
+      将button.click 传递到任何地方，this的值都是正确的
+    */
+    console.log(this);  
+    alert(this.value);
+  } 
+}
+
+let button = new Button("hello");
+
+setTimeout(button.click, 1000); // hello
+```
 ## 总结
 ```js
 class MyClass {
-  prop = value; // 属性
+  prop = value; // 属性、不在Prototype 上
 
-  constructor(...) { // 构造器
+  constructor(...) { // 构造器、new 会调用
     // ...
   }
 
-  method(...) {} // method
+  method(...) {} // method、存在Prototype 上
 
-  get something(...) {} // getter 方法
-  set something(...) {} // setter 方法
+  get something(...) {} // getter 方法、存在Prototype上
+  set something(...) {} // setter 方法、存在Prototype上
 
   [Symbol.iterator]() {} // 有计算名称（computed name）的方法（此处为 symbol）
   // ...
 }
 ```
+> `MyClass` 是一个函数
