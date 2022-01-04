@@ -19,6 +19,8 @@ sidebar: auto
 `Hook` 的每次调用都有一个完全独立的`state`，可以在**单个组件中多次调用同一个自定义`Hook`**。  
   
 语法: `const [xxx, setXxx] = React.useState(initValue)`  
+
+一般来说，在函数退出后变量就会**消失**，而`state` 中的变量会被 React 保留。  
   
 `useState()` 说明:
 - 1、参数: 第一次初始化指定的值在内部作缓存
