@@ -4,7 +4,8 @@ sidebar: auto
 # Hooks
 `Hook` 是`React 16.8.0` 版本增加的新特性，**可以在函数组件中使用`state` 以及其他的`React` 特性**。
 
-> Hooks只能在函数的最顶层控制流中调用hook
+> 只能在**函数最外层**调用 Hook。不要在循环、条件判断或者子函数中调用。  
+> 只能在**React 的函数组件**中调用 Hook。
 
 ## 优点
 为了解决编写组件时遇到的各种看起来不相关的问题：
@@ -13,7 +14,9 @@ sidebar: auto
 3. class组件的this难以理解
 
 ## State Hook
-`State Hook`让函数组件也可以有`state` 状态, 并进行状态数据的读写操作  
+`State Hook`让函数组件也可以有`state` 状态, 并进行状态数据的读写操作。每个组件的`state` 都是独立的。Hook是一个复用状态逻辑的方式，不复用`state`本身。  
+  
+`Hook` 的每次调用都有一个完全独立的`state`，可以在**单个组件中多次调用同一个自定义`Hook`**。  
   
 语法: `const [xxx, setXxx] = React.useState(initValue)`  
   
@@ -31,7 +34,11 @@ sidebar: auto
 > `setXxx`: 值是替换，不是合并
 
 ## Effect Hook
-`Effect Hook` 可以在函数组件中执行副作用操作(用于**模拟类组件中的生命周期钩子**)
+`Effect Hook` 可以在函数组件中执行副作用操作(用于**模拟类组件中的生命周期钩子**)  
+  
+可以在组件中多次使用`useEffect`:  
+  
+把组件内相关的副作用组织在一起（例如创建订阅及取消订阅），而不要把它们拆分到不同的生命周期函数里。  
 :::details 点击查看<code>useEffect</code>的详细使用
 @[code jsx{14-23}](./useEffect的基本使用.jsx)
 :::
