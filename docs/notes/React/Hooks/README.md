@@ -38,12 +38,23 @@ sidebar: auto
 ## Effect Hook
 `Effect Hook` 可以在函数组件中执行副作用操作(用于**模拟类组件中的生命周期钩子**)  
   
-可以在组件中多次使用`useEffect`:  
+数据获取、设置订阅以及手动更高React 组件中的DOM 都属于副作用。  
   
-把组件内相关的副作用组织在一起（例如创建订阅及取消订阅），而不要把它们拆分到不同的生命周期函数里。  
+在React 组件中有两种常见的副作用操作：**需要清除的和不需要清除的**。  
+  
+无需清除的`effect`：发送网络请求、手动变更DOM、记录日志...  
+  
+需要清除的`effect`: 订阅外部数据源，清除工作非常重要，可以防止内存泄漏。  
+  
+可以在组件中多次使用`useEffect` 实现**关注点分离**(相关逻辑分离):  
+  
+把组件内相关的副作用组织在一起，而不要把它们拆分到不同的生命周期函数里。  
 :::details 点击查看<code>useEffect</code>的详细使用
 @[code jsx{14-23}](./useEffect的基本使用.jsx)
 :::
+> 大多数情况下，`effect` 不会同步的执行、可使用代替的`[useLayoutEffect Hook](https://zh-hans.reactjs.org/docs/hooks-reference.html#uselayouteffect)`  
+  
+如果想执行**只运行一次的effect(仅在组件挂载和卸载时执行)，可以传递一个空数组作为第二个参数**。  
 ## Ref Hook
 `Ref Hook` 可以在函数组件中存储/查找组件内的标签或任意其它数据，功能与`React.createRef()` 一样
 :::details 点击查看<code>useRef</code>的详细使用
