@@ -35,7 +35,8 @@ sidebar: auto
 @[code jsx{4,11}](./useState的基本使用.jsx)
 :::
 > `setXxx`: 值是替换，不是合并
-
+  
+**如果更新函数的返回值与当前`state` 完全相同，则随后的渲染及effect的执行会被完全跳过(React 使用`Object.is` 比较算法)**  
 ## Effect Hook
 `Effect Hook` 可以在函数组件中执行副作用操作(用于**模拟类组件中的生命周期钩子**)  
   
@@ -68,3 +69,7 @@ sidebar: auto
 :::details 点击查看<code>useContext</code>的详细使用
 @[code jsx{3-4,6-10,18-20}](./useContext的基本使用.jsx)
 :::
+## 自定义Hook
+**自定义Hook必须以use开头：**  
+  
+不遵循的话，由于无法判断某个函数是否包含对其内部Hook 的调用，React将无法自动检查你的Hook 是否违反了Hook 的规则。  
