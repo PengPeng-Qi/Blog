@@ -57,6 +57,10 @@ sidebar: auto
 > 大多数情况下，`effect` 不会同步的执行、可使用代替的`[useLayoutEffect Hook](https://zh-hans.reactjs.org/docs/hooks-reference.html#uselayouteffect)`  
   
 如果想执行**只运行一次的effect(仅在组件挂载和卸载时执行)，可以传递一个空数组作为第二个参数**。  
+## Effect 的执行机制
+与`componentDidMount`、`componentDidUpdate` 不同的是，传给`useEffect` 的函数会在浏览器完成**布局与绘制之后，在一个延迟事件中被调用**。  
+  
+但是，并非所有的`effect` 都可以被延迟执行，比如，一个对用户可见的DOM变更就必须在浏览器执行下一次绘制之前被同步执行。  
 ## Ref Hook
 `Ref Hook` 可以在函数组件中存储/查找组件内的标签或任意其它数据，功能与`React.createRef()` 一样
 :::details 点击查看<code>useRef</code>的详细使用
