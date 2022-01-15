@@ -65,6 +65,7 @@
 [垃圾回收](./客户端JavaScript/垃圾回收.md)  
 ## 错误处理
 [错误处理，try...catch](./错误处理/README.md)  
+[自定义Error](./错误处理/自定义Error.md)  
 ## 奇淫技巧
 [10个清晰实用更显专业的JavaScript代码片段](https://blog.csdn.net/snsHL9db69ccu1aIKl9r/article/details/115774671)  
 [关于script标签的注意事项](./Other/关于Script标签的想法.md)  
