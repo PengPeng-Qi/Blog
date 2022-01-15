@@ -63,6 +63,8 @@
 [Web浏览器的javaScript](./客户端JavaScript/Web浏览器的javaScript.md)  
 [Window对象](./客户端JavaScript/Window对象.md)  
 [垃圾回收](./客户端JavaScript/垃圾回收.md)  
+## 错误处理
+[错误处理，try...catch](./错误处理/README.md)  
 ## 奇淫技巧
 [10个清晰实用更显专业的JavaScript代码片段](https://blog.csdn.net/snsHL9db69ccu1aIKl9r/article/details/115774671)  
 [关于script标签的注意事项](./Other/关于Script标签的想法.md)  
