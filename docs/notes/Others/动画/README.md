@@ -25,3 +25,19 @@ sidebar: auto
 库：`Snap.svg` `anime.js` 等  
   
 `filter CSS` 属性将**模糊或颜色偏移**等图形效果应用于元素  
+### JS动画
+JS可以实现复杂的动画，也可以操作canvas动画API进行绘制。  
+  
+JS动画应该通过`requestAnimationFrame`，该内置方法允许设置回调函数在浏览器准备**重绘的时候运行**  
+## 动画资源
+SVG：
+- Snap.svg
+- Svg.js
+
+JS:
+- GSAP
+- TweenJS
+- Velocity
+
+CSS:
+- Animate.css
