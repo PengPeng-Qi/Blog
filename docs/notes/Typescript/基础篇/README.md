@@ -191,9 +191,9 @@ function reverse(x: number | string): number | string | void {
     }
 }
 ```
-我们重复定义了多次函数`reverse`，前几次都是函数定义，最后一次是函数实现。
+我们**重复定义了多次函数`reverse`，前几次都是函数定义，最后一次是函数实现**。
 
-> 注意📢：T**S会优先从最前面的函数定义开始匹配**，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
+> 注意📢：**TS会优先从最前面的函数定义开始匹配**，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
 
 ## 类型断言
 手动指定一个值的类型
@@ -264,3 +264,202 @@ function isFish(animal: Cat | Fish) {
 > 类型断言只能欺骗TS 编译器，无法避免运行时的错误，反而滥用类型断言可能会导致运行时的错误 ❌
 
 #### 将一个父类断言为更加具体的子类
+待记录📝...
+## 声明文件
+当使用第三方库时，我们需要引用它的声明文件，才能获取对应的代码补全、接口提示等功能。  
+
+- `declare var` 声明全局变量
+- `declare function` 声明全局方法
+- `declare class` 声明全局类
+- `declare enum` 声明全局枚举类型
+- `declare namespace` 声明（含有子属性的）全局对象
+- `interface` 和`type` 声明全局类型
+- `export` 导出变量
+- `export namespace` 导出（含有子属性）的对象
+- `export default` ES6默认导出
+- `export =` commonjs 导出模块
+- `export as namespace` UMD库声明全局变量
+- `declare global` 拓展全局变量
+- `declare module` 拓展模块
+- `///<reference> /` 三斜线指令
+
+### 声明语句
+假设我们使用三方库jQuery的时候，我们这样获取一个`id` 是`foo` 的元素
+```js
+$('#foo');
+// or
+jQuery('#foo');
+```
+但是在ts中，编译器并不知道`$` 或`jQuery` 是什么东西，这时，我们需要使用`declare var` 来定义它的类型：
+```ts
+declare var jQuery: (selector: string) => any;
+
+jQuery('#foo');
+```
+上例中，`declare var` 并没有真的定义一个变量，只是定义了全局变量`jQuery` 的类型，仅仅会用于编译时的检查，在编译结果中会被删除，编译的结果为：
+```ts
+jQuery('#foo');
+```
+### 声明文件
+通常，我们会把声明语句放在一个单独的声明文件(`jQuery.d.ts`)中:
+```ts
+// src/jQuery.d.ts
+
+declare var jQuery: (selector: string) => any;
+```
+声明文件必须以`.d.ts` 为后缀。
+  
+一般来说，ts会解析项目中所有的`*.ts` 文件，当然也可以包含以`.d.ts` 结尾的文件。所以当我们将`jQuery.s.ts` 放在项目中，其他所有的`*.ts` 文件都可以获得`jQuery` 的类型定义。
+```
+/path/to/project
+├── src
+|  ├── index.ts
+|  └── jQuery.d.ts
+└── tsconfig.json
+```
+#### 第三方声明文件
+更推荐直接下载使用，推荐`@types` 统一管理第三方库的声明文件。
+```shell
+npm install @types/jquery --save-dev
+```
+### 书写声明文件
+当一个第三方库没有提供声明文件时，我们就需要自己书写声明文件了。库的使用场景主要有以下几种：
+  
+- 全局变量：通过`<script>` 标签引入第三方库，注入全局变量
+- npm包：通过`import foo from 'foo'` 导入，符合ES6模块规范
+- UMD库：既可以通过`<script>` 标签引入，又可以通过`import` 导入
+- 直接拓展全局变量：通过`<script>` 标签引入后，改变一个全局变量的结构
+- 在npm包或UMD库中拓展全局变量：引入npm包或UMD库后，改变一个全局变量的结构
+- 模块插件：通过`<script>` 或`import` 导入后，改变另一个模块的结构
+
+#### 全局变量
+- `declare var` 声明全局变量
+- `declare function` 声明全局方法
+- `declare class` 声明全局类
+- `declare enum` 声明全局枚举类型
+- `declare namespace` 声明（含有子属性的）全局对象
+- `interface` 和`type` 声明全局类型
+
+**`declare const`**  
+  
+使用`const` 定义时，表示此时的全局变量是一个常量，不允许修改他的值：
+```ts
+// src/jQuery.d.ts
+declare const jQuery: (selector: string) => any;
+
+jQuery('#foo');
+// 使用 declare const 定义的 jQuery 类型，禁止修改这个全局变量
+jQuery = function(selector) {
+    return document.querySelector(selector);
+};
+// ERROR: Cannot assign to 'jQuery' because it is a constant or a read-only property.
+```
+需要注意的是，声明语句中只能定义类型，切勿在声明语句中定义具体的实现：
+```ts
+declare const jQuery = function(selector) {
+    return document.querySelector(selector);
+};
+// ERROR: An implementation cannot be declared in ambient contexts.
+```
+**`declare function`**  
+  
+定义全局函数
+```ts
+// src/jQuery.d.ts
+
+declare function jQuery(selector: string): any;
+```
+同样支持函数重载：
+```ts
+// src/jQuery.d.ts
+
+declare function jQuery(selector: string): any;
+declare function jQuery(domReadyCallback: () => any): any;
+```
+```ts
+// src/index.ts
+
+jQuery('#foo');
+jQuery(function() {
+    alert('Dom Ready!');
+});
+```
+**`declare class`**  
+  
+当全局变量是一个类的时候，我们用`declare class` 来定义它的类型
+```ts
+// src/Animal.d.ts
+
+declare class Animal {
+    name: string;
+    constructor(name: string);
+    sayHi(): string;
+}
+```
+```ts
+// src/index.ts
+
+let cat = new Animal('Tom');
+```
+同样的，`declare class` 语句也只能用来定义类型，不能用来定义具体的实现，比如定义`sayHi` 方法的具体实现则会报错：
+```ts
+// src/Animal.d.ts
+
+declare class Animal {
+    name: string;
+    constructor(name: string);
+    sayHi() {
+        return `My name is ${this.name}`;
+    };
+    // ERROR: An implementation cannot be declared in ambient contexts.
+}
+```
+**`declare namespace`**  
+  
+在声明文件中，`declare namespace` 比较常见，用来表示全局变量是一个对象，包含很多子属性。  
+  
+`declare namespace jQuery` 来声明这个拥有多个子属性的全局变量。
+```ts
+// src/jQuery.d.ts
+
+declare namespace jQuery {
+    function ajax(url: string, settings?: any): void;
+}
+```
+```ts
+// src/index.ts
+
+jQuery.ajax('/api/get_something');
+```
+
+
+
+
+
+
+
+
+
+## 内置对象
+### ECMAScript的内置对象
+`Boolean`、`Error`、`Date`、`RegExp` 等。
+```ts
+let b: Boolean = new Boolean(1);
+let e: Error = new Error('Error occurred');
+let d: Date = new Date();
+let r: RegExp = /[a-z]/;
+```
+### DOM 和BOM 的内置对象
+`Document`、`HTMLElement`、`Event`、`NodeList`等
+```ts
+let body: HTMLElement = document.body;
+let allDiv: NodeList = document.querySelectorAll('div');
+document.addEventListener('click', function(e: MouseEvent) {
+  // Do something
+});
+```
+### 用TypeScript写Node.js
+`Node.js` 不是内置对象的一部分，如果想用TypeScript 写Node.js，则需要引入第三方声明文件：
+```shell
+npm install @types/node --save-dev
+```
