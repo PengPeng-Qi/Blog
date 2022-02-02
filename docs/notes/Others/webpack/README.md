@@ -2,18 +2,18 @@
 sidebar: auto
 ---
 # Webpack
-是一种构建工具，将程序员写的源代码生成浏览器可以高效、稳定运行的兼容性较强的代码
+**本质上是一种前端资源编译、打包工具。**
 > 1、webpack.config.js: 用于存储webpack配置信息  
-> 2、本地安装webpack: `npm i webpack@4 webpack-cli@3 -D`  
+> 2、本地安装webpack: `npm i webpack webpack-cli -D`  
 ## 五个基本概念
 ### 入口 Entry
 指示webpack应该使用哪个模块，来作为构建其内部依赖图的开始
 ### 输出 Output
 在哪里输出文件，以及如何命名这些文件
 ### Loader
-处理非`JavaScript` 文件(webpack 自身只能解析`javaScript` 和`json` 文件)，**本质是一个函数，接收源文件作为参数**
+处理非`JavaScript` 文件(webpack 自身只能解析`javaScript` 和`json` 文件)转换为JS文件，**本质是一个函数，接收源文件作为参数**
 ### 插件 Plugins
-执行范围更广的任务，从打包到优化都可以实现，完成loader不能完成的任务
+执行范围更广的任务，**从打包到优化都可以实现，完成loader不能完成的任务**
 ### 模式 Model
 有生产模式`production`、开发模式`development`
 ## 开始打包
