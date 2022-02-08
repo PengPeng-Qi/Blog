@@ -24,6 +24,9 @@
 ## 游戏
 [小游戏开发](./Games/README.md)  
   
+## 数据可视化
+[数据可视化基础](./可视化/README.md)  
+  
 ## 其他
 [shell echo命令](./shell/shell_echo.md)  
 [nanoid 的基本使用](./nanoid/nanoid的基本使用.md)  
