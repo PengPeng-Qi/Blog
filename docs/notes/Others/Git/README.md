@@ -25,8 +25,8 @@ sidebar: auto
 `git commit --amend` -- 修改提交信息
 ### git commit -am
 `git commit -am` -- 直接commit 不需要再add
-## git reset -- files
-`git reset -- files` 用来撤销最后一次 `git add files`，也可以使用`git reset` 撤销所有暂存区域的文件。
+## git blame
+`git blame <file>` -- 查看谁改变了文件
 ## git checkout
 ### git checkout -- files
 `git checkout -- files`  把文件从暂存区复制到工作目录，用来丢弃本地修改。
@@ -67,7 +67,9 @@ sidebar: auto
 `git diff hash1 hash2` -- 查看两个文件之间的区别
 ## git branch
 ### git branch
-`git branch` -- 命令可以将分支名列表显示，同时可以确认当前所在分支。  
+`git branch` -- 显示本地所有分支
+### git branch -av
+`git branch -av` -- 显示所有分支，包括远程分支
 ### git branch xxx
 `git branch xxx` -- 新建xxx分支
 ### git branch -a
@@ -80,14 +82,22 @@ sidebar: auto
 
 > 注意📢：合并分支需要先切换到主分支(main)、这样xxx分支的内容就合并到了main分支上
 
-## git reset --hard xxxx(哈希值)
+## git reset
+### git reset -- files
+`git reset -- files` 用来撤销最后一次 `git add files`，也可以使用`git reset` 撤销所有暂存区域的文件。
+### git reset --hard xxxx(哈希值)
 `git reset --hard xxxx(哈希值)` -- 回溯到特性分支 xxx
+### git reset --hard HEAD
+`git reset --hard HEAD` -- 回退所有改动到当前版本
 ## git reflog
 `git reflog` -- **查看当前仓库的操作日志**
 
 > `git log` 只能查看以当前状态为终点的历史日志
 
-## git rebase -i HEAD~2
+## git rebase
+### git rebase branch
+`git rebase branch` `Rebase`当前的`HEAD` 到`branch` 后面
+### git rebase -i HEAD~2
 `git rebase -i HEAD~2` 合并最近两次的`commit` 为一次`commit`  
   
 执行完后，将`pick` 后的提交信息保存为`commit`，需要删除的`commit` 信息前修改为`fixup`  
@@ -103,3 +113,5 @@ sidebar: auto
   
 `-u` 参数可以在推送的同时，将origin 仓库的master分支设置为本地仓库当前分支的上游。  
   
+## 参考文献
+- [merge和rebase的理解](https://zhuanlan.zhihu.com/p/340043244)  
