@@ -2,6 +2,7 @@
 sidebar: auto
 ---
 # Map and Set
+键控集：`Map Set WeakMap WeakSet`  
 ## Map
 ### Map 的链式调用
 每一次`map.set` 调用都会返回`map` 本身，所以我们可以进行**链式调用:**  

@@ -1,6 +1,8 @@
 ---
 sidebar: auto
 ---
+# WeakMap and WeakSet
+键控集：`Map Set WeakMap WeakSet`  
 ## WeakMap
 `WeakMap` **不会阻止垃圾回收机制对作为键的对象的回收**。  
   
