@@ -209,7 +209,7 @@ clone.name = "Pete";      // 改变了其中的数据
 
 console.log( user.name ); // John
 ```
-也可以使用[`Object.assign`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) 代替`for...in` 循环来进行简单克隆
+也可以使用[`Object.assign`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) 代替`for...in` 循环来进行简单克隆  
 ```js
 let user = {
   name: "John",
@@ -218,6 +218,7 @@ let user = {
 
 let clone = Object.assign({}, user);
 ```
+> `Object.assign()` 是首层浅拷贝
 ## 对象方法
 存储在对象属性值的函数被称为**方法**
 ### 方法简写
