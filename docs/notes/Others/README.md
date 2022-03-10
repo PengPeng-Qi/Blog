@@ -31,6 +31,7 @@
 [shell echo命令](./shell/shell_echo.md)  
 [nanoid 的基本使用](./nanoid/nanoid的基本使用.md)  
 [nvm 的基本使用](./NVM/README.md)  
+[Emmet 语法的基本使用](./Emmet/README.md)  
 [Final Cut Pro剪辑基础教程](https://www.rippletraining.com/getting-started-final-cut-pro-10-4/)  
 
 ---
