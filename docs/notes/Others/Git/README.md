@@ -38,7 +38,7 @@ sidebar: auto
 
 ### git commit -am
 
-`git commit -am` -- 直接 commit 不需要再 add
+`git commit -a -m 'xxx'` -- 自动把所有已经跟踪过的文件暂存起来**一并提交**，从而跳过`git add` 步骤
 
 ## git blame
 
@@ -72,18 +72,28 @@ sidebar: auto
 
 `git log` -- 查看提交日志(查看以往仓库中提交的日志，包括可以看什么人在什么时候进行了提交或合并，以及操作前后的差别)、只能查看以当前状态为终点的历史日志。
 
-**只显示提交信息的第一行**，可以使用`git log --pretty=short`，这样开发人员就可以轻松把握多个提交。
+### git log xxx
 
 **只显示指定目录、文件的日志**：
 
 - 只需要在`git log` 命令后加上目录名，便会只显示改目录下的日志。
 - 如果加的是文件名，就会只显示该文件相关的日志 `git log README.md`
 
-**显示文件的改动**：
+### git log --pretty
+
+**只显示提交信息的第一行**，可以使用`git log --pretty=short`，这样开发人员就可以轻松把握多个提交。
+
+### git log -p xxx
+
+**显示文件每次提交的内容差异**：
 
 - 如果想查看提交所带来的的改动，可以加上`-p` 参数，文件的前后差别就会显示在提交信息之后
 
 `git log -p README.md` **只查看`README.md` 文件的提交日志以及提交前后的差别**
+
+### git log --stat
+
+看**每次提交的简略的统计信息**，你可以使用 `--stat` 选项：在每次提交的下面列出额所有被修改过的文件、有多少文件被修改了以及被修改过的文件的哪些行被移除或是添加了。 在每次提交的最后还有一个总结。
 
 ### git log --graph
 
@@ -93,7 +103,7 @@ sidebar: auto
 
 ### git diff
 
-`git diff` -- 查看工作树与暂存区的区别
+`git diff` -- 查看尚未暂存的改动
 
 ### git diff HEAD
 
@@ -101,11 +111,35 @@ sidebar: auto
 
 ### git diff --cached
 
-`git diff --cached` -- 最新提交与暂存区的区别
+`git diff --cached(staged)` -- 查看已经暂存起来的改动
 
 ### git diff hash1 hash2
 
 `git diff hash1 hash2` -- 查看两个文件之间的区别
+
+## git rm
+
+要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除（确切地说，是从暂存区域移除），然后提交。
+
+`git rm` -- 连带从工作目录中删除指定的文件，这样以后就不会出现在未跟踪文件清单中了。
+
+### git rm -f
+
+`git rm -f` -- 如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项`-f`
+
+### git rm --cached README
+
+`git rm --cached README` -- 从 Git 仓库（暂存区域）删除，但是仍保留在本地工作目录
+
+## git mv
+
+`git mv file_from file_to` -- 在 Git 中对文件改名，相当于运行了下面三段命令
+
+```shell
+$ mv README.md README
+$ git rm README.md
+$ git add README
+```
 
 ## git branch
 
