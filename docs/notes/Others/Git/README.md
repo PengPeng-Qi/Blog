@@ -34,9 +34,9 @@ sidebar: auto
 
 ### git commit --amend
 
-`git commit --amend` -- 修改提交信息
+`git commit --amend` -- 重新修改提交信息，且第二个提交会代替第一个提交，如果此时暂存区有文件，则会被提交。
 
-### git commit -am
+### git commit -a -m
 
 `git commit -a -m 'xxx'` -- 自动把所有已经跟踪过的文件暂存起来**一并提交**，从而跳过`git add` 步骤
 
@@ -61,6 +61,10 @@ sidebar: auto
 ### git checkout -
 
 `git checkout -` -- 切换回上一个分支
+
+### git checkout — file
+
+`git checkout — [file]` -- 对文件做的任何都会消失，还原成上一次提交的样子，是一个危险的命令
 
 ### git checkout xxx
 
@@ -181,9 +185,9 @@ $ git add README
 
 ## git reset
 
-### git reset -- files
+### git reset HEAD files
 
-`git reset -- files` 用来撤销最后一次 `git add files`，也可以使用`git reset` 撤销所有暂存区域的文件。
+`git reset HEAD files` 用来撤销 files 文件的暂存，也可以使用`git reset` 撤销所有暂存区域的文件。
 
 ### git reset --hard xxxx(哈希值)
 
