@@ -25,7 +25,7 @@ export default function RootLayout({
       >
         <Header />
 
-        <div className="mx-32">{children}</div>
+        <div>{children}</div>
       </body>
     </html>
   );
