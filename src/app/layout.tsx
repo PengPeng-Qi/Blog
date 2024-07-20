@@ -5,7 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `qipeng's blog`,
+  title: `碰碰漆的博客`,
+  description: "Blog 博客 个人博客 PengPengQ 碰碰漆 漆鹏的博客 碰碰漆的博客",
 };
 
 export default function RootLayout({
@@ -15,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={(inter.className, "bg-zinc-50 text-black dark:bg-neutral-900 dark:text-slate-100")}>
+        {children}
+      </body>
     </html>
   );
 }
