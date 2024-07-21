@@ -25,8 +25,8 @@ export default makeSource({
   documentTypes: [Post],
   mdx: { remarkPlugins: [], rehypePlugins: [] },
   // 所有的文件都转换完成后的回调函数
-  onSuccess: async (importData) => {
-    const { allDocuments } = await importData();
-    console.log("allDocuments", allDocuments.length);
-  },
+  // onSuccess: async (importData) => {
+  //   const { allDocuments } = await importData();
+  //   console.log("allDocuments", allDocuments.length);
+  // },
 });
