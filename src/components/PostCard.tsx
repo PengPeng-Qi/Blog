@@ -10,7 +10,7 @@ export default function PostCard(post: Readonly<Post>) {
       </time>
 
       <div>
-        <Link href={post.url}>{post.title}</Link>
+        <Link href={post.url_path}>{post.title}</Link>
 
         <p>{post.description}</p>
       </div>
