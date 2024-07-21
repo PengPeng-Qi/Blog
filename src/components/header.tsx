@@ -16,7 +16,7 @@ export default function Header() {
       </Link>
 
       <div className="flex justify-between">
-        <Link href={"/article"} className="px-3 text-lg">
+        <Link href={"/"} className="px-3 text-lg">
           Article
         </Link>
       </div>
