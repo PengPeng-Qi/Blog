@@ -14,12 +14,6 @@ export default function Header() {
           priority
         />
       </Link>
-
-      <div className="flex justify-between">
-        <Link href={"/"} className="px-3 text-lg">
-          Article
-        </Link>
-      </div>
     </div>
   );
 }
