@@ -1,6 +1,8 @@
-import { withContentlayer } from "next-contentlayer";
+import withMDX from "@next/mdx";
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+};
 
-export default withContentlayer(nextConfig);
+export default withMDX(nextConfig);

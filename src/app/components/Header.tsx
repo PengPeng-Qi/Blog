@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <div className="w-screen h-14 mb-5 flex justify-between items-center px-32 cursor-pointer">
+    <div className="mb-5 flex h-14 w-screen cursor-pointer items-center justify-between px-32">
       <Link href={"/"}>
         <Image
           src="/logo.svg"
@@ -14,12 +14,6 @@ export default function Header() {
           priority
         />
       </Link>
-
-      <div className="flex justify-between">
-        <Link href={"/"} className="px-3 text-lg">
-          Article
-        </Link>
-      </div>
     </div>
   );
 }
