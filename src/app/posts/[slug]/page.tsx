@@ -25,7 +25,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         </time>
       </div>
 
-      <article className="prose dark:prose-invert m-auto">
+      <article className="prose m-auto dark:prose-invert">
         <MDXContent components={mdxComponents} />
       </article>
     </>
