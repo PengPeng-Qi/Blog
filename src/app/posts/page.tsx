@@ -1,11 +1,14 @@
-"use client";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import getAllBlogs from "../lib/blogs";
 
-import Content from "./how-to-create-a-npm-package.mdx";
+export default async function Page() {
+  const res = await getAllBlogs();
 
-export default function Page() {
   return (
     <div className="mx-32">
-      <Content />
+      <article className="prose dark:prose-invert">
+        <MDXRemote source={res.content} />
+      </article>
     </div>
   );
 }
