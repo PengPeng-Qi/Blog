@@ -1,15 +1,16 @@
 import { getCurBlog } from "@/app/lib/blogs";
 import { Props } from "@/app/types/blogs";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
 
 export default async function Page({ params: { slug } }: Readonly<Props>) {
   const blog = await getCurBlog(slug);
 
-  // 支持 Gfm 语法
   const options = {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
+      rehypePlugins: [() => rehypePrettyCode({ theme: "github-dark" })],
     },
   };
 
