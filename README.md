@@ -1,8 +1,11 @@
 # To Do Lists
 
 - [x] `tailwindcss` 顺序
-- [x] 强化 `Markdown` 语法 Gfm
 - [x] `mdx` 使用 `@next/mdx/remote`
+- 强化 `Markdown`
+
+  - [x] 支持语法 Gfm
+  - 添加标题索引
 
 - `mdx` 代码高亮+复制
 - `To Do` 页面开发
