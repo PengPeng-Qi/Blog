@@ -18,10 +18,11 @@ export default async function getAllBlogs() {
       return {
         metadata: data,
         title: data.title,
+        slug: data.slug,
         content,
       };
     }),
   );
 
-  return blogs[0];
+  return blogs;
 }
