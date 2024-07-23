@@ -1,11 +1,10 @@
-import getAllBlogs from "@/app/lib/blogs";
+import { getCurBlog } from "@/app/lib/blogs";
 import { Props } from "@/app/types/blogs";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 
 export default async function Page({ params: { slug } }: Readonly<Props>) {
-  const res = await getAllBlogs();
-  const blog = res.find((blog) => blog.slug === slug);
+  const blog = await getCurBlog(slug);
 
   // 支持 Gfm 语法
   const options = {

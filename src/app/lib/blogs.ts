@@ -1,9 +1,9 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import { Blogs } from "../types/blogs";
+import { Blog, Blogs } from "../types/blogs";
 
-export default async function getAllBlogs() {
+export async function getAllBlogs() {
   const blogsDirectory = path.join(process.cwd(), "blogs");
   const fileNamesArr = await fs.promises.readdir(blogsDirectory);
 
@@ -25,4 +25,34 @@ export default async function getAllBlogs() {
   );
 
   return blogs;
+}
+
+export async function getCurBlog(slug: string) {
+  const blogsDirectory = path.join(process.cwd(), "blogs");
+  const fileNamesArr = await fs.promises.readdir(blogsDirectory);
+
+  const blog: Blog | null = await Promise.race(
+    fileNamesArr.map(async (filename) => {
+      const fullPath = path.join(blogsDirectory, filename);
+      const fileContents = await fs.promises.readFile(fullPath, "utf8");
+      const { data, content } = matter(fileContents);
+
+      if (data.slug === slug) {
+        return Promise.resolve({
+          metadata: data,
+          title: data.title,
+          slug: data.slug,
+          content,
+        });
+      } else {
+        return new Promise<null>((_, reject) => {
+          setTimeout(() => {
+            reject(new Error("Time out!"));
+          }, 1000);
+        });
+      }
+    }),
+  );
+
+  return blog;
 }

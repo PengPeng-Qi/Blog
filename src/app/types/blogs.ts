@@ -2,9 +2,7 @@ export type Blog = {
   title: string;
   content: string;
   slug: string;
-  metadata: {
-    [key: string]: any;
-  };
+  metadata: Record<string, any>;
 };
 
 export type Blogs = Blog[];

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import getAllBlogs from "./lib/blogs";
+import { getAllBlogs } from "./lib/blogs";
 import { Blogs } from "./types/blogs";
 
 export default async function Home() {
