@@ -9,9 +9,11 @@ export default async function Home() {
     <div className="mx-32">
       {allBlogs.map((blog, index) => {
         return (
-          <Link href={"/posts/" + blog.slug} key={index + blog.slug}>
-            {blog.title}
-          </Link>
+          <div key={index + blog.slug}>
+            <Link href={"/posts/" + blog.slug} className="mb-3">
+              {blog.title}
+            </Link>
+          </div>
         );
       })}
     </div>
