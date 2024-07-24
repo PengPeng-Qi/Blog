@@ -1,6 +1,5 @@
 # To Do Lists
 
-- 强化 `Markdown` 添加标题索引
 - `mdx` 代码高亮+复制
 
 ## Blog Layout
@@ -36,3 +35,4 @@
 
 - [x] 支持 MDX 及 Gfm
 - [x] 支持美化 `tailwindcss` 顺序
+- [x] 强化 `Markdown` 添加标题索引
