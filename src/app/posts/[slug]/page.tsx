@@ -16,8 +16,8 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
   };
 
   return (
-    <div className="mx-32">
-      <article className="prose dark:prose-invert">
+    <div className="mx-32 mb-16">
+      <article className="prose mx-auto dark:prose-invert">
         {blog && (
           <MDXRemote
             source={blog.content}

@@ -2,6 +2,8 @@ export type Blog = {
   title: string;
   content: string;
   slug: string;
+  createDate: string;
+  lastModifyDate: string;
   metadata: Record<string, any>;
 };
 

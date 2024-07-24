@@ -9,10 +9,12 @@ export default async function Home() {
     <div className="mx-32">
       {allBlogs.map((blog, index) => {
         return (
-          <div key={index + blog.slug}>
+          <div key={index + blog.slug} className="flex justify-between">
             <Link href={"/posts/" + blog.slug} className="mb-3">
               {blog.title}
             </Link>
+
+            <div>{blog.createDate}</div>
           </div>
         );
       })}
