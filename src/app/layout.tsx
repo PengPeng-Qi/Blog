@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "./components/Header";
@@ -26,6 +27,7 @@ export default function RootLayout({
         <Header />
 
         <div>{children}</div>
+        <Analytics />
       </body>
     </html>
   );
