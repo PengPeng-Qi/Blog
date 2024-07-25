@@ -18,7 +18,8 @@ export async function getAllBlogs() {
         metadata: data,
         title: data.title,
         slug: data.slug,
-        createTime: data.createTime,
+        createdTime: data.createdTime,
+        modifiedTime: data.modifiedTime,
         content,
       };
     }),
@@ -42,7 +43,8 @@ export async function getCurBlog(slug: string) {
           metadata: data,
           title: data.title,
           slug: data.slug,
-          createTime: data.createTime,
+          createdTime: data.createdTime,
+          modifiedTime: data.modifiedTime,
           content,
         });
       } else {
