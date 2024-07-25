@@ -1,7 +1,5 @@
 # To Do Lists
 
-- `mdx` 代码高亮+复制
-
 ## Blog Layout
 
 ### Article
@@ -10,6 +8,7 @@
 - 搜索功能
 - 阅读量排序
 - 标签分类
+- `mdx` 代码高亮+复制
 
 ### Project
 

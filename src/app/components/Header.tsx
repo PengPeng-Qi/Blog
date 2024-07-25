@@ -14,6 +14,12 @@ export default function Header() {
           priority
         />
       </Link>
+
+      <div className="flex w-64 justify-between">
+        <Link href={"/article"}>Article</Link>
+        <Link href={"/projects"}>Projects</Link>
+        <Link href={"/about"}>About</Link>
+      </div>
     </div>
   );
 }

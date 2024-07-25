@@ -3,18 +3,27 @@ import { getAllBlogs } from "./lib/blogs";
 import { Blogs } from "./types/blogs";
 
 export default async function Home() {
-  const allBlogs: Blogs = await getAllBlogs();
+  let allBlogs: Blogs = await getAllBlogs();
+
+  allBlogs = allBlogs.sort(
+    (blogA, blogB) =>
+      new Date(blogB.createdTime).getTime() -
+      new Date(blogA.createdTime).getTime(),
+  );
 
   return (
-    <div className="mx-32">
+    <div className="mx-32 mt-16">
       {allBlogs.map((blog, index) => {
         return (
-          <div key={index + blog.slug} className="flex justify-between">
-            <Link href={"/posts/" + blog.slug} className="mb-3">
+          <div key={index + blog.slug} className="flex">
+            <div className="mr-6 w-32">{blog.createdTime}</div>
+
+            <Link
+              href={"/posts/" + blog.slug}
+              className="mb-3 hover:text-blue-800"
+            >
               {blog.title}
             </Link>
-
-            <div>{blog.createdTime}</div>
           </div>
         );
       })}

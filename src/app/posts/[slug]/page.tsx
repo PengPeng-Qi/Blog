@@ -25,6 +25,10 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
             components={MdxComponents}
           />
         )}
+
+        <div className="mt-16 text-right text-gray-400">
+          <span>Last Modify:</span> <span>{blog?.modifiedTime}</span>
+        </div>
       </article>
     </div>
   );
