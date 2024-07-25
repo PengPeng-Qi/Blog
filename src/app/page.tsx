@@ -14,7 +14,7 @@ export default async function Home() {
               {blog.title}
             </Link>
 
-            <div>{blog.createDate}</div>
+            <div>{blog.createTime}</div>
           </div>
         );
       })}

@@ -2,8 +2,7 @@ export type Blog = {
   title: string;
   content: string;
   slug: string;
-  createDate: string;
-  lastModifyDate: string;
+  createTime: string;
   metadata: Record<string, any>;
 };
 
