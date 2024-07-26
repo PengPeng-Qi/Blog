@@ -1,6 +1,6 @@
 import { MdxComponents } from "@/app/components/MdxComponent";
-import { getCurBlog } from "@/app/lib/blogs";
-import { Props } from "@/app/types/blogs";
+import { getAllBlogs, getCurBlog } from "@/app/lib/blogs";
+import { Blogs, Props } from "@/app/types/blogs";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
@@ -32,4 +32,12 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
       </article>
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const blogs: Blogs = await getAllBlogs();
+
+  return blogs.map((blog) => ({
+    slug: blog.metadata.slug,
+  }));
 }
