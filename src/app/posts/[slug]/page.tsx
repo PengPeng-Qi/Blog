@@ -38,6 +38,6 @@ export async function generateStaticParams() {
   const blogs: Blogs = await getAllBlogs();
 
   return blogs.map((blog) => ({
-    slug: blog.metadata.slug,
+    slug: blog.slug,
   }));
 }
