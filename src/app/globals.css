@@ -9,3 +9,11 @@
 body {
   font-family: var(--font-jet-brains-mono);
 }
+
+pre code {
+  font-family: var(--font-jet-brains-mono), monospace;
+}
+
+pre code span {
+  font-family: var(--font-jet-brains-mono), monospace;
+}
