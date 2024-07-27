@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -40,16 +41,27 @@ export default function Header() {
 
   return (
     <div className="sticky left-0 top-0 z-10 flex h-14 w-screen cursor-pointer items-center justify-between px-6 backdrop-blur-sm backdrop-filter sm:px-32">
-      <Link href={"/"}>
-        <Image
-          src="/logo.svg"
-          alt="logo"
-          width={36}
-          height={36}
-          className="dark:invert"
-          priority
-        />
-      </Link>
+      <motion.div
+        initial={{ rotate: -180, scale: 0 }}
+        animate={{ rotate: 0, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
+        whileHover={{ scale: 1.2 }}
+      >
+        <Link href={"/"}>
+          <Image
+            src="/logo.svg"
+            alt="logo"
+            width={36}
+            height={36}
+            className="dark:invert"
+            priority
+          />
+        </Link>
+      </motion.div>
 
       <div className="flex w-64 justify-between">
         {menus.map((menu, index) => {
