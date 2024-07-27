@@ -23,6 +23,7 @@
     "react-dom": "^18",
     "rehype-pretty-code": "^0.13.2",
     "remark-gfm": "^4.0.0",
+    "rough-notation": "^0.5.1",
     "shiki": "^1.11.0"
   },
   "devDependencies": {
