@@ -38,29 +38,8 @@ export default function Header() {
     };
   });
 
-  // const handleAnnotate = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-  //   nodeMap.forEach((node, menuName) => {
-  //     if (e.target instanceof HTMLElement) {
-  //       if (e.target.id.includes(menuName)) {
-  //         if (!annotatesMap.has(menuName)) {
-  //           const activeNode = annotate(node, {
-  //             type: "underline",
-  //             color: "yellow",
-  //             strokeWidth: 1,
-  //           });
-
-  //           annotatesMap.set(menuName, activeNode);
-  //         }
-  //         annotatesMap.get(menuName)?.show();
-  //       } else {
-  //         annotatesMap.get(menuName)?.hide();
-  //       }
-  //     }
-  //   });
-  // };
-
   return (
-    <div className="sticky left-0 top-0 z-10 flex h-14 w-screen cursor-pointer items-center justify-between px-2 backdrop-blur-sm backdrop-filter sm:px-32">
+    <div className="sticky left-0 top-0 z-10 flex h-14 w-screen cursor-pointer items-center justify-between px-6 backdrop-blur-sm backdrop-filter sm:px-32">
       <Link href={"/"}>
         <Image
           src="/logo.svg"

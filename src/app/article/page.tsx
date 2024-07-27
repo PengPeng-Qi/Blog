@@ -16,11 +16,11 @@ export default async function Home() {
       {allBlogs.map((blog, index) => {
         return (
           <div key={index + blog.slug} className="flex">
-            <div className="mr-6 w-32">{blog.createdTime}</div>
+            <div className="mr-2 sm:mr-6">{blog.createdTime}</div>
 
             <Link
               href={"/article/" + blog.slug}
-              className="mb-3 hover:text-blue-800"
+              className="mb-3 truncate hover:text-blue-800"
             >
               {blog.title}
             </Link>
