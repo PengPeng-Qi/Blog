@@ -21,7 +21,7 @@ export default function Header() {
           const activeNode = annotate(node, {
             type: "underline",
             color: "yellow",
-            strokeWidth: 1,
+            strokeWidth: 2,
           });
 
           annotatesMap.set(menuName, activeNode);
