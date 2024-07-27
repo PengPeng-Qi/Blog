@@ -12,7 +12,7 @@ export default async function Home() {
   );
 
   return (
-    <div className="mx-32 mt-16">
+    <div>
       {allBlogs.map((blog, index) => {
         return (
           <div key={index + blog.slug} className="flex">

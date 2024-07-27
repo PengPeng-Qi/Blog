@@ -16,21 +16,19 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
   };
 
   return (
-    <div className="mx-32 mb-16">
-      <article className="prose mx-auto dark:prose-invert">
-        {blog && (
-          <MDXRemote
-            source={blog.content}
-            options={options}
-            components={MdxComponents}
-          />
-        )}
+    <article className="prose mx-auto dark:prose-invert">
+      {blog && (
+        <MDXRemote
+          source={blog.content}
+          options={options}
+          components={MdxComponents}
+        />
+      )}
 
-        <div className="mt-16 text-right text-gray-400">
-          <span>Last Modify:</span> <span>{blog?.modifiedTime}</span>
-        </div>
-      </article>
-    </div>
+      <div className="mb-4 mt-16 text-right text-gray-400">
+        <span>Last Modify:</span> <span>{blog?.modifiedTime}</span>
+      </div>
+    </article>
   );
 }
 

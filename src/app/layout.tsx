@@ -26,7 +26,7 @@ export default function RootLayout({
       >
         <Header />
 
-        <div>{children}</div>
+        <div className="mx-2 mt-16 sm:mx-32">{children}</div>
 
         {process.env.NODE_ENV === "production" ? <Analytics /> : <></>}
       </body>
