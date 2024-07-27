@@ -71,7 +71,7 @@ export default function Header() {
   };
 
   return (
-    <div className="sticky left-0 top-0 z-10 flex h-14 w-screen cursor-pointer items-center justify-between px-6 backdrop-blur-sm backdrop-filter sm:px-32">
+    <div className="sticky left-0 top-0 z-10 flex h-14 w-screen cursor-pointer items-center justify-between px-6 backdrop-blur sm:px-32">
       <motion.div
         initial={{ rotate: -180, scale: 0 }}
         animate={{ rotate: 0, scale: 1 }}
