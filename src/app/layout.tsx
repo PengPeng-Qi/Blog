@@ -1,10 +1,14 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { JetBrains_Mono } from "next/font/google";
 import Header from "./components/Header";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const jetBrains_mono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jet-brains-mono",
+});
 
 export const metadata: Metadata = {
   title: `碰碰漆的博客`,
@@ -19,10 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={
-          (inter.className,
-          "bg-zinc-50 text-black dark:bg-neutral-900 dark:text-slate-100")
-        }
+        className={`${jetBrains_mono.variable} bg-zinc-50 text-black dark:bg-neutral-900 dark:text-slate-100`}
       >
         <Header />
 
