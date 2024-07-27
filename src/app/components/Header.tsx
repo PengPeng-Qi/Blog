@@ -11,11 +11,12 @@ import { RoughAnnotation } from "rough-notation/lib/model";
 export default function Header() {
   const pathName = usePathname();
   const menus = ["article", "projects", "about"];
-  const nodeMap = new Map<string, HTMLElement>();
-  const annotatesMap = new Map<string, RoughAnnotation>();
+  const menuWithNodeMap = new Map<string, HTMLElement>();
 
+  const annotatesMap = new Map<string, RoughAnnotation>();
+  // 选中的菜单划线
   useEffect(() => {
-    nodeMap.forEach((node, menuName) => {
+    menuWithNodeMap.forEach((node, menuName) => {
       if (pathName.includes(menuName)) {
         if (!annotatesMap.has(menuName)) {
           const activeNode = annotate(node, {
@@ -33,11 +34,41 @@ export default function Header() {
     });
 
     return () => {
-      annotatesMap.forEach((value) => {
-        value.hide();
+      annotatesMap.forEach((node) => {
+        node.hide();
       });
     };
   });
+
+  const disabledMenus = ["projects", "about"];
+  const disabledMenusAnnotatesMap = new Map<string, RoughAnnotation>();
+  // 给禁用的菜单划线
+  useEffect(() => {
+    menuWithNodeMap.forEach((node, menu) => {
+      if (disabledMenus.includes(menu)) {
+        const activeNode = annotate(node, {
+          type: "crossed-off",
+          color: "gray",
+          strokeWidth: 1,
+        });
+        activeNode.show();
+        disabledMenusAnnotatesMap.set(menu, activeNode);
+      }
+    });
+
+    return () => {
+      disabledMenusAnnotatesMap.forEach((disabledNode) => {
+        disabledNode.hide();
+      });
+    };
+  }, []);
+
+  // 禁止禁用菜单的点击
+  const handleClick = (menu: string, e: React.MouseEvent) => {
+    if (disabledMenus.includes(menu)) {
+      e.preventDefault();
+    }
+  };
 
   return (
     <div className="sticky left-0 top-0 z-10 flex h-14 w-screen cursor-pointer items-center justify-between px-6 backdrop-blur-sm backdrop-filter sm:px-32">
@@ -72,9 +103,11 @@ export default function Header() {
               key={menu + index}
               ref={(node) => {
                 if (node) {
-                  nodeMap.set(menu, node);
+                  menuWithNodeMap.set(menu, node);
                 }
               }}
+              aria-disabled={index !== 0}
+              onClick={(e) => handleClick(menu, e)}
             >
               {menu[0].toUpperCase() + menu.slice(1)}
             </Link>
