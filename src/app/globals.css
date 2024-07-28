@@ -8,6 +8,10 @@
 
 body {
   font-family: var(--font-jet-brains-mono);
+  -webkit-scrollbar: {
+    /* width: 10px;
+    background-color: transparent; */
+  }
 }
 
 pre code {

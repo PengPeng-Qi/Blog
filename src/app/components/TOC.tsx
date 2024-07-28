@@ -22,24 +22,22 @@ const TOC = () => {
     setHeadings(extractedHeadings);
   }, []);
 
-  const [hash, setHash] = useState(
-    decodeURIComponent(window.location.hash).slice(1),
-  );
-
   return (
-    <ul className="sticky right-0 top-0">
-      {headings.map(({ text, id, level }) => (
-        <li key={id} className={`my-2 ${level === "H3" ? "ml-4" : ""}`}>
-          <Link
-            href={`#${id}`}
-            onClick={() => setHash(id)}
-            className={`link-hover ${hash === id ? "text-blue-300" : "text-gray-400"} hover:text-gray-100`}
-          >
-            {text}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <div className="font-sans">
+      <div className="mb-5 mt-6 text-xl font-medium">TABLE OF CONTENTS</div>
+      <ul className="sticky right-0 top-0">
+        {headings.map(({ text, id, level }) => (
+          <li key={id} className={`my-2 ${level === "H3" ? "ml-4" : ""}`}>
+            <Link
+              href={`#${id}`}
+              className={`link-hover text-gray-400 hover:text-gray-950 dark:hover:text-gray-100`}
+            >
+              {text}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
