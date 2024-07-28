@@ -14,7 +14,7 @@ const TOC = () => {
     const extractedHeadings = Array.from(
       articleElement.querySelectorAll("h2, h3"),
     ).map((heading) => ({
-      text: heading.textContent || "",
+      text: heading.textContent ?? "",
       id: heading.id || "",
       level: heading.nodeName, // 'H2' or 'H3'
     }));

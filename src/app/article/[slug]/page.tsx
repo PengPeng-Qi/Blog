@@ -1,5 +1,5 @@
 import { MdxComponents } from "@/app/components/MdxComponent";
-import TOC from "@/app/components/TOC";
+import Toc from "@/app/components/Toc";
 import { getAllBlogs, getCurBlog } from "@/app/lib/blogs";
 import { Blogs, Props } from "@/app/types/blogs";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -41,9 +41,9 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
         </div>
       </article>
 
-      <div className="sticky top-28 ml-16 hidden h-full w-64 xl:block">
-        <TOC />
-      </div>
+      {/* <div className="sticky top-28 ml-16 hidden h-full w-64 xl:block">
+        <Toc />
+      </div> */}
     </div>
   );
 }
