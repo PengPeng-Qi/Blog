@@ -21,7 +21,7 @@ export default function Header() {
         if (!annotatesMap.has(menuName)) {
           const activeNode = annotate(node, {
             type: "underline",
-            color: "yellow",
+            color: "hsl(53deg, 100%, 50%)",
             strokeWidth: 2,
           });
 
@@ -48,7 +48,7 @@ export default function Header() {
       if (disabledMenus.includes(menu)) {
         const activeNode = annotate(node, {
           type: "crossed-off",
-          color: "gray",
+          color: "#52525b",
           strokeWidth: 1,
         });
         activeNode.show();
