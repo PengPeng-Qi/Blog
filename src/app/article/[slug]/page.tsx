@@ -1,4 +1,5 @@
 import { MdxComponents } from "@/app/components/MdxComponent";
+import TOC from "@/app/components/TOC";
 import { getAllBlogs, getCurBlog } from "@/app/lib/blogs";
 import { Blogs, Props } from "@/app/types/blogs";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -25,19 +26,25 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
   };
 
   return (
-    <article className="mx-auto">
-      {blog && (
-        <MDXRemote
-          source={blog.content}
-          options={options}
-          components={MdxComponents}
-        />
-      )}
+    <div className="flex justify-between">
+      <article className="w-96 flex-grow">
+        {blog && (
+          <MDXRemote
+            source={blog.content}
+            options={options}
+            components={MdxComponents}
+          />
+        )}
 
-      <div className="mb-4 mt-16 text-right text-gray-400">
-        <span>Last Modify:</span> <span>{blog?.modifiedTime}</span>
+        <div className="mb-4 mt-16 text-right text-gray-400">
+          <span>Last Modify:</span> <span>{blog?.modifiedTime}</span>
+        </div>
+      </article>
+
+      <div className="sticky top-28 ml-16 hidden h-full w-64 xl:block">
+        <TOC />
       </div>
-    </article>
+    </div>
   );
 }
 

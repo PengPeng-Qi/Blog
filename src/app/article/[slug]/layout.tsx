@@ -1,5 +1,5 @@
 export default function MdxLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  return <div>{children}</div>;
+  return <div className="mx-8">{children}</div>;
 }
