@@ -18,6 +18,7 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
               dark: "github-dark",
               light: "github-light-default",
             },
+            defaultLang: "plaintext",
           }),
       ],
     },

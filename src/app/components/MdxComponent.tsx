@@ -65,10 +65,13 @@ export const MdxComponents: MDXComponentsProps = {
     />
   ),
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-  pre: (props) => <pre className="my-4 overflow-x-auto" {...props}></pre>,
-  code: (props) => (
-    <code className="overflow-x-auto rounded-xl p-4" {...props} />
+  ul: (props) => <ul className="mb-4 mt-0 list-disc" {...props} />,
+  ol: (props) => <ol className="mb-4 mt-0 list-decimal" {...props} />,
+  li: (props) => <li className="mb-2" {...props} />,
+  pre: (props) => (
+    <pre className="my-4 overflow-x-auto rounded-md py-4" {...props}></pre>
   ),
+  code: (props) => <code className="overflow-x-auto px-2" {...props} />,
   Image: (props) => <Image className="rounded-lg" {...props} alt="" />,
   Header,
 };
