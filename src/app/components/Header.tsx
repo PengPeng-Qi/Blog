@@ -77,10 +77,11 @@ export default function Header() {
         animate={{ rotate: 0, scale: 1 }}
         transition={{
           type: "spring",
-          stiffness: 260,
-          damping: 20,
+          stiffness: 280,
+          damping: 15,
         }}
         whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.9 }}
       >
         <Link href={"/"}>
           <Image
