@@ -11,12 +11,20 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
   const options = {
     mdxOptions: {
       remarkPlugins: [remarkGfm],
-      rehypePlugins: [() => rehypePrettyCode({ theme: "github-dark" })],
+      rehypePlugins: [
+        () =>
+          rehypePrettyCode({
+            theme: {
+              dark: "github-dark",
+              light: "github-light-default",
+            },
+          }),
+      ],
     },
   };
 
   return (
-    <article className="prose mx-auto dark:prose-invert">
+    <article className="mx-auto">
       {blog && (
         <MDXRemote
           source={blog.content}

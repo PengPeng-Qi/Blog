@@ -65,6 +65,10 @@ export const MdxComponents: MDXComponentsProps = {
     />
   ),
   a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
+  pre: (props) => <pre className="my-4 overflow-x-auto" {...props}></pre>,
+  code: (props) => (
+    <code className="overflow-x-auto rounded-xl p-4" {...props} />
+  ),
   Image: (props) => <Image className="rounded-lg" {...props} alt="" />,
   Header,
 };
