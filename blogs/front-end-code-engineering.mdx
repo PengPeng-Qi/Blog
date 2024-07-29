@@ -1,0 +1,288 @@
+---
+title: Front-end Code Engineering
+slug: d9gm9wvsh
+createdTime: "2024-07-29"
+modifiedTime: "2024-07-29 14:17:45"
+---
+
+## 基本流程
+
+<Image
+  src={"/commit-flow.png"}
+  alt="Commit Flow"
+  width="400"
+  height="320"
+  style={{ marginBottom: "20px" }}
+/>
+
+项目仓库已经集成插件自动推荐，实现**开发时**进行 ESLint、StyleLint、Prettier 操作。
+
+> [commit 规范指南](https://github.com/conventional-changelog/commitlint/?tab=readme-ov-file#what-is-commitlint)
+
+### 效果演示
+
+Success
+
+<Image
+  src={"/commit-success.gif"}
+  width="400"
+  height="320"
+  alt="Commit Success"
+  style={{ marginBottom: "20px" }}
+/>
+
+Error
+
+<Image
+  src={"/commit-error.gif"}
+  width="400"
+  height="320"
+  alt="Commit Error"
+  style={{ marginBottom: "20px" }}
+/>
+
+### ESLint
+
+```js
+module.exports = {
+  root: true,
+
+  env: {
+    node: true, // 为 ESLint 提供内置的 NodeJS 的全局变量
+  },
+
+  /**
+   * 插件可以提供额外的规则、环境、解析器等
+   *
+   * 解析器：将 Vue 、Ts 等解析为 ESLint 支持的语法
+   */
+  plugins: [
+    "vue", // Vue 插件，提供了解析器解析 Vue 的 <template> <script> 等、还有规则集等
+    "@typescript-eslint", // TypeScript 插件，提供 TS 的解析器及规则集等
+    "security", // 安全插件
+  ],
+
+  // 继承某些已有的规则，需要注意顺序
+  extends: [
+    "eslint:recommended", // 配置预设，eslint 官方推荐基础规则集
+    "plugin:vue/vue3-essential", // eslint-plugin-vue 插件中 vue3 基本规则集
+    "@vue/eslint-config-typescript", // vue 官方提供的 ts 规则集
+    "@vue/eslint-config-prettier/skip-formatting", // 跳过 ESLint 的格式化
+    "plugin:security/recommended-legacy", // eslint-plugin-security 插件中的安全性基本规则集
+  ],
+
+  /**
+   * 配置规则
+   * "off" 或 0    ==>  关闭规则
+   * "warn" 或 1   ==>  打开的规则作为警告（不影响代码执行）
+   * "error" 或 2  ==>  规则作为一个错误（代码不能执行，界面报错）
+   */
+  rules: {
+    // eslint (@see: https://eslint.org/docs/latest/rules/)
+    eqeqeq: "error", // 使用严格相等符号
+    "no-var": "error", // 要求使用 let 或 const 而不是 var
+
+    // typeScript (@see: https://typescript-eslint.io/rules)
+    "@typescript-eslint/no-unused-vars": "error", // 禁止定义未使用的变量
+
+    // vue (@see: https://eslint.vuejs.org/rules)
+    "vue/no-mutating-props": "error", // 不允许改变组件 prop
+    "vue/attribute-hyphenation": "error", // 对模板中的自定义组件强制执行属性命名样式：my-prop="prop"
+
+    // eslint-plugin-security (@see: https://www.npmjs.com/package/eslint-plugin-security)
+    "security/detect-object-injection": "off", // 允许使用 obj[xxx] 的形式
+  },
+};
+```
+
+### StyleLint
+
+```js
+// @see: https://stylelint.io
+
+module.exports = {
+  root: true,
+
+  // 继承某些已有的规则
+  extends: [
+    "stylelint-config-standard", // 使用标准配置
+    "stylelint-config-standard-scss", // 使用标准的 SCSS 配置
+    "stylelint-config-recess-order", // 使用 Recess 风格的 CSS 属性顺序配置
+  ],
+  overrides: [
+    // 识别 .vue/html 文件中的 <style> 标签内的样式
+    {
+      files: ["**/*.{vue,html}"],
+      customSyntax: "postcss-html",
+    },
+  ],
+  rules: {
+    "function-url-quotes": "always", // URL 必须包含引号
+    "color-hex-length": "short", // 颜色的十六进制表示必须是简写形式
+    "rule-empty-line-before": "never", // 规则之前不允许有空行
+    "font-family-no-missing-generic-family-keyword": null, // 不检查字体家族是否缺少通用字体
+    "scss/at-import-partial-extension": null, // 允许在 @import 中省略文件扩展名
+    "selector-class-pattern": null, // 不强制选择器类名的格式
+    "value-no-vendor-prefix": null, // 允许使用供应商前缀 (为了解决多行省略 -webkit-box)
+    "no-descending-specificity": null, // 允许低特异性选择器覆盖高特异性选择器
+    "value-keyword-case": null, // 不强制 value 关键字的大小写，解决在 scss 中使用 v-bind 大写单词报错
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        ignorePseudoClasses: ["global", "v-deep", "deep"], // 忽略这些未知的伪类选择器
+      },
+    ],
+  },
+
+  ignoreFiles: ["**/*.{js,jsx,tsx,ts,cjs,json,d.ts}", "dist/**"],
+};
+```
+
+### Prettier
+
+```js
+// @see: https://prettier.io/docs/en/options
+
+module.exports = {
+  // 指定最大换行长度
+  printWidth: 120,
+  // 缩进制表符宽度 | 空格数
+  tabWidth: 2,
+  // 使用制表符而不是空格缩进行 (true：制表符，false：空格)
+  useTabs: false,
+  // 结尾使用分号 (true：有，false：没有)
+  semi: true,
+  // 使用单引号 (true：单引号，false：双引号)
+  singleQuote: false,
+
+  /**
+   * 在对象字面量中决定是否将属性名用引号括起来，可选值 "<as-needed|consistent|preserve>"
+   *
+   * as-needed  - 仅在需要时给对象属性加引号
+   * consistent - 所有属性要么都加，要么都不加
+   * preserve   - 与输入格式保持一致
+   */
+  quoteProps: "consistent",
+  // 在JSX中使用单引号而不是双引号 (true：单引号，false：双引号)
+  jsxSingleQuote: false,
+
+  /**
+   * 多行时尽可能打印尾随逗号，可选值 "<none|es5|all>"
+   *
+   * none       - 对象属性最后一个属性不加逗号
+   * es5        - 对象属性最后一个属性加逗号
+   * all        - 所有地方均加逗号，含函数最后一位参数
+   */
+  trailingComma: "es5",
+  // 在对象，数组括号与文字之间加空格 "{ foo: bar }" (true：有，false：没有)
+  bracketSpacing: true,
+  // 将右标签 > 放在最后一行的末尾，而不是单独放在下一行 (true：放末尾，false：单独一行)
+  bracketSameLine: false,
+  // (x) => {} 箭头函数参数只有一个时是否要有小括号 (avoid：省略括号，always：不省略括号)
+  arrowParens: "always",
+
+  // 这两个选项可以指定格式化代码的特定范围，而不是整个文件，在处理大型文件时有用，可指定仅格式化某一个块的代码
+  rangeStart: 0,
+  rangeEnd: Infinity,
+
+  // parser - 指定解析器：https://prettier.io/docs/en/options.html#parser （默认自动判断文件类型）
+
+  // 在需要格式化的文件顶部添加特定的 Pragma 注释 （true：需要在需要格式化的文件写@prettier，false：不需要在每个文件顶部写@prettier 也能格式化）
+  requirePragma: false,
+  // 可以在文件顶部插入一个特殊标记，表明该文件已使用 Prettier 格式化 （false：不需要额外添加， true：需要添加）
+  insertPragma: false,
+
+  /**
+   * 用于控制文本或注释是否应该被换行以及如何进行换行，可选值 "<never|always|preserve>"
+   *
+   * never      - 将长文本或注释块保持在一块，即使已经超过行宽
+   * always     - 总是换行，尽可能将长文本拆分成多行
+   * preserve   - 与输入格式保持一致
+   */
+  proseWrap: "always",
+
+  /**
+   * 控制在 html 中如何处理空白字符，可选值 "<css|strict|ignore>"
+   *
+   * css        - 遵守 CSS 风格，即左右两边各一个空格
+   * strict     - 保留原样，不对空格进行处理
+   * ignore     - 去掉空格，减少空格对代码的影响
+   */
+  htmlWhitespaceSensitivity: "ignore",
+
+  // 控制在 Vue 单文件组件中 <script> 和 <style> 标签内的代码缩进方式
+  vueIndentScriptAndStyle: false,
+
+  // 换行符使用 lf 结尾是 可选值 "<auto|lf|crlf|cr>"
+  endOfLine: "lf",
+
+  /**
+   * 是否对嵌入式语言，例如：HTML 中的 CSS 或 JS 进行格式化，可选值 "<auto|off>"
+   *
+   * auto       - 如果可以识别则格式化
+   */
+  embeddedLanguageFormatting: "auto",
+
+  // 是否将 HTML 每个属性单独放一行
+  singleAttributePerLine: false,
+};
+```
+
+## VSCode 配置
+
+### extensions
+
+```json
+{
+  "recommendations": [
+    "Vue.volar",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "streetsidesoftware.code-spell-checker",
+    "SonarSource.sonarlint-vscode"
+  ]
+}
+```
+
+### setting
+
+```json
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit",
+    "source.sortImports": "explicit"
+  },
+  "stylelint.validate": ["css", "less", "scss", "vue"]
+}
+```
+
+## Npm Package
+
+- [@fos/prettier-config](http://114.67.207.142:31585/-/web/detail/@fos/prettier-config)
+- [@fos/eslint-config](http://114.67.207.142:31585/-/web/detail/@fos/eslint-config)
+- [@fos/stylelint-config](http://114.67.207.142:31585/-/web/detail/@fos/stylelint-config)
+
+### 使用方式：
+
+下载依赖包：
+
+```shell
+pnpm i @fos/prettier-config prettier -D
+```
+
+新建文件 `.prettierrc.js`
+
+```js
+// .prettierrc.js
+const FosPrettierConfig = require("@fos/prettier-config");
+
+module.exports = {
+  ...FosPrettierConfig,
+
+  // 自定义配置
+  // semi: true,
+};
+```

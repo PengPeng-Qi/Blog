@@ -20,7 +20,7 @@ const formatDate = (date, withTime) => {
 };
 
 const generateSlug = () => {
-  return Math.random().toString(36).substring(2, 1); // Generate a random slug
+  return Math.random().toString(36).substring(2, 12); // Generate a random slug
 };
 
 const updateTimestamps = (filePath) => {
