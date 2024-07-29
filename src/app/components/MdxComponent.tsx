@@ -71,7 +71,14 @@ export const MdxComponents: MDXComponentsProps = {
   pre: (props) => (
     <pre className="my-4 overflow-x-auto rounded-md py-4" {...props}></pre>
   ),
+  blockquote: (props) => (
+    <blockquote className="my-2 bg-gray-700 px-4" {...props}></blockquote>
+  ),
   code: (props) => <code className="overflow-x-auto px-2" {...props} />,
-  Image: (props) => <Image className="rounded-lg" {...props} alt="" />,
+  Image: (props) => (
+    <div className="lg:h-66vh relative mx-auto my-5 h-64 w-full">
+      <Image className="rounded-lg" {...props} alt="" />
+    </div>
+  ),
   Header,
 };
