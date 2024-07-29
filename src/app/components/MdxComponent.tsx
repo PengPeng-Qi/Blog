@@ -73,9 +73,9 @@ export const MdxComponents: MDXComponentsProps = {
   ),
   blockquote: (props) => (
     <blockquote
-      className="my-2 bg-gray-300 px-4 dark:bg-gray-700"
+      className="my-4 border-l-4 border-gray-200 bg-gray-300 pl-4 dark:bg-gray-700"
       {...props}
-    ></blockquote>
+    />
   ),
   code: (props) => <code className="overflow-x-auto px-2" {...props} />,
   Image: (props) => {
