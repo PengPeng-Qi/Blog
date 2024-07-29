@@ -64,16 +64,23 @@ export const MdxComponents: MDXComponentsProps = {
       {...props}
     />
   ),
-  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
-  ul: (props) => <ul className="mb-4 mt-0 list-disc" {...props} />,
-  ol: (props) => <ol className="mb-4 mt-0 list-decimal" {...props} />,
+  a: ({ href, children }) => (
+    <Link
+      href={href as string}
+      className="text-blue-500 underline-offset-4 hover:underline"
+    >
+      {children}
+    </Link>
+  ),
+  ul: (props) => <ul className="mb-4 mt-0 list-disc pl-6" {...props} />,
+  ol: (props) => <ol className="mb-4 mt-0 list-decimal pl-8" {...props} />,
   li: (props) => <li className="mb-2" {...props} />,
   pre: (props) => (
     <pre className="my-4 overflow-x-auto rounded-md py-4" {...props}></pre>
   ),
   blockquote: (props) => (
     <blockquote
-      className="my-4 border-l-4 border-gray-200 bg-gray-300 pl-4 dark:bg-gray-700"
+      className="my-4 border-l-4 border-gray-600 bg-gray-100 p-2 pl-4 dark:border-gray-400 dark:bg-neutral-950"
       {...props}
     />
   ),
