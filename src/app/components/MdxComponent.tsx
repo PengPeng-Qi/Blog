@@ -78,10 +78,14 @@ export const MdxComponents: MDXComponentsProps = {
     ></blockquote>
   ),
   code: (props) => <code className="overflow-x-auto px-2" {...props} />,
-  Image: (props) => (
-    <div className="relative mx-auto my-5 h-64 w-full lg:h-66vh">
-      <Image className="rounded-lg" {...props} alt="" />
-    </div>
-  ),
+  Image: (props) => {
+    return props.fill ? (
+      <div className="relative mx-auto my-5 h-64 w-full lg:h-66vh">
+        <Image className="rounded-lg" {...props} alt="" />
+      </div>
+    ) : (
+      <Image className="my-5 rounded-lg" {...props} alt="" />
+    );
+  },
   Header,
 };
