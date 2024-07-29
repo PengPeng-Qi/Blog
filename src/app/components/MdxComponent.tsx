@@ -67,7 +67,7 @@ export const MdxComponents: MDXComponentsProps = {
   a: ({ href, children }) => (
     <Link
       href={href as string}
-      className="text-blue-500 underline-offset-4 hover:underline"
+      className="text-light-primary dark:text-dark-primary underline-offset-4 hover:underline"
     >
       {children}
     </Link>

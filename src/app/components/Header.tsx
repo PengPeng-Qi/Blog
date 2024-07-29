@@ -109,6 +109,7 @@ export default function Header() {
               }}
               aria-disabled={index !== 0}
               onClick={(e) => handleClick(menu, e)}
+              className="hover:text-light-primary dark:hover:text-dark-primary"
             >
               {menu[0].toUpperCase() + menu.slice(1)}
             </Link>

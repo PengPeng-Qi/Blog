@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-jet-brains-mono: "JetBrains Mono", monospace;
-}
-
 body {
   font-family: var(--font-jet-brains-mono);
 }

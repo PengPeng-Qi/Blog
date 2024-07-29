@@ -30,7 +30,7 @@ const TOC = () => {
           <li key={id} className={`my-2 ${level === "H3" ? "ml-4" : ""}`}>
             <Link
               href={`#${id}`}
-              className={`link-hover text-gray-400 hover:text-gray-950 dark:hover:text-gray-100`}
+              className={`link-hover hover:text-light-primary dark:hover:text-dark-primary`}
             >
               {text}
             </Link>
