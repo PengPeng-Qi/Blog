@@ -2,7 +2,7 @@
 title: Front-end Code Engineering
 slug: d9gm9wvsh
 createdTime: "2024-07-29"
-modifiedTime: "2024-07-29 19:49:10"
+modifiedTime: "2024-07-29 20:37:42"
 ---
 
 ## 基本流程
@@ -259,28 +259,29 @@ module.exports = {
 
 ## Npm Package
 
-- [@fos/prettier-config](http://114.67.207.142:31585/-/web/detail/@fos/prettier-config)
-- [@fos/eslint-config](http://114.67.207.142:31585/-/web/detail/@fos/eslint-config)
-- [@fos/stylelint-config](http://114.67.207.142:31585/-/web/detail/@fos/stylelint-config)
+- [@coder/prettier-config]()
+- [@coder/eslint-config]()
+- [@coder/stylelint-config]()
 
 ### 使用方式：
 
 下载依赖包：
 
 ```shell
-pnpm i @fos/prettier-config prettier -D
+pnpm i @coder/prettier-config prettier -D
 ```
 
 新建文件 `.prettierrc.js`
 
-```js
+````js
 // .prettierrc.js
-const FosPrettierConfig = require("@fos/prettier-config");
+const CoderPrettierConfig = require("@coder/prettier-config");
 
 module.exports = {
-  ...FosPrettierConfig,
+  ...CoderPrettierConfig,
 
   // 自定义配置
   // semi: true,
 };
 ```
+````
