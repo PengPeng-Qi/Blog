@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const TOC = () => {
@@ -7,7 +6,6 @@ const TOC = () => {
     { text: string; id: string; level: string }[]
   >([]);
   const [activeId, setActiveId] = useState<string>("");
-
   const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -34,7 +32,10 @@ const TOC = () => {
       });
     };
 
-    observer.current = new IntersectionObserver(handleIntersection, {});
+    observer.current = new IntersectionObserver(handleIntersection, {
+      rootMargin: `-${80}px 0px -30% 0px`, // 调整 rootMargin 以考虑菜单栏高度
+      threshold: 0.1, // 目标元素与视口交叉比例大于0.1时触发
+    });
 
     // 监听每个菜单结构
     extractedHeadings.forEach(({ id }) => {
@@ -49,22 +50,41 @@ const TOC = () => {
     };
   }, []);
 
+  const handleSmoothScroll = (id: string) => {
+    const element = document.getElementById(id);
+    const offset = 80; // 菜单栏高度
+
+    if (element) {
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const offsetPosition = elementRect - bodyRect - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
+      // 更新 activeId
+      setActiveId(id);
+    }
+  };
+
   return (
     <div className="font-sans">
       <div className="mb-5 mt-6 text-xl font-medium">TABLE OF CONTENTS</div>
-      <ul className="sticky right-0 top-0">
+      <ul className="sticky right-0 top-0 cursor-pointer">
         {headings.map(({ text, id, level }) => (
           <li key={id} className={`my-2 ${level === "H3" ? "ml-4" : ""}`}>
-            <Link
-              href={`#${id}`}
+            <span
+              onClick={() => handleSmoothScroll(id)}
               className={`link-hover hover:text-light-primary dark:hover:text-dark-primary ${
                 activeId === id
-                  ? "text-bold text-light-primary dark:text-dark-primary"
+                  ? "font-bold text-light-primary dark:text-dark-primary"
                   : ""
               }`}
             >
               {text}
-            </Link>
+            </span>
           </li>
         ))}
       </ul>
