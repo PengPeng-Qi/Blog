@@ -20,7 +20,7 @@ export default async function Home() {
 
             <Link
               href={"/article/" + blog.slug}
-              className="hover:text-light-primary dark:hover:text-dark-primary mb-3 truncate"
+              className="mb-3 truncate hover:text-light-primary dark:hover:text-dark-primary"
             >
               {blog.title}
             </Link>

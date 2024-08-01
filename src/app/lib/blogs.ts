@@ -59,3 +59,29 @@ export async function getCurBlog(slug: string) {
 
   return blog;
 }
+
+export async function getAllTags() {
+  const blogsDirectory = path.join(process.cwd(), "blogs");
+  const fileNamesArr = await fs.promises.readdir(blogsDirectory);
+
+  const tags: string[] = [];
+
+  await Promise.all(
+    fileNamesArr.map(async (filename) => {
+      const fullPath = path.join(blogsDirectory, filename);
+      const fileContents = await fs.promises.readFile(fullPath, "utf8");
+      // 解析 mdx 内的 yaml 文本
+      const { data } = matter(fileContents);
+
+      data.tag.forEach((item: string) => {
+        item = item
+          .toLowerCase()
+          .replace(item.toLowerCase()[0], item.toUpperCase()[0]);
+
+        if (!tags.includes(item)) tags.push(item);
+      });
+    }),
+  );
+
+  return tags;
+}
