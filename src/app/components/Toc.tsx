@@ -34,7 +34,7 @@ const TOC = () => {
 
     observer.current = new IntersectionObserver(handleIntersection, {
       rootMargin: `-${80}px 0px -30% 0px`, // 调整 rootMargin 以考虑菜单栏高度
-      threshold: 0.1, // 目标元素与视口交叉比例大于0.1时触发
+      threshold: 0.3, // 目标元素与视口交叉比例大于0.1时触发
     });
 
     // 监听每个菜单结构
