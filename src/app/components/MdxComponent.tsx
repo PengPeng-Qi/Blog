@@ -67,7 +67,7 @@ export const MdxComponents: MDXComponentsProps = {
   a: ({ href, children }) => (
     <Link
       href={href as string}
-      className="text-light-primary dark:text-dark-primary underline-offset-4 hover:underline"
+      className="text-light-primary underline-offset-4 hover:underline dark:text-dark-primary"
     >
       {children}
     </Link>
@@ -76,7 +76,7 @@ export const MdxComponents: MDXComponentsProps = {
   ol: (props) => <ol className="mb-4 mt-0 list-decimal pl-8" {...props} />,
   li: (props) => <li className="mb-2" {...props} />,
   pre: (props) => (
-    <pre className="my-4 overflow-x-auto rounded-md py-4" {...props}></pre>
+    <pre className="my-4 overflow-x-auto rounded-md py-4" {...props} />
   ),
   blockquote: (props) => (
     <blockquote
