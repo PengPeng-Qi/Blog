@@ -1,21 +1,20 @@
-import { getAllTags } from "@/app/lib/blogs";
+import Tags from "./components/Tags";
 
-export default async function Home() {
-  const tags = await getAllTags();
-
+export default function Home() {
   return (
-    <div className="cursor-pointer">
-      <div className="mb-5">
-        Hi, I&apos;m Qi Peng, Welcome to my blog that record my life ❤️.
+    <div className="flex cursor-pointer justify-between">
+      <div>
+        <div className="mb-5">
+          Hi, I&apos;m Qi Peng, Welcome to my blog that record my life ❤️.
+        </div>
+        <div>
+          My blog will includes article with code, projects and about me.
+        </div>
       </div>
-      <div>My blog will includes article with code, projects and about me.</div>
 
       <div>
-        {tags.map((tag, index) => (
-          <span key={index} className="mr-4">
-            {tag}
-          </span>
-        ))}
+        <div>TOP CATEGORIES</div>
+        <Tags />
       </div>
     </div>
   );

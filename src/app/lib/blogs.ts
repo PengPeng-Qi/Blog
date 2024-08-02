@@ -1,3 +1,4 @@
+import { TransformString } from "@/utils/tags";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
@@ -74,14 +75,14 @@ export async function getAllTags() {
       const { data } = matter(fileContents);
 
       data.tag.forEach((item: string) => {
-        item = item
-          .toLowerCase()
-          .replace(item.toLowerCase()[0], item.toUpperCase()[0]);
+        item = TransformString(item);
 
         if (!tags.includes(item)) tags.push(item);
       });
     }),
   );
+
+  tags.sort();
 
   return tags;
 }
