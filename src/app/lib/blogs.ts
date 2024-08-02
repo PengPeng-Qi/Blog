@@ -86,3 +86,36 @@ export async function getAllTags() {
 
   return tags;
 }
+
+export async function getAllBlogsByTag(tag: string) {
+  const blogsDirectory = path.join(process.cwd(), "blogs");
+  const fileNamesArr = await fs.promises.readdir(blogsDirectory);
+
+  const blogs: Blogs = [];
+
+  await Promise.all(
+    fileNamesArr.map(async (filename) => {
+      const fullPath = path.join(blogsDirectory, filename);
+      const fileContents = await fs.promises.readFile(fullPath, "utf8");
+      // 解析 mdx 内的 yaml 文本
+      const { data, content } = matter(fileContents);
+
+      data.tag.forEach((item: string) => {
+        item = TransformString(item);
+
+        if (item === tag) {
+          blogs.push({
+            metadata: data,
+            title: data.title,
+            slug: data.slug,
+            createdTime: data.createdTime,
+            modifiedTime: data.modifiedTime,
+            content,
+          });
+        }
+      });
+    }),
+  );
+
+  return blogs;
+}
