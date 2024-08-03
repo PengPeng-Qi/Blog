@@ -13,7 +13,7 @@ export default async function Home() {
   );
 
   return (
-    <div className="flex justify-between">
+    <div className="flex cursor-pointer justify-between">
       <div>
         <div className="mb-6 font-medium text-red-600">RECENTLY PUBLISHED</div>
         {allBlogs.map((blog, index) => {
