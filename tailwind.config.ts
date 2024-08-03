@@ -14,6 +14,8 @@ const config: Config = {
       colors: {
         "dark-primary": "hsl(230deg, 100%, 69%)",
         "light-primary": "hsl(245deg, 100%, 60%)",
+        "light-card-primary": "hsl(200deg, 75%, 65%)",
+        "dark-card-primary": "hsl(200deg, 50%, 60%)",
       },
     },
   },
