@@ -12,7 +12,7 @@ export default async function Home({ params: { slug } }: Readonly<Props>) {
           <div key={blog.slug + index} className="font-medium">
             <Link
               href={`/article/${blog.slug}`}
-              className="flex w-full justify-between"
+              className="flex w-full justify-between hover:text-light-primary dark:hover:text-dark-primary"
             >
               <div>{blog.title}</div>
               {/* <div>{blog.createdTime}</div> */}

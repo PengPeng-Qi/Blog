@@ -6,7 +6,7 @@ export default function Home() {
       <div></div>
 
       <div>
-        <div className="font-semibold">TOP CATEGORIES</div>
+        <div className="font-medium text-red-600">TOP CATEGORIES</div>
         <Tags />
       </div>
     </div>
