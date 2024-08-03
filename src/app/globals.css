@@ -6,19 +6,19 @@ pre code {
   font-family: var(--font-jet-brains-mono), monospace;
 }
 
-pre code span {
-  font-family: var(--font-jet-brains-mono), monospace;
+/* 获取系统主题色：prefers-color-scheme */
+@media (prefers-color-scheme: light) {
+  code[data-theme*=" "],
+  code[data-theme*=" "] span {
+    color: var(--shiki-light);
+  }
+  pre,
+  code {
+    background-color: var(--shiki-light-bg);
+  }
 }
 
-code[data-theme*=" "],
-code[data-theme*=" "] span {
-  color: var(--shiki-light);
-}
-pre,
-code {
-  background-color: var(--shiki-light-bg);
-}
-
+/* 获取系统主题色：prefers-color-scheme */
 @media (prefers-color-scheme: dark) {
   code[data-theme*=" "],
   code[data-theme*=" "] span {
