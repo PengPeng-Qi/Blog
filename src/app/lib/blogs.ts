@@ -4,8 +4,9 @@ import matter from "gray-matter";
 import path from "path";
 import { Blog, Blogs } from "../types/blogs";
 
+const blogsDirectory = path.join(process.cwd(), "blogs");
+
 export async function getAllBlogs() {
-  const blogsDirectory = path.join(process.cwd(), "blogs");
   const fileNamesArr = await fs.promises.readdir(blogsDirectory);
 
   const blogs: Blogs = await Promise.all(
@@ -14,23 +15,22 @@ export async function getAllBlogs() {
       const fileContents = await fs.promises.readFile(fullPath, "utf8");
       // 解析 mdx 内的 yaml 文本
       const { data, content } = matter(fileContents);
-
       return {
         metadata: data,
         title: data.title,
         slug: data.slug,
         createdTime: data.createdTime,
         modifiedTime: data.modifiedTime,
+        isPublish: data.isPublish ?? true,
         content,
       };
     }),
   );
 
-  return blogs;
+  return blogs.filter((blog) => blog.isPublish);
 }
 
 export async function getCurBlog(slug: string) {
-  const blogsDirectory = path.join(process.cwd(), "blogs");
   const fileNamesArr = await fs.promises.readdir(blogsDirectory);
 
   const blog: Blog | null = await Promise.race(
@@ -74,6 +74,8 @@ export async function getAllTags() {
       // 解析 mdx 内的 yaml 文本
       const { data } = matter(fileContents);
 
+      if (data.isPublish === false) return;
+
       data.tag.forEach((item: string) => {
         item = TransformString(item);
 
@@ -88,7 +90,6 @@ export async function getAllTags() {
 }
 
 export async function getAllBlogsByTag(tag: string) {
-  const blogsDirectory = path.join(process.cwd(), "blogs");
   const fileNamesArr = await fs.promises.readdir(blogsDirectory);
 
   const blogs: Blogs = [];
@@ -99,6 +100,8 @@ export async function getAllBlogsByTag(tag: string) {
       const fileContents = await fs.promises.readFile(fullPath, "utf8");
       // 解析 mdx 内的 yaml 文本
       const { data, content } = matter(fileContents);
+
+      if (data.isPublish === false) return;
 
       data.tag.forEach((item: string) => {
         item = TransformString(item);

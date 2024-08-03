@@ -9,8 +9,8 @@ export default async function Tags() {
       {tags.map((tag, index) => (
         <div key={index} className="duration-300 hover:scale-110">
           <Link
-            className="bg-light-card-primary dark:bg-dark-card-primary mb-2 mr-2 cursor-pointer rounded-lg px-3 py-1 text-xs"
-            href={`/article/tag/${tag}`}
+            className="mb-2 mr-2 cursor-pointer rounded-lg bg-light-card-primary px-3 py-1 text-xs dark:bg-dark-card-primary"
+            href={`/article/tag/${tag.toLowerCase()}`}
           >
             {tag}
           </Link>

@@ -4,6 +4,7 @@ export type Blog = {
   slug: string;
   createdTime: string;
   modifiedTime: string;
+  isPublish?: Boolean;
   metadata: Record<string, any>;
 };
 
