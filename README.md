@@ -2,6 +2,16 @@
 
 ## Blog Layout
 
+## Menu
+
+- [ ] Article
+- [ ] Project
+- [ ] Search
+
+- [ ] Demo
+- [ ] GitHub Link
+- [ ] Mode Change
+
 ### Article
 
 - [ ] `mdx` 代码复制功能
@@ -20,14 +30,13 @@
 
 ### Project
 
-- [ ] tool
-- [ ] 动画 demo
-- [ ] product
+- [ ] Tool
+- [ ] Products
 
 ### About
 
 - [ ] 大事记
-- [ ] travel
+- [ ] Travel
 
 ## 动画
 

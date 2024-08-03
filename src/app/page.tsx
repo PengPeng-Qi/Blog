@@ -1,14 +1,11 @@
-import Tags from "./components/Tags";
-
 export default function Home() {
   return (
-    <div className="flex cursor-pointer justify-between">
-      <div></div>
-
-      <div className="hidden xl:block">
-        <div className="font-medium text-red-600">TOP CATEGORIES</div>
-        <Tags />
+    <div className="cursor-pointer">
+      <div className="mb-5">
+        Hi, I&apos;m Qi Peng, Welcome to my blog that record my life ❤️.
       </div>
+
+      <div>My blog will includes article, projects and about me.</div>
     </div>
   );
 }

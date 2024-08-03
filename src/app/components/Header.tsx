@@ -10,7 +10,7 @@ import { RoughAnnotation } from "rough-notation/lib/model";
 
 export default function Header() {
   const pathName = usePathname();
-  const menus = ["article", "projects", "about"];
+  const menus = ["article", "projects"];
   const menuWithNodeMap = new Map<string, HTMLElement>();
 
   const annotatesMap = new Map<string, RoughAnnotation>();
@@ -71,7 +71,7 @@ export default function Header() {
   };
 
   return (
-    <div className="sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-6 backdrop-blur sm:px-32">
+    <div className="sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-6 backdrop-blur lg:px-32">
       <motion.div
         initial={{ rotate: -180, scale: 0 }}
         animate={{ rotate: 0, scale: 1 }}
@@ -95,26 +95,28 @@ export default function Header() {
         </Link>
       </motion.div>
 
-      <div className="flex w-64 justify-between font-medium">
-        {menus.map((menu, index) => {
-          return (
-            <Link
-              href={`/${menu}`}
-              id={menu}
-              key={menu + index}
-              ref={(node) => {
-                if (node) {
-                  menuWithNodeMap.set(menu, node);
-                }
-              }}
-              aria-disabled={index !== 1}
-              onClick={(e) => handleClick(menu, e)}
-              className="hover:text-light-primary dark:hover:text-dark-primary"
-            >
-              {menu[0].toUpperCase() + menu.slice(1)}
-            </Link>
-          );
-        })}
+      <div className="hidden sm:block">
+        <div className="font-medium">
+          {menus.map((menu, index) => {
+            return (
+              <Link
+                href={`/${menu}`}
+                id={menu}
+                key={menu + index}
+                ref={(node) => {
+                  if (node) {
+                    menuWithNodeMap.set(menu, node);
+                  }
+                }}
+                aria-disabled={index !== 1}
+                onClick={(e) => handleClick(menu, e)}
+                className="mr-5 hover:text-light-primary dark:hover:text-dark-primary"
+              >
+                {menu[0].toUpperCase() + menu.slice(1)}
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

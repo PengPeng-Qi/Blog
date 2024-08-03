@@ -5,7 +5,7 @@ export default async function Tags() {
   const tags = await getAllTags();
 
   return (
-    <div className="mt-8 flex">
+    <div className="flex">
       {tags.map((tag, index) => (
         <div key={index} className="duration-300 hover:scale-110">
           <Link
