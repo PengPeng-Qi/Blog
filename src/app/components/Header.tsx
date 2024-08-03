@@ -40,7 +40,7 @@ export default function Header() {
     };
   });
 
-  const disabledMenus = ["projects", "about"];
+  const disabledMenus = ["projects"];
   const disabledMenusAnnotatesMap = new Map<string, RoughAnnotation>();
   // 给禁用的菜单划线
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function Header() {
                   menuWithNodeMap.set(menu, node);
                 }
               }}
-              aria-disabled={index !== 0}
+              aria-disabled={index !== 1}
               onClick={(e) => handleClick(menu, e)}
               className="hover:text-light-primary dark:hover:text-dark-primary"
             >
