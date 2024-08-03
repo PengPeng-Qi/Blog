@@ -95,7 +95,7 @@ export default function Header() {
         </Link>
       </motion.div>
 
-      <div className="flex w-64 justify-between">
+      <div className="flex w-64 justify-between font-medium">
         {menus.map((menu, index) => {
           return (
             <Link

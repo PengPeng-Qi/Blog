@@ -35,34 +35,30 @@ interface MDXComponentsProps {
 
 export const MdxComponents: MDXComponentsProps = {
   h1: (props) => (
-    <Heading level={1} className="mb-4 mt-6 text-4xl font-bold" {...props} />
+    <Heading
+      level={1}
+      className="mb-4 mt-6 text-4xl font-semibold"
+      {...props}
+    />
   ),
   h2: (props) => (
     <Heading
       level={2}
-      className="mb-4 mt-6 border-b-2 border-gray-200 pb-2 text-3xl font-semibold"
+      className="mb-4 mt-6 border-b-2 border-gray-200 pb-2 text-3xl font-medium"
       {...props}
     />
   ),
   h3: (props) => (
-    <Heading
-      level={3}
-      className="mb-4 mt-6 text-2xl font-semibold"
-      {...props}
-    />
+    <Heading level={3} className="mb-4 mt-6 text-2xl font-medium" {...props} />
   ),
   h4: (props) => (
-    <Heading level={4} className="mb-4 mt-6 text-xl font-semibold" {...props} />
+    <Heading level={4} className="mb-4 mt-6 text-xl font-medium" {...props} />
   ),
   h5: (props) => (
-    <Heading level={5} className="mb-4 mt-6 text-lg font-semibold" {...props} />
+    <Heading level={5} className="mb-4 mt-6 text-lg font-medium" {...props} />
   ),
   h6: (props) => (
-    <Heading
-      level={6}
-      className="mb-4 mt-6 text-base font-semibold"
-      {...props}
-    />
+    <Heading level={6} className="mb-4 mt-6 text-base font-medium" {...props} />
   ),
   a: ({ href, children }) => (
     <Link

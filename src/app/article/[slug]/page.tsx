@@ -28,7 +28,7 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
   return (
     <div>
       <div className="mb-10">
-        <div className="mb-2 font-serif text-4xl font-bold">{blog?.title}</div>
+        <div className="mb-2 text-4xl font-bold">{blog?.title}</div>
         <div className="text text-gray-400">{blog?.createdTime}</div>
       </div>
 
@@ -42,7 +42,7 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
             />
           )}
 
-          <div className="mb-8 mt-12 font-sans">
+          <div className="mb-8 mt-12">
             <div className="mb-1 text-xs text-gray-400">LAST UPDATED:</div>
             <div>{blog?.modifiedTime}</div>
           </div>
