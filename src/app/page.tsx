@@ -3,7 +3,7 @@ import Tags from "./components/Tags";
 export default function Home() {
   return (
     <div className="flex cursor-pointer justify-between">
-      <div>
+      <div className="font-medium">
         <div className="mb-5">
           Hi, I&apos;m Qi Peng, Welcome to my blog that record my life ❤️.
         </div>

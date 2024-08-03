@@ -9,13 +9,13 @@ export default async function Home({ params: { slug } }: Readonly<Props>) {
     <div>
       {blogs.map((blog, index) => {
         return (
-          <div key={blog.slug + index}>
+          <div key={blog.slug + index} className="font-medium">
             <Link
               href={`/article/${blog.slug}`}
               className="flex w-full justify-between"
             >
               <div>{blog.title}</div>
-              <div>{blog.createdTime}</div>
+              {/* <div>{blog.createdTime}</div> */}
             </Link>
           </div>
         );
