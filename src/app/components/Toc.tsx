@@ -71,17 +71,19 @@ const TOC = () => {
 
   return (
     <div>
-      <div className="mb-5 mt-6 text-xl">TABLE OF CONTENTS</div>
+      <div className="mb-5 mt-6 text-xl text-gray-600 dark:text-gray-300">
+        TABLE OF CONTENTS
+      </div>
 
       <ul className="sticky right-0 top-0 cursor-pointer">
         {headings.map(({ text, id, level }) => (
           <li key={id} className={`my-2 ${level === "H3" ? "ml-4" : ""}`}>
             <span
               onClick={() => handleSmoothScroll(id)}
-              className={`link-hover hover:text-light-primary dark:hover:text-dark-primary ${
+              className={`link-hover hover:text-gray-800 dark:hover:text-gray-50 ${
                 activeId === id
-                  ? "font-medium text-light-primary dark:text-dark-primary"
-                  : ""
+                  ? "font-medium text-gray-800 dark:text-gray-50"
+                  : "text-gray-500"
               }`}
             >
               {text}
