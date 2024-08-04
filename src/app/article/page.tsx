@@ -18,15 +18,17 @@ export default async function Home() {
         <div className="mb-6 font-medium text-red-600">RECENTLY PUBLISHED</div>
         {allBlogs.map((blog, index) => {
           return (
-            <div key={index + blog.slug} className="flex">
-              <Link
-                href={"/article/" + blog.slug}
-                className="mb-3 truncate font-medium hover:text-light-primary dark:hover:text-dark-primary"
-              >
-                {blog.title}
+            <div
+              key={index + blog.slug}
+              className="mb-3 flex leading-none hover:text-light-primary dark:hover:text-dark-primary"
+            >
+              <Link href={"/article/" + blog.slug}>
+                <span className="font-medium">{blog.title}</span>
               </Link>
 
-              {/* <div className="mr-2 sm:mr-6">{blog.createdTime}</div> */}
+              <div className="ml-2 text-xs text-gray-400 sm:mr-6">
+                {blog.createdTime}
+              </div>
             </div>
           );
         })}
