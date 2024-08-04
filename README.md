@@ -9,8 +9,8 @@
 - [ ] Search
 
 - [ ] Demo
-- [ ] GitHub Link
 - [ ] Mode Change
+- [x] GitHub Link
 
 ### Article
 
