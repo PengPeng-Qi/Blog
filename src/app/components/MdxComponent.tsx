@@ -63,7 +63,7 @@ export const MdxComponents: MDXComponentsProps = {
   a: ({ href, children }) => (
     <Link
       href={href as string}
-      className="text-light-primary underline-offset-4 hover:underline dark:text-dark-primary"
+      className="text-gray-950 underline decoration-gray-400 underline-offset-8 transition-colors duration-700 ease-in-out hover:decoration-gray-800 dark:text-gray-100 dark:decoration-gray-900 dark:hover:decoration-gray-200"
     >
       {children}
     </Link>
@@ -80,7 +80,7 @@ export const MdxComponents: MDXComponentsProps = {
       {...props}
     />
   ),
-  code: (props) => <code className="rounded-md px-4 font-medium" {...props} />,
+  code: (props) => <code className="rounded-md px-4" {...props} />,
   Image: (props) => {
     return props.fill ? (
       <div className="relative mx-auto my-5 h-64 w-full lg:h-66vh">

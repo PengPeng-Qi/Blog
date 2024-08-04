@@ -8,7 +8,6 @@
 - [ ] Project
 - [ ] Search
 
-- [ ] Demo
 - [ ] Mode Change
 - [x] GitHub Link
 
@@ -31,6 +30,7 @@
 ### Project
 
 - [ ] Tool
+- [ ] Demo
 - [ ] Products
 
 ### About

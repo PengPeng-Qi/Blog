@@ -80,7 +80,7 @@ const TOC = () => {
           <li key={id} className={`my-2 ${level === "H3" ? "ml-4" : ""}`}>
             <span
               onClick={() => handleSmoothScroll(id)}
-              className={`link-hover hover:text-gray-800 dark:hover:text-gray-50 ${
+              className={`link-hover transition-colors duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 ${
                 activeId === id
                   ? "font-medium text-gray-800 dark:text-gray-50"
                   : "text-gray-500"

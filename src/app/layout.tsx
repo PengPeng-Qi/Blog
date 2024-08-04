@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${jetBrains_mono.variable} bg-zinc-50 text-black dark:bg-neutral-900 dark:text-slate-100`}
+        className={`${jetBrains_mono.variable} bg-zinc-50 text-gray-700 dark:bg-neutral-950 dark:text-gray-300`}
       >
         <Header />
 
