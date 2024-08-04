@@ -95,35 +95,35 @@ export default function Header() {
           />
         </Link>
       </motion.div>
-      <div className="hidden sm:block">
-        <div className="flex items-center justify-center font-medium">
-          {menus.map((menu, index) => {
-            return (
-              <Link
-                href={`/${menu}`}
-                id={menu}
-                key={menu + index}
-                ref={(node) => {
-                  if (node) {
-                    menuWithNodeMap.set(menu, node);
-                  }
-                }}
-                aria-disabled={index !== 1}
-                onClick={(e) => handleClick(menu, e)}
-                className="mr-5 hover:text-light-primary dark:hover:text-dark-primary"
-              >
-                {menu[0].toUpperCase() + menu.slice(1)}
-              </Link>
-            );
-          })}
-          <Link
-            href={"https://github.com/PengPeng-Qi"}
-            className="rounded-lg py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
-          >
-            <GitHubLogoIcon width={32} height={16} />
-          </Link>
-        </div>
+      {/* <div className="hidden sm:block"> */}
+      <div className="flex items-center justify-center font-medium">
+        {menus.map((menu, index) => {
+          return (
+            <Link
+              href={`/${menu}`}
+              id={menu}
+              key={menu + index}
+              ref={(node) => {
+                if (node) {
+                  menuWithNodeMap.set(menu, node);
+                }
+              }}
+              aria-disabled={index !== 1}
+              onClick={(e) => handleClick(menu, e)}
+              className="mr-5 hover:text-light-primary dark:hover:text-dark-primary"
+            >
+              {menu[0].toUpperCase() + menu.slice(1)}
+            </Link>
+          );
+        })}
+        <Link
+          href={"https://github.com/PengPeng-Qi"}
+          className="rounded-lg py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
+        >
+          <GitHubLogoIcon width={32} height={16} />
+        </Link>
       </div>
     </div>
+    // </div>
   );
 }
