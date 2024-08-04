@@ -1,5 +1,6 @@
 "use client";
 
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -94,9 +95,8 @@ export default function Header() {
           />
         </Link>
       </motion.div>
-
       <div className="hidden sm:block">
-        <div className="font-medium">
+        <div className="flex items-center justify-center font-medium">
           {menus.map((menu, index) => {
             return (
               <Link
@@ -116,6 +116,12 @@ export default function Header() {
               </Link>
             );
           })}
+          <Link
+            href={"https://github.com/PengPeng-Qi"}
+            className="rounded-lg py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
+          >
+            <GitHubLogoIcon width={32} height={16} />
+          </Link>
         </div>
       </div>
     </div>
