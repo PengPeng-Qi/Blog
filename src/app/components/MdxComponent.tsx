@@ -72,7 +72,7 @@ export const MdxComponents: MDXComponentsProps = {
   ol: (props) => <ol className="mb-4 mt-0 list-decimal pl-8" {...props} />,
   li: (props) => <li className="mb-2" {...props} />,
   pre: (props) => (
-    <pre className="my-4 overflow-x-auto rounded-md py-4" {...props} />
+    <pre className="my-4 overflow-x-auto rounded-2xl py-4" {...props} />
   ),
   blockquote: (props) => (
     <blockquote
@@ -80,7 +80,7 @@ export const MdxComponents: MDXComponentsProps = {
       {...props}
     />
   ),
-  code: (props) => <code className="px-2" {...props} />,
+  code: (props) => <code className="rounded-md px-4 font-medium" {...props} />,
   Image: (props) => {
     return props.fill ? (
       <div className="relative mx-auto my-5 h-64 w-full lg:h-66vh">
