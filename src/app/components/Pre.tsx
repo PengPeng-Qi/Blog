@@ -1,5 +1,5 @@
 "use client";
-import { CheckIcon, CopyIcon } from "@radix-ui/react-icons";
+import { CheckIcon, ClipboardIcon } from "@radix-ui/react-icons";
 import { ReactNode, useRef, useState } from "react";
 
 interface PreProps {
@@ -41,7 +41,7 @@ const Pre: React.FC<PreProps> = (props) => {
           className="absolute right-4 flex h-9 w-9 cursor-pointer select-none items-center justify-center rounded-lg border border-solid border-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800"
           onClick={copyCode}
         >
-          {hasCopied ? <CheckIcon color="green" /> : <CopyIcon />}
+          {hasCopied ? <CheckIcon color="green" /> : <ClipboardIcon />}
         </div>
         <div ref={codeRef}>{props.children}</div>
       </div>
