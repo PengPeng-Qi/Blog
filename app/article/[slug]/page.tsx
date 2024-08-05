@@ -1,7 +1,7 @@
-import { MdxComponents } from "@/app/components/MdxComponent";
-import Toc from "@/app/components/Toc";
-import { getAllBlogs, getCurBlog } from "@/app/lib/blogs";
-import { Blogs, Props } from "@/app/types/blogs";
+import { MdxComponents } from "@/components/MdxComponent";
+import Toc from "@/components/Toc";
+import { getAllBlogs, getCurBlog } from "@/lib/blogs";
+import { Blogs, Props } from "@/types/blogs";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";

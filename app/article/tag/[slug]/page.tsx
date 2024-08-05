@@ -1,6 +1,6 @@
-import { getAllBlogsByTag } from "@/app/lib/blogs";
-import { Props } from "@/app/types/blogs";
-import { TransformString } from "@/utils/tags";
+import { getAllBlogsByTag } from "@/lib/blogs";
+import { TransformString } from "@/lib/utils";
+import { Props } from "@/types/blogs";
 import Link from "next/link";
 
 export default async function Home({ params: { slug } }: Readonly<Props>) {

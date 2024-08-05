@@ -1,8 +1,8 @@
-import { TransformString } from "@/utils/tags";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
 import { Blog, Blogs } from "../types/blogs";
+import { TransformString } from "./utils";
 
 const blogsDirectory = path.join(process.cwd(), "blogs");
 
