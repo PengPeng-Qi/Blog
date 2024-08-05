@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
@@ -32,6 +33,7 @@ export default function RootLayout({
 
           <div className="mx-8 mt-16 sm:mx-12 lg:mx-32">{children}</div>
 
+          <Toaster />
           {process.env.NODE_ENV === "production" ? <Analytics /> : <></>}
         </ThemeProvider>
       </body>

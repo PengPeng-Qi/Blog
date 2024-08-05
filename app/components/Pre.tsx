@@ -1,5 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+
 import { CheckIcon, ClipboardIcon } from "@radix-ui/react-icons";
 import { ReactNode, useRef, useState } from "react";
 
@@ -25,6 +27,7 @@ const Pre: React.FC<PreProps> = (props) => {
       .writeText(textToCopy)
       .then(() => {
         setHasCopied((value) => !value);
+        toast("Copy Successful 🎉");
       })
       .catch((err) => {
         console.error("Could not copy text: ", err);
@@ -37,7 +40,7 @@ const Pre: React.FC<PreProps> = (props) => {
 
   return (
     <pre {...props}>
-      <div onClick={copyCode} className="relative">
+      <div className="relative">
         {hasCopied ? (
           <Button
             variant="outline"
@@ -51,6 +54,7 @@ const Pre: React.FC<PreProps> = (props) => {
             variant="outline"
             size="icon"
             className="absolute right-4 h-6 w-6"
+            onClick={copyCode}
           >
             <ClipboardIcon className="h-3 w-3" />
           </Button>
