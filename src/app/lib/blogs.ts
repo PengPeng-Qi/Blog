@@ -32,10 +32,9 @@ export async function getAllBlogs() {
 
 export async function generateSearchIndex() {
   const blogs = await getAllBlogs();
+
   fs.writeFileSync("public/searchIndex.json", JSON.stringify(blogs));
 }
-
-generateSearchIndex();
 
 export async function getCurBlog(slug: string) {
   const fileNamesArr = await fs.promises.readdir(blogsDirectory);

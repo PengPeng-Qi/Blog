@@ -1,6 +1,5 @@
 "use client";
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { annotate } from "rough-notation";
 import { RoughAnnotation } from "rough-notation/lib/model";
+import GitHubIcon from "./GithubIcon";
 import Search from "./Search";
 
 export default function Header() {
@@ -98,7 +98,6 @@ export default function Header() {
       </motion.div>
       {/* <div className="hidden sm:block"> */}
       <div className="flex items-center justify-center font-medium">
-        {/* <Search /> */}
         {menus.map((menu, index) => {
           return (
             <Link
@@ -118,12 +117,9 @@ export default function Header() {
             </Link>
           );
         })}
-        <Link
-          href={"https://github.com/PengPeng-Qi"}
-          className="rounded-lg py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
-        >
-          <GitHubLogoIcon width={32} height={16} />
-        </Link>
+        <GitHubIcon />
+
+        <Search />
       </div>
     </div>
     // </div>
