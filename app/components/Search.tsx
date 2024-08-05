@@ -32,7 +32,7 @@ export default function Search() {
           setShowDialog((value) => !value);
         }}
       >
-        <Button variant="ghost">
+        <Button variant="ghost" size="sm">
           <MagnifyingGlassIcon />
         </Button>
       </div>

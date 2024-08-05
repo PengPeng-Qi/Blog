@@ -98,7 +98,6 @@ export default function Header() {
           </Link>
         </motion.div>
 
-        {/* <div className="ml-16 hidden sm:block"> */}
         <div className="ml-12 sm:ml-16">
           <div className="flex items-center justify-center font-medium">
             {menus.map((menu, index) => {
@@ -125,10 +124,9 @@ export default function Header() {
       </div>
 
       <div className="flex">
-        <GitHubIcon />
         <Search />
+        <GitHubIcon />
       </div>
     </div>
-    // </div>
   );
 }

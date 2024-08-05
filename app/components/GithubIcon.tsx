@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 
 export default function GitHubIcon() {
   return (
-    <Button variant="ghost">
+    <Button variant="ghost" size="sm">
       <Link href={"https://github.com/PengPeng-Qi"}>
         <GitHubLogoIcon />
       </Link>
