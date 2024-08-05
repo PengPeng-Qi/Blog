@@ -1,6 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "../components/theme-provider";
 import Header from "./components/Header";
 import "./globals.css";
 
@@ -21,15 +22,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning={true}
         className={`${jetBrains_mono.variable} bg-zinc-50 text-gray-700 dark:bg-neutral-950 dark:text-gray-300`}
       >
-        <Header />
+        <ThemeProvider attribute="class" defaultTheme="system">
+          <Header />
 
-        <div className="mx-8 mt-16 sm:mx-12 lg:mx-32">{children}</div>
+          <div className="mx-8 mt-16 sm:mx-12 lg:mx-32">{children}</div>
 
-        {process.env.NODE_ENV === "production" ? <Analytics /> : <></>}
+          {process.env.NODE_ENV === "production" ? <Analytics /> : <></>}
+        </ThemeProvider>
       </body>
     </html>
   );

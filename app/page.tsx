@@ -1,6 +1,10 @@
+"use client";
+import { useTheme } from "next-themes";
 import { generateSearchIndex } from "./lib/blogs";
 
 export default function Home() {
+  // useTheme().setTheme("system");
+
   // generateSearchIndex();
   return (
     <div className="cursor-pointer">

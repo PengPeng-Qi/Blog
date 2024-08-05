@@ -2,6 +2,7 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useEffect, useState } from "react";
 import { initializeSearch, searchBlogs } from "../lib/search";
 import { Blog } from "../types/blogs";
+import { Button } from "./ui/button";
 
 export default function Search() {
   const [query, setQuery] = useState("");
@@ -27,12 +28,13 @@ export default function Search() {
   return (
     <div className="select-none">
       <div
-        className="rounded-lg py-2 hover:bg-gray-200 dark:hover:bg-gray-800"
         onClick={() => {
           setShowDialog((value) => !value);
         }}
       >
-        <MagnifyingGlassIcon width={32} height={16} />
+        <Button variant="ghost">
+          <MagnifyingGlassIcon />
+        </Button>
       </div>
       {showDialog && (
           <input
