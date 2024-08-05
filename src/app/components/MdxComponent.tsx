@@ -1,6 +1,7 @@
+import { ClipboardCopyIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import Header from "./Header";
 
 interface HeadingProps {
@@ -26,6 +27,22 @@ const Heading: React.FC<HeadingProps> = ({ level, className, children }) => {
         {children}
       </HeadingTag>
     </div>
+  );
+};
+
+interface PreProps {
+  className: string;
+  children: ReactNode;
+}
+
+const Pre: React.FC<PreProps> = (props) => {
+  return (
+    <pre {...props}>
+      {/* <div className="absolute right-4 top-0 h-9 w-9 bg-gray-400">
+        <ClipboardCopyIcon />
+      </div> */}
+      {props.children}
+    </pre>
   );
 };
 
@@ -63,7 +80,7 @@ export const MdxComponents: MDXComponentsProps = {
   a: ({ href, children }) => (
     <Link
       href={href as string}
-      className="text-gray-950 underline decoration-gray-400 underline-offset-8 transition-colors duration-700 ease-in-out hover:decoration-gray-800 dark:text-gray-100 dark:decoration-gray-900 dark:hover:decoration-gray-200"
+      className="text-gray-950 underline decoration-gray-300 underline-offset-8 transition-colors duration-500 ease-in-out hover:decoration-gray-800 dark:text-gray-100 dark:decoration-gray-900 dark:hover:decoration-gray-200"
     >
       {children}
     </Link>
@@ -72,15 +89,15 @@ export const MdxComponents: MDXComponentsProps = {
   ol: (props) => <ol className="mb-4 mt-0 list-decimal pl-8" {...props} />,
   li: (props) => <li className="mb-2" {...props} />,
   pre: (props) => (
-    <pre className="my-4 overflow-x-auto rounded-2xl py-4" {...props} />
+    <Pre className="my-4 overflow-x-auto rounded-2xl py-4 shadow" {...props} />
   ),
+  code: (props) => <code className="rounded-md px-4" {...props} />,
   blockquote: (props) => (
     <blockquote
       className="my-4 border-l-4 border-gray-600 bg-gray-100 p-2 pl-4 dark:border-gray-400 dark:bg-neutral-950"
       {...props}
     />
   ),
-  code: (props) => <code className="rounded-md px-4" {...props} />,
   Image: (props) => {
     return props.fill ? (
       <div className="relative mx-auto my-5 h-64 w-full lg:h-66vh">
