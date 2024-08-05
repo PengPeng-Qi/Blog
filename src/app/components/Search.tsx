@@ -1,3 +1,4 @@
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useEffect, useState } from "react";
 import { initializeSearch, searchBlogs } from "../lib/search";
 import { Blog } from "../types/blogs";
@@ -22,6 +23,8 @@ export default function Search() {
 
   return (
     <div>
+      <MagnifyingGlassIcon />
+
       <input
         type="text"
         value={query}
