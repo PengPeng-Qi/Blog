@@ -1,8 +1,8 @@
-import { ClipboardCopyIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import Header from "./Header";
+import Pre from "./Pre";
 
 interface HeadingProps {
   level: 1 | 2 | 3 | 4 | 5 | 6;
@@ -27,22 +27,6 @@ const Heading: React.FC<HeadingProps> = ({ level, className, children }) => {
         {children}
       </HeadingTag>
     </div>
-  );
-};
-
-interface PreProps {
-  className: string;
-  children: ReactNode;
-}
-
-const Pre: React.FC<PreProps> = (props) => {
-  return (
-    <pre {...props}>
-      {/* <div className="absolute right-4 top-0 h-9 w-9 bg-gray-400">
-        <ClipboardCopyIcon />
-      </div> */}
-      {props.children}
-    </pre>
   );
 };
 
