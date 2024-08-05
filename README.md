@@ -14,9 +14,9 @@
 ### Article
 
 - [ ] 阅读量排序
-- [ ] 搜索功能
 - [ ] 加深对 `next-mdx-remote` 的理解
 - [ ] `MongoDB` 存储每篇文章的用户数据
+- [x] 搜索功能
 - [x] `mdx` 代码复制功能
 - [x] 自定义 `code` 编辑器（接入`CodeSandbox`）
 - [x] 标签分类

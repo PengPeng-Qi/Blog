@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { annotate } from "rough-notation";
 import { RoughAnnotation } from "rough-notation/lib/model";
+import Search from "./Search";
 
 export default function Header() {
   const pathName = usePathname();
@@ -97,6 +98,7 @@ export default function Header() {
       </motion.div>
       {/* <div className="hidden sm:block"> */}
       <div className="flex items-center justify-center font-medium">
+        {/* <Search /> */}
         {menus.map((menu, index) => {
           return (
             <Link
