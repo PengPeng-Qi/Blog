@@ -74,51 +74,58 @@ export default function Header() {
 
   return (
     <div className="sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-6 backdrop-blur lg:px-32">
-      <motion.div
-        initial={{ rotate: -180, scale: 0 }}
-        animate={{ rotate: 0, scale: 1 }}
-        transition={{
-          type: "spring",
-          stiffness: 280,
-          damping: 15,
-        }}
-        whileHover={{ scale: 1.2 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <Link href={"/"}>
-          <Image
-            src="/logo.svg"
-            alt="logo"
-            width={36}
-            height={36}
-            className="dark:invert"
-            priority
-          />
-        </Link>
-      </motion.div>
-      {/* <div className="hidden sm:block"> */}
-      <div className="flex items-center justify-center font-medium">
-        {menus.map((menu, index) => {
-          return (
-            <Link
-              href={`/${menu}`}
-              id={menu}
-              key={menu + index}
-              ref={(node) => {
-                if (node) {
-                  menuWithNodeMap.set(menu, node);
-                }
-              }}
-              aria-disabled={index !== 1}
-              onClick={(e) => handleClick(menu, e)}
-              className="mr-5 hover:text-light-primary dark:hover:text-dark-primary"
-            >
-              {menu[0].toUpperCase() + menu.slice(1)}
-            </Link>
-          );
-        })}
-        <GitHubIcon />
+      <div className="flex items-center justify-center">
+        <motion.div
+          initial={{ rotate: -180, scale: 0 }}
+          animate={{ rotate: 0, scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 280,
+            damping: 15,
+          }}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <Link href={"/"}>
+            <Image
+              src="/logo.svg"
+              alt="logo"
+              width={30}
+              height={30}
+              className="dark:invert"
+              priority
+            />
+          </Link>
+        </motion.div>
 
+        {/* <div className="ml-16 hidden sm:block"> */}
+        <div className="ml-12 sm:ml-16">
+          <div className="flex items-center justify-center font-medium">
+            {menus.map((menu, index) => {
+              return (
+                <Link
+                  href={`/${menu}`}
+                  id={menu}
+                  key={menu + index}
+                  ref={(node) => {
+                    if (node) {
+                      menuWithNodeMap.set(menu, node);
+                    }
+                  }}
+                  aria-disabled={index !== 1}
+                  onClick={(e) => handleClick(menu, e)}
+                  className="mr-8 hover:text-light-primary dark:hover:text-dark-primary sm:mr-10"
+                >
+                  {menu[0].toUpperCase() + menu.slice(1)}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex">
+        <GitHubIcon />
         <Search />
       </div>
     </div>
