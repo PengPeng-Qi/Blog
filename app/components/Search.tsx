@@ -61,9 +61,9 @@ export default function Search() {
             </DialogTitle>
             <DialogDescription>
               <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
-                {results.map((post) => (
-                  <li key={post.slug}>
-                    <a href={`/article/${post.slug}`}>{post.title}</a>
+                {results.map(({ title, slug }) => (
+                  <li key={title + slug}>
+                    <a href={`/article/${slug}`}>{title}</a>
                   </li>
                 ))}
               </ul>

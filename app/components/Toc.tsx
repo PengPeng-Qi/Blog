@@ -77,7 +77,10 @@ const TOC = () => {
 
       <ul className="sticky right-0 top-0 cursor-pointer">
         {headings.map(({ text, id, level }) => (
-          <li key={id} className={`my-2 ${level === "H3" ? "ml-4" : ""}`}>
+          <li
+            key={id + text}
+            className={`my-2 ${level === "H3" ? "ml-4" : ""}`}
+          >
             <span
               onClick={() => handleSmoothScroll(id)}
               className={`link-hover transition-colors duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 ${

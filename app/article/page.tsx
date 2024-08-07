@@ -16,18 +16,18 @@ export default async function Home() {
     <div className="flex cursor-pointer justify-between">
       <div>
         <div className="mb-6 font-medium text-red-600">RECENTLY PUBLISHED</div>
-        {allBlogs.map((blog, index) => {
+        {allBlogs.map(({ title, slug, createdTime }, index) => {
           return (
             <div
-              key={index + blog.slug}
+              key={title + slug}
               className="mb-3 flex leading-none hover:text-light-primary dark:hover:text-dark-primary"
             >
-              <Link href={"/article/" + blog.slug}>
-                <span className="font-medium">{blog.title}</span>
+              <Link href={"/article/" + slug}>
+                <span className="font-medium">{title}</span>
               </Link>
 
               <div className="ml-2 text-xs text-gray-400 sm:mr-6">
-                {blog.createdTime}
+                {createdTime}
               </div>
             </div>
           );

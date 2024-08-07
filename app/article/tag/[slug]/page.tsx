@@ -8,20 +8,17 @@ export default async function Home({ params: { slug } }: Readonly<Props>) {
   return (
     <div className="cursor-pointer">
       <div className="mb-6 font-medium text-red-600">RECENTLY PUBLISHED</div>
-      {blogs.map((blog, index) => {
+      {blogs.map(({ slug, title, createdTime }) => {
         return (
-          <div
-            key={blog.slug + index}
-            className="flex justify-between font-medium"
-          >
+          <div key={slug + title} className="flex justify-between font-medium">
             <Link
-              href={`/article/${blog.slug}`}
+              href={`/article/${slug}`}
               className="hover:text-light-primary dark:hover:text-dark-primary"
             >
-              <div>{blog.title}</div>
+              <div>{title}</div>
             </Link>
 
-            <div className="text-gray-400">{blog.createdTime}</div>
+            <div className="text-gray-400">{createdTime}</div>
           </div>
         );
       })}

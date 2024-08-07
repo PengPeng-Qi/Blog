@@ -105,7 +105,7 @@ export default function Header() {
                 <Link
                   href={`/${menu}`}
                   id={menu}
-                  key={menu + index}
+                  key={menu}
                   ref={(node) => {
                     if (node) {
                       menuWithNodeMap.set(menu, node);
