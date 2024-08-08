@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "../components/theme-provider";
+import ArtDots from "./components/ArtDots";
 import Header from "./components/Header";
 import "./globals.css";
 
@@ -30,10 +31,10 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
-
           <div className="mx-8 mt-16 sm:mx-12 lg:mx-32">{children}</div>
-
           <Toaster />
+
+          <ArtDots />
           {process.env.NODE_ENV === "production" ? <Analytics /> : <></>}
         </ThemeProvider>
       </body>
