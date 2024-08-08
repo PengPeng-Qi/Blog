@@ -74,8 +74,8 @@ export default function Header() {
   };
 
   return (
-    <div className="sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-6 backdrop-blur lg:px-32">
-      <div className="flex items-center justify-center">
+    <div className="sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-2 backdrop-blur sm:px-6 lg:px-32">
+      <div className="mx-3 flex items-center justify-center lg:mx-0">
         <motion.div
           initial={{ rotate: -180, scale: 0 }}
           animate={{ rotate: 0, scale: 1 }}
