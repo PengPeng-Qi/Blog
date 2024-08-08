@@ -100,7 +100,7 @@ export default function Header() {
         </motion.div>
 
         {/* <div className="ml-12 sm:ml-16"> */}
-        <div className="hidden sm:ml-16 sm:block">
+        <div className="hidden sm:ml-16 lg:block">
           <div className="flex items-center justify-center font-medium">
             {menus.map((menu, index) => {
               return (
