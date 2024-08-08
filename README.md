@@ -9,7 +9,7 @@
 - [ ] Project
 - [x] Search
 - [x] GitHub Link
-- [ ] Dark Mode
+- [x] Dark Mode
 
 ### Article
 

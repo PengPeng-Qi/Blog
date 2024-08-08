@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { annotate } from "rough-notation";
 import { RoughAnnotation } from "rough-notation/lib/model";
+import DarkMode from "./DarkMode";
 import GitHubIcon from "./GithubIcon";
 import Search from "./Search";
 
@@ -127,6 +128,7 @@ export default function Header() {
       <div className="flex flex-1 sm:flex-grow-0">
         <Search />
         <GitHubIcon />
+        <DarkMode />
       </div>
     </div>
   );
