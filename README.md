@@ -7,7 +7,7 @@
 - [ ] Project
 - [x] Search
 - [x] GitHub Link
-- [x] Dark Mode
+- [x] Dark Mode（待优化：改造三个模式）
 
 ## Article
 
