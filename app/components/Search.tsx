@@ -39,7 +39,7 @@ export default function Search() {
   }, []);
 
   return (
-    <div className="select-none">
+    <div className="mr-3 select-none">
       <Button
         variant="outline"
         size="sm"
