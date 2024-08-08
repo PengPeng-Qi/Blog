@@ -31,6 +31,7 @@ export default function DarkMode() {
         <div className="w-11"></div>
       ) : (
         <motion.div
+          className="flex items-center"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{
