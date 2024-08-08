@@ -124,7 +124,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="flex">
+      <div className="flex flex-1 sm:flex-grow-0">
         <Search />
         <GitHubIcon />
       </div>

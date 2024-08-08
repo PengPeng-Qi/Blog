@@ -39,11 +39,11 @@ export default function Search() {
   }, []);
 
   return (
-    <div className="mr-3 select-none">
+    <div className="mx-3 flex flex-1 select-none">
       <Button
         variant="outline"
         size="sm"
-        className="flex w-56 justify-between dark:hover:bg-black"
+        className="flex w-56 flex-1 justify-between dark:hover:bg-black"
         onClick={() => setOpen(true)}
       >
         <span>Search ...</span>
