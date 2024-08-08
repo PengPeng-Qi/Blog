@@ -6,7 +6,7 @@ export default function GitHubIcon() {
   return (
     <Button variant="ghost" size="sm">
       <Link href={"https://github.com/PengPeng-Qi"}>
-        <GitHubLogoIcon className="h-6 w-6" />
+        <GitHubLogoIcon className="h-5 w-5" />
       </Link>
     </Button>
   );

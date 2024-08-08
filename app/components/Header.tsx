@@ -91,8 +91,8 @@ export default function Header() {
             <Image
               src="/logo.svg"
               alt="logo"
-              width={30}
-              height={30}
+              width={32}
+              height={32}
               className="dark:invert"
               priority
             />
