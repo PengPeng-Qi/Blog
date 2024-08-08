@@ -1,76 +1,74 @@
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+"use client";
+import { FileIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { initializeSearch, searchBlogs } from "../lib/search";
+import { getAllBlogs, initializeSearch, searchBlogs } from "../lib/search";
 import { Blog } from "../types/blogs";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "./ui/command";
 
 export default function Search() {
-  const [query, setQuery] = useState("");
   const [results, setResults] = useState<Blog[]>([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    initializeSearch();
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const handleSearch = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
-
-    if (event.target.value.length > 2) {
-      const searchResults = searchBlogs(event.target.value);
-      setResults(searchResults);
-    } else {
-      setResults([]);
+  useEffect(() => {
+    async function fn() {
+      await initializeSearch();
+      const res = await getAllBlogs();
+      setResults(res);
     }
-  };
+    fn();
+  }, []);
 
   return (
     <div className="select-none">
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button
-            variant="outline"
-            size="sm"
-            className="w-56 dark:hover:bg-black"
-          >
-            <span>Search ...</span>
-          </Button>
-        </DialogTrigger>
+      <Button
+        variant="outline"
+        size="sm"
+        className="flex w-56 justify-between dark:hover:bg-black"
+        onClick={() => setOpen(true)}
+      >
+        <span>Search ...</span>
+        <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100">
+          <span className="text-xs">⌘</span>K
+        </kbd>
+      </Button>
 
-        <DialogContent className="p-0 sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle className="flex items-center justify-center px-3">
-              <MagnifyingGlassIcon className="mr-2 h-5 w-5" />
-              <Input
-                type="text"
-                value={query}
-                onChange={handleSearch}
-                placeholder="Search posts"
-                className="my-3 h-6 border-0"
-                autoFocus
-              />
-            </DialogTitle>
-            <DialogDescription>
-              <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
-                {results.map(({ title, slug }) => (
-                  <li key={title + slug}>
-                    <a href={`/article/${slug}`}>{title}</a>
-                  </li>
-                ))}
-              </ul>
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+      <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandInput placeholder="Type a command or search..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+
+          <CommandGroup heading="Articles">
+            {results.map(({ title, slug }) => (
+              <CommandItem key={slug}>
+                <FileIcon className="mr-2 h-4 w-4" />
+                <Link href={`/article/${slug}`} onClick={() => setOpen(false)}>
+                  {title}
+                </Link>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
     </div>
   );
 }

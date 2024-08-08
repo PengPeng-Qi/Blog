@@ -2,6 +2,7 @@ import Fuse, { Expression } from "fuse.js";
 import { Blog } from "../types/blogs";
 
 let fuse: Fuse<Blog>;
+let allBlogs: Blog[] = [];
 
 export async function initializeSearch() {
   const response = await fetch("/searchIndex.json");
@@ -13,6 +14,7 @@ export async function initializeSearch() {
   };
 
   fuse = new Fuse(blogs, options);
+  allBlogs = blogs; // 保存所有文章数据
 }
 
 export function searchBlogs(query: string | Expression) {
@@ -21,4 +23,13 @@ export function searchBlogs(query: string | Expression) {
   }
 
   return fuse.search(query).map((result) => result.item);
+}
+
+// 获取所有的文章
+export function getAllBlogs() {
+  if (!fuse) {
+    throw new Error("Search has not been initialized.");
+  }
+
+  return allBlogs;
 }
