@@ -16,7 +16,7 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
         () =>
           rehypePrettyCode({
             theme: {
-              dark: "github-dark",
+              dark: "github-dark-default",
               light: "github-light-default",
             },
             defaultLang: "plaintext",
