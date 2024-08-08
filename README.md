@@ -4,12 +4,12 @@
 
 ## Menu
 
+- [x] Logo
 - [ ] Article
 - [ ] Project
-- [ ] Search
-
-- [ ] Mode Change
+- [x] Search
 - [x] GitHub Link
+- [ ] Dark Mode
 
 ### Article
 
