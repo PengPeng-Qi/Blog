@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { annotate } from "rough-notation";
 import { RoughAnnotation } from "rough-notation/lib/model";
 import DarkMode from "./DarkMode";
@@ -17,6 +17,25 @@ export default function Header() {
   const menuWithNodeMap = new Map<string, HTMLElement>();
 
   const annotatesMap = new Map<string, RoughAnnotation>();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // 监听滚动事件
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 60) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   // 选中的菜单划线
   useEffect(() => {
     menuWithNodeMap.forEach((node, menuName) => {
@@ -41,7 +60,7 @@ export default function Header() {
         node.hide();
       });
     };
-  });
+  }, [pathName, menuWithNodeMap]);
 
   const disabledMenus = ["projects"];
   const disabledMenusAnnotatesMap = new Map<string, RoughAnnotation>();
@@ -64,7 +83,7 @@ export default function Header() {
         disabledNode.hide();
       });
     };
-  }, []);
+  }, [menuWithNodeMap]);
 
   // 禁止禁用菜单的点击
   const handleClick = (menu: string, e: React.MouseEvent) => {
@@ -74,7 +93,9 @@ export default function Header() {
   };
 
   return (
-    <div className="sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-2 backdrop-blur sm:px-6 lg:px-32">
+    <div
+      className={`sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-2 ${isScrolled ? "backdrop-blur" : ""} sm:px-6 lg:px-32`}
+    >
       <div className="mx-3 flex items-center justify-center lg:mx-0">
         <motion.div
           initial={{ rotate: -180, scale: 0 }}
