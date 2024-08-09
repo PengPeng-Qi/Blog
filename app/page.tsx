@@ -2,7 +2,7 @@
 import { generateSearchIndex } from "./lib/blogs";
 
 export default function Home() {
-  generateSearchIndex();
+  // generateSearchIndex();
 
   return (
     <div className="cursor-pointer">
