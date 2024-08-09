@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -9,6 +7,7 @@ import { annotate } from "rough-notation";
 import { RoughAnnotation } from "rough-notation/lib/model";
 import DarkMode from "./DarkMode";
 import GitHubIcon from "./GithubIcon";
+import MyLogo from "./MyLogo";
 import Search from "./Search";
 
 export default function Header() {
@@ -97,28 +96,9 @@ export default function Header() {
       className={`sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-2 ${isScrolled ? "backdrop-blur" : ""} sm:px-6 lg:px-32`}
     >
       <div className="mx-3 flex items-center justify-center lg:mx-0">
-        <motion.div
-          initial={{ rotate: -180, scale: 0 }}
-          animate={{ rotate: 0, scale: 1 }}
-          transition={{
-            type: "spring",
-            stiffness: 280,
-            damping: 15,
-          }}
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <Link href={"/"}>
-            <Image
-              src="/logo.svg"
-              alt="logo"
-              width={32}
-              height={32}
-              className="dark:invert"
-              priority
-            />
-          </Link>
-        </motion.div>
+        <div className="h-8 w-8">
+          <MyLogo />
+        </div>
 
         <div className="hidden sm:ml-16 lg:block">
           <div className="flex items-center justify-center font-medium">
