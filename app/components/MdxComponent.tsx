@@ -80,14 +80,6 @@ export const MdxComponents: MDXComponentsProps = {
       {...props}
     />
   ),
-  Image: (props) => {
-    return props.fill ? (
-      <div className="relative mx-auto my-5 h-64 w-full lg:h-66vh">
-        <Image className="rounded-lg" {...props} alt={props.alt} />
-      </div>
-    ) : (
-      <Image className="my-5 rounded-lg" {...props} alt={props.alt} />
-    );
-  },
+  Image: (props) => <Image className="p-3 sm:p-6" {...props} alt={props.alt} />,
   Header,
 };
