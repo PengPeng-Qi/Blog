@@ -39,30 +39,27 @@ const Pre: React.FC<PreProps> = (props) => {
   };
 
   return (
-    <pre {...props}>
-      <div className="relative">
+    <div className="relative">
+      <div className="absolute right-4 top-4">
         {hasCopied ? (
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute right-4 h-6 w-6"
-          >
+          <Button variant="outline" size="icon" className="h-6 w-6">
             <CheckIcon color="green" className="h-3 w-3" />
           </Button>
         ) : (
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-4 h-6 w-6"
+            className="h-6 w-6"
             onClick={copyCode}
           >
             <ClipboardIcon className="h-3 w-3" />
           </Button>
         )}
       </div>
-
-      <div ref={codeRef}>{props.children}</div>
-    </pre>
+      <pre {...props} className="my-4 overflow-x-auto rounded-2xl py-4 shadow">
+        <div ref={codeRef}>{props.children}</div>
+      </pre>
+    </div>
   );
 };
 

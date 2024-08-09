@@ -72,9 +72,7 @@ export const MdxComponents: MDXComponentsProps = {
   ul: (props) => <ul className="mb-4 mt-0 list-disc pl-6" {...props} />,
   ol: (props) => <ol className="mb-4 mt-0 list-decimal pl-8" {...props} />,
   li: (props) => <li className="mb-2" {...props} />,
-  pre: (props) => (
-    <Pre className="my-4 overflow-x-auto rounded-2xl py-4 shadow" {...props} />
-  ),
+  pre: (props) => <Pre {...props} />,
   code: (props) => <code className="rounded-md px-4" {...props} />,
   blockquote: (props) => (
     <blockquote
