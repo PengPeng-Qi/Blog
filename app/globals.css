@@ -2,26 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 获取系统主题色：prefers-color-scheme */
-@media (prefers-color-scheme: light) {
-  code[data-theme*=" "],
-  code[data-theme*=" "] span {
-    color: var(--shiki-light);
-  }
-  pre,
-  code {
-    background-color: var(--shiki-light-bg);
-  }
+/* Light mode styles */
+.light code[data-theme*=" "],
+.light code[data-theme*=" "] span {
+  color: var(--shiki-light);
+}
+.light pre,
+.light code {
+  background-color: var(--shiki-light-bg);
 }
 
-/* 获取系统主题色：prefers-color-scheme */
-@media (prefers-color-scheme: dark) {
-  code[data-theme*=" "],
-  code[data-theme*=" "] span {
-    color: var(--shiki-dark);
-  }
-  pre,
-  code {
-    background-color: var(--shiki-dark-bg);
-  }
+/* Dark mode styles */
+.dark code[data-theme*=" "],
+.dark code[data-theme*=" "] span {
+  color: var(--shiki-dark);
+}
+.dark pre,
+.dark code {
+  background-color: var(--shiki-dark-bg);
 }
