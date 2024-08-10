@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import Header from "./Header";
-import Pre from "./Pre";
+import Pre from "./mdx/Pre";
 
 interface HeadingProps {
   level: 1 | 2 | 3 | 4 | 5 | 6;

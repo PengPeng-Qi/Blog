@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { annotate } from "rough-notation";
 import { RoughAnnotation } from "rough-notation/lib/model";
-import DarkMode from "./DarkMode";
-import GitHubIcon from "./GithubIcon";
-import MyLogo from "./MyLogo";
-import Search from "./Search";
+import DarkMode from "./header/DarkMode";
+import GitHubIcon from "./header/GithubIcon";
+import MyLogo from "./header/MyLogo";
+import Search from "./header/Search";
 
 export default function Header() {
   const pathName = usePathname();
