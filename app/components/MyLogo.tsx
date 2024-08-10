@@ -56,6 +56,7 @@ const MyLogo = () => {
         }}
         whileHover={{ scale: 1.2 }}
         whileTap={{ scale: 0.9 }}
+        className="focus:outline-none"
       >
         <motion.polyline
           points="2.62 103.57 2.62 110.46 2.62 140.96 283.84 140.96 283.84 95.22 214.38 95.22"
