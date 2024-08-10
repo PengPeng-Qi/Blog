@@ -22,7 +22,7 @@ export default async function Home() {
               key={title + slug}
               className="mb-3 flex leading-none hover:text-light-primary dark:hover:text-dark-primary"
             >
-              <Link href={"/article/" + slug}>
+              <Link href={"/blogs/" + slug}>
                 <span className="font-medium">{title}</span>
               </Link>
 

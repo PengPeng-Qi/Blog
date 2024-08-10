@@ -12,7 +12,7 @@ import Search from "./header/Search";
 
 export default function Header() {
   const pathName = usePathname();
-  const menus = ["article", "projects"];
+  const menus = ["blogs", "projects"];
 
   const menuWithNodeMap = useMemo(() => new Map<string, HTMLElement>(), []); // 存储每个 menu 对应的 node 元素
   const annotatesMap = useMemo(() => new Map<string, RoughAnnotation>(), []); // 存储每个 menu 对应的线

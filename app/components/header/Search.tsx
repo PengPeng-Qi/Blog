@@ -1,10 +1,5 @@
 "use client";
-import { FileIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { getAllBlogs, initializeSearch, searchBlogs } from "../lib/search";
-import { Blog } from "../types/blogs";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
   CommandEmpty,
@@ -12,7 +7,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "./ui/command";
+} from "@/components/ui/command";
+import { getAllBlogs, initializeSearch, searchBlogs } from "@/lib/search";
+import { Blog } from "@/types/blogs";
+import { FileIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Search() {
   const [results, setResults] = useState<Blog[]>([]);

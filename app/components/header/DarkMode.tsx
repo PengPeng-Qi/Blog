@@ -1,10 +1,10 @@
 "use client";
 
+import { Label } from "@/components/ui/label";
 import { GearIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { Label } from "./ui/label";
 
 type radioType = "dark" | "light" | "system";
 

@@ -12,7 +12,7 @@ export default async function Home({ params: { slug } }: Readonly<Props>) {
         return (
           <div key={slug + title} className="flex justify-between font-medium">
             <Link
-              href={`/article/${slug}`}
+              href={`/blogs/${slug}`}
               className="hover:text-light-primary dark:hover:text-dark-primary"
             >
               <div>{title}</div>
