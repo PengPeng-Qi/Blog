@@ -31,9 +31,10 @@
 ### Tool
 
 - [ ] Prettier Config
+- [ ] NextJS Template
 - [ ] VSCode Extension
 
-### Demo
+### 100 Demos
 
 - [ ] dark mode
 - [ ] Logo 动画
