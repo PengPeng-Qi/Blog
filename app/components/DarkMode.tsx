@@ -35,7 +35,7 @@ export default function DarkMode() {
 
   return (
     <div className="hidden sm:block">
-      <div className="mx-3 flex justify-center rounded-full border border-gray-500 align-middle">
+      <div className="mx-3 flex justify-center rounded-full border border-gray-400 align-middle">
         <RadioGroup
           value={radio}
           onValueChange={(value) =>
