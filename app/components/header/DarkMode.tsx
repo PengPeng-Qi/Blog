@@ -29,46 +29,51 @@ export default function DarkMode() {
   }, [radio, Theme]);
 
   return (
-    <div className="hidden sm:block">
-      <div className="mx-3 flex justify-center rounded-full border border-gray-400 align-middle">
-        <RadioGroup
-          value={radio}
-          onValueChange={(value) => setRadio(value as radioType)}
-          className="flex items-center justify-center"
-        >
-          <RadioGroupItem value="system" id="r1" />
-          <Label htmlFor="r1">
-            <GearIcon
-              className={`h-8 w-8 cursor-pointer rounded-full border p-2 hover:text-gray-950 dark:hover:text-gray-50 ${
+    <div className="flex items-center">
+      <div className="hidden sm:block">
+        <div className="mx-3 h-7 rounded-full border border-gray-400">
+          <RadioGroup
+            value={radio}
+            onValueChange={(value) => setRadio(value as radioType)}
+            className="flex items-center justify-center"
+          >
+            <RadioGroupItem value="system" id="r1" />
+            <Label
+              htmlFor="r1"
+              className={`flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border hover:text-gray-950 dark:hover:text-gray-50 ${
                 radio === "system"
                   ? "border-gray-300 text-gray-950 dark:text-gray-50"
                   : "border-transparent"
               }`}
-            />
-          </Label>
+            >
+              <GearIcon className="h-5 w-5" />
+            </Label>
 
-          <RadioGroupItem value="light" id="r2" />
-          <Label htmlFor="r2">
-            <SunIcon
-              className={`h-8 w-8 cursor-pointer rounded-full border p-2 hover:text-gray-950 dark:hover:text-gray-50 ${
+            <RadioGroupItem value="light" id="r2" />
+            <Label
+              htmlFor="r2"
+              className={`mx-1 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border hover:text-gray-950 dark:hover:text-gray-50 ${
                 radio === "light"
                   ? "border-gray-500 text-gray-950"
                   : "border-transparent"
               }`}
-            />
-          </Label>
+            >
+              <SunIcon className="h-5 w-5" />
+            </Label>
 
-          <RadioGroupItem value="dark" id="r3" />
-          <Label htmlFor="r3">
-            <MoonIcon
-              className={`h-8 w-8 cursor-pointer rounded-full border p-2 hover:text-gray-950 dark:hover:text-gray-50 ${
+            <RadioGroupItem value="dark" id="r3" />
+            <Label
+              htmlFor="r3"
+              className={`flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border hover:text-gray-950 dark:hover:text-gray-50 ${
                 radio === "dark"
                   ? "border-gray-300 text-gray-50"
                   : "border-transparent"
               }`}
-            />
-          </Label>
-        </RadioGroup>
+            >
+              <MoonIcon className="h-5 w-5" />
+            </Label>
+          </RadioGroup>
+        </div>
       </div>
     </div>
   );
