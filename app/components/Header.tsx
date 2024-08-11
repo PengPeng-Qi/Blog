@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { annotate } from "rough-notation";
 import { RoughAnnotation } from "rough-notation/lib/model";
 import DarkMode from "./header/DarkMode";
+import DemoIcon from "./header/DemoIcon";
 import GitHubIcon from "./header/GithubIcon";
 import MyLogo from "./header/MyLogo";
 import Search from "./header/Search";
@@ -98,6 +99,7 @@ export default function Header() {
       <div className="flex flex-1 sm:flex-grow-0">
         <Search />
         <GitHubIcon />
+        <DemoIcon />
         <DarkMode />
       </div>
     </div>
