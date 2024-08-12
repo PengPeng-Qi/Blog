@@ -30,7 +30,7 @@
 
 ### Tool
 
-- [ ] Prettier Config
+- [x] Prettier Config
 - [ ] NextJS Template
 - [ ] VSCode Extension
 
