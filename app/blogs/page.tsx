@@ -1,7 +1,7 @@
+import Tags from "@/components/Tags";
+import { getAllBlogs } from "@/lib/blogs";
+import { Blogs } from "@/types/blogs";
 import Link from "next/link";
-import Tags from "../components/Tags";
-import { getAllBlogs } from "../lib/blogs";
-import { Blogs } from "../types/blogs";
 
 export default async function Home() {
   let allBlogs: Blogs = await getAllBlogs();

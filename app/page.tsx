@@ -1,5 +1,5 @@
 "use client";
-import { generateSearchIndex } from "./lib/blogs";
+import { generateSearchIndex } from "@/lib/blogs";
 
 export default function Home() {
   // generateSearchIndex();

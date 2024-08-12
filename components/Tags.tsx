@@ -1,5 +1,5 @@
+import { getAllTags } from "@/lib/blogs";
 import Link from "next/link";
-import { getAllTags } from "../lib/blogs";
 
 export default async function Tags() {
   const tags = await getAllTags();

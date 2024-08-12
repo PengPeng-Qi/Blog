@@ -1,5 +1,5 @@
+import { Blog } from "@/types/blogs";
 import Fuse, { Expression } from "fuse.js";
-import { Blog } from "../types/blogs";
 
 let fuse: Fuse<Blog>;
 let allBlogs: Blog[] = [];

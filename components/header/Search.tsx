@@ -57,11 +57,11 @@ export default function Search() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
 
-          <CommandGroup heading="Articles">
+          <CommandGroup heading="Blogs">
             {results.map(({ title, slug }) => (
               <CommandItem key={slug}>
                 <FileIcon className="mr-2 h-4 w-4" />
-                <Link href={`/article/${slug}`} onClick={() => setOpen(false)}>
+                <Link href={`/blogs/${slug}`} onClick={() => setOpen(false)}>
                   {title}
                 </Link>
               </CommandItem>

@@ -1,10 +1,10 @@
+import ArtDots from "@/components/ArtDots";
+import Header from "@/components/Header";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
-import { ThemeProvider } from "../components/theme-provider";
-import ArtDots from "./components/ArtDots";
-import Header from "./components/Header";
 import "./globals.css";
 
 const jetBrains_mono = JetBrains_Mono({
