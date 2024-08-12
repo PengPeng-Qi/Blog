@@ -3,8 +3,9 @@ title: How to create a npm package
 slug: oagypswm2v
 tag:
   - npm
+  - package
 createdTime: "2024-07-18"
-modifiedTime: "2024-08-03 16:08:06"
+modifiedTime: "2024-08-12 14:01:50"
 ---
 
 ## 基本步骤
@@ -12,11 +13,9 @@ modifiedTime: "2024-08-03 16:08:06"
 ### 1. 项目初始化
 
 ```shell
-mkdir my-package
-cd my-package
-npm init
+mkdir my-package && cd my-package && npm init
 
-# git init # 可选择不执行，可推送到远端方便远程管理
+# git init # 可选择不执行，添加后k可推送到远端方便远程管理
 # 创建 `.gitignore` 文件
 ```
 
@@ -33,10 +32,6 @@ npm init
   "keywords": ["example", "npm", "package"],
   "author": "Your Name",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/yourusername/my-package.git"
-  },
   "files": ["index"],
   "publishConfig": {
     "registry": "http://xxx"
@@ -65,6 +60,21 @@ npm publish
 #### 3.1 更新并发布
 
 ```shell
-npm version patch # 或者 minor/major
-npm publish
+npm version patch # 1.0.0 --> 1.0.1 适用于向下兼容的错误修复
+npm version minor # 1.0.0 --> 1.1.0 适用于向下兼容的新增功能
+npm version major # 1.0.0 --> 2.0.0 使用于不向下兼容的更改
+
+npm version 2.1.0 # 指定版本号
+```
+
+可以添加一个脚本来自动化版本号升级
+
+```json
+{
+  "scripts": {
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
+  }
+}
 ```
