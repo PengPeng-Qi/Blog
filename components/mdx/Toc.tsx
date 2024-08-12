@@ -2,9 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const TOC = () => {
-  const [headings, setHeadings] = useState<
-    { text: string; id: string; level: string }[]
-  >([]);
+  const [headings, setHeadings] = useState<{ text: string; id: string; level: string }[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const observer = useRef<IntersectionObserver | null>(null);
 
@@ -13,9 +11,7 @@ const TOC = () => {
     if (!articleElement) return;
 
     // 获取菜单结构
-    const extractedHeadings = Array.from(
-      articleElement.querySelectorAll("h2, h3"),
-    ).map((heading) => ({
+    const extractedHeadings = Array.from(articleElement.querySelectorAll("h2, h3")).map((heading) => ({
       text: heading.textContent ?? "",
       id: heading.id || "",
       level: heading.nodeName, // 'H2' or 'H3'
@@ -71,22 +67,15 @@ const TOC = () => {
 
   return (
     <div>
-      <div className="mb-5 mt-6 text-xl text-gray-600 dark:text-gray-300">
-        TABLE OF CONTENTS
-      </div>
+      <div className="mb-5 mt-6 text-xl text-gray-600 dark:text-gray-300">TABLE OF CONTENTS</div>
 
       <ul className="sticky right-0 top-0 cursor-pointer">
         {headings.map(({ text, id, level }) => (
-          <li
-            key={id + text}
-            className={`my-2 ${level === "H3" ? "ml-4" : ""}`}
-          >
+          <li key={id + text} className={`my-2 ${level === "H3" ? "ml-4" : ""}`}>
             <span
               onClick={() => handleSmoothScroll(id)}
               className={`link-hover transition-colors duration-300 ease-in-out hover:text-gray-800 dark:hover:text-gray-50 ${
-                activeId === id
-                  ? "font-medium text-gray-800 dark:text-gray-50"
-                  : "text-gray-500"
+                activeId === id ? "font-medium text-gray-800 dark:text-gray-50" : "text-gray-500"
               }`}
             >
               {text}

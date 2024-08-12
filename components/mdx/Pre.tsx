@@ -17,9 +17,7 @@ const Pre: React.FC<PreProps> = (props) => {
   const copyCode = () => {
     if (!codeRef.current) return;
 
-    const textToCopy = Array.from(
-      codeRef.current.querySelectorAll("span[data-line]"),
-    )
+    const textToCopy = Array.from(codeRef.current.querySelectorAll("span[data-line]"))
       .map((span) => span.textContent)
       .join("\n");
 
@@ -46,12 +44,7 @@ const Pre: React.FC<PreProps> = (props) => {
             <CheckIcon color="green" className="h-3 w-3" />
           </Button>
         ) : (
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-6 w-6"
-            onClick={copyCode}
-          >
+          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={copyCode}>
             <ClipboardIcon className="h-3 w-3" />
           </Button>
         )}

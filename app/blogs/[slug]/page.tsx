@@ -34,13 +34,7 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
 
       <div className="flex justify-between">
         <article className="w-96 flex-grow overflow-x-auto">
-          {blog && (
-            <MDXRemote
-              source={blog.content}
-              options={options}
-              components={MdxComponents}
-            />
-          )}
+          {blog && <MDXRemote source={blog.content} options={options} components={MdxComponents} />}
 
           <div className="mb-8 mt-12">
             <div className="mb-1 text-xs text-gray-400">LAST UPDATED:</div>

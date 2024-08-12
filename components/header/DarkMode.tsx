@@ -41,9 +41,7 @@ export default function DarkMode() {
             <Label
               htmlFor="r1"
               className={`flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border hover:text-gray-950 dark:hover:text-gray-50 ${
-                radio === "system"
-                  ? "border-gray-300 text-gray-950 dark:text-gray-50"
-                  : "border-transparent"
+                radio === "system" ? "border-gray-300 text-gray-950 dark:text-gray-50" : "border-transparent"
               }`}
             >
               <GearIcon className="h-5 w-5" />
@@ -53,9 +51,7 @@ export default function DarkMode() {
             <Label
               htmlFor="r2"
               className={`mx-1 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border hover:text-gray-950 dark:hover:text-gray-50 ${
-                radio === "light"
-                  ? "border-gray-500 text-gray-950"
-                  : "border-transparent"
+                radio === "light" ? "border-gray-500 text-gray-950" : "border-transparent"
               }`}
             >
               <SunIcon className="h-5 w-5" />
@@ -65,9 +61,7 @@ export default function DarkMode() {
             <Label
               htmlFor="r3"
               className={`flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border hover:text-gray-950 dark:hover:text-gray-50 ${
-                radio === "dark"
-                  ? "border-gray-300 text-gray-50"
-                  : "border-transparent"
+                radio === "dark" ? "border-gray-300 text-gray-50" : "border-transparent"
               }`}
             >
               <MoonIcon className="h-5 w-5" />

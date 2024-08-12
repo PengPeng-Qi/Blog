@@ -6,18 +6,12 @@ export default function Page() {
       <div className="mb-6 font-medium text-red-600">Tools</div>
 
       <div className="mb-3 flex leading-none hover:text-light-primary dark:hover:text-dark-primary">
-        <Link
-          href="https://www.npmjs.com/package/coder-prettier-config"
-          target="_blank"
-        >
+        <Link href="https://www.npmjs.com/package/coder-prettier-config" target="_blank">
           <span className="font-medium">Prettier Config</span>
         </Link>
       </div>
       <div className="mb-3 flex leading-none hover:text-light-primary dark:hover:text-dark-primary">
-        <Link
-          href="https://pengpeng-qi.github.io/nextjs-tailwind-starter-template/"
-          target="_blank"
-        >
+        <Link href="https://pengpeng-qi.github.io/nextjs-tailwind-starter-template/" target="_blank">
           <span className="font-medium">Next.js Tailwind Starter Template</span>
         </Link>
       </div>

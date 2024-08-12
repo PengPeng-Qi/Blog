@@ -7,9 +7,7 @@ export default async function Home() {
   let allBlogs: Blogs = await getAllBlogs();
 
   allBlogs = allBlogs.sort(
-    (blogA, blogB) =>
-      new Date(blogB.createdTime).getTime() -
-      new Date(blogA.createdTime).getTime(),
+    (blogA, blogB) => new Date(blogB.createdTime).getTime() - new Date(blogA.createdTime).getTime()
   );
 
   return (
@@ -26,9 +24,7 @@ export default async function Home() {
                 <span className="font-medium">{title}</span>
               </Link>
 
-              <div className="ml-2 text-xs text-gray-400 sm:mr-6">
-                {createdTime}
-              </div>
+              <div className="ml-2 text-xs text-gray-400 sm:mr-6">{createdTime}</div>
             </div>
           );
         })}

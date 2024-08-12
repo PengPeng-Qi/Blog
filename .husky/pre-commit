@@ -2,3 +2,5 @@
 # . "$(dirname "$0")/_/husky.sh"
 
 node ./.husky/scripts/update-modified-time.js
+
+npx lint-staged

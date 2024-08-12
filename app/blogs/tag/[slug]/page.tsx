@@ -11,10 +11,7 @@ export default async function Home({ params: { slug } }: Readonly<Props>) {
       {blogs.map(({ slug, title, createdTime }) => {
         return (
           <div key={slug + title} className="flex justify-between font-medium">
-            <Link
-              href={`/blogs/${slug}`}
-              className="hover:text-light-primary dark:hover:text-dark-primary"
-            >
+            <Link href={`/blogs/${slug}`} className="hover:text-light-primary dark:hover:text-dark-primary">
               <div>{title}</div>
             </Link>
 

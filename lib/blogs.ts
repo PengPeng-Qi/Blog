@@ -24,7 +24,7 @@ export async function getAllBlogs() {
         isPublish: data.isPublish ?? true,
         content,
       };
-    }),
+    })
   );
 
   return blogs.filter((blog) => blog.isPublish);
@@ -61,7 +61,7 @@ export async function getCurBlog(slug: string) {
           }, 1000);
         });
       }
-    }),
+    })
   );
 
   return blog;
@@ -87,7 +87,7 @@ export async function getAllTags() {
 
         if (!tags.includes(item)) tags.push(item);
       });
-    }),
+    })
   );
 
   tags.sort();
@@ -123,7 +123,7 @@ export async function getAllBlogsByTag(tag: string) {
           });
         }
       });
-    }),
+    })
   );
 
   return blogs;
