@@ -1,29 +1,52 @@
 import { MdxComponents } from "@/components/MdxComponent";
 import Toc from "@/components/mdx/Toc";
 import { getAllBlogs, getCurBlog } from "@/lib/blogs";
-import { Blogs, Props } from "@/types/blogs";
+import { Blog, Blogs } from "@/types/blogs";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
 
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+
+const options = {
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      () =>
+        rehypePrettyCode({
+          theme: {
+            dark: "github-dark-default",
+            light: "github-light-default",
+          },
+          defaultLang: "plaintext",
+        }),
+    ],
+  },
+};
+
+// 动态生成 metadata
+export async function generateMetadata({ params: { slug } }: Props) {
+  const blog: Blog | null = await getCurBlog(slug);
+
+  return {
+    title: blog?.title,
+    keywords: blog?.metadata.tag,
+  };
+}
+
+// 与动态路由结合使用，在购建时静态生成路由，不是在请求是按需生成路由
+export async function generateStaticParams() {
+  const blogs: Blogs = await getAllBlogs();
+
+  return blogs.map((blog) => ({ slug: blog.slug }));
+}
+
 export default async function Page({ params: { slug } }: Readonly<Props>) {
   const blog = await getCurBlog(slug);
-
-  const options = {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [
-        () =>
-          rehypePrettyCode({
-            theme: {
-              dark: "github-dark-default",
-              light: "github-light-default",
-            },
-            defaultLang: "plaintext",
-          }),
-      ],
-    },
-  };
 
   return (
     <div>
@@ -48,12 +71,4 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
       </div>
     </div>
   );
-}
-
-export async function generateStaticParams() {
-  const blogs: Blogs = await getAllBlogs();
-
-  return blogs.map((blog) => ({
-    slug: blog.slug,
-  }));
 }

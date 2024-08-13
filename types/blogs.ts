@@ -9,9 +9,3 @@ export type Blog = {
 };
 
 export type Blogs = Blog[];
-
-export type Props = {
-  params: {
-    slug: string;
-  };
-};
