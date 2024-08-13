@@ -55,7 +55,7 @@ export const MdxComponents: MDXComponentsProps = {
   code: (props) => <code className="rounded-md px-4" {...props} />,
   blockquote: (props) => (
     <blockquote
-      className="my-4 border-l-4 border-gray-600 bg-gray-100 p-2 pl-4 dark:border-gray-400 dark:bg-neutral-950"
+      className="my-4 border-l-4 border-gray-600 bg-gray-100 p-2 pl-4 dark:border-gray-400 dark:bg-gray-950"
       {...props}
     />
   ),
