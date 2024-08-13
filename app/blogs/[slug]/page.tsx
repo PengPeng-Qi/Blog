@@ -1,16 +1,10 @@
 import { MdxComponents } from "@/components/MdxComponent";
 import Toc from "@/components/mdx/Toc";
 import { getAllBlogs, getCurBlog } from "@/lib/blogs";
-import { Blog, Blogs } from "@/types/blogs";
+import { Blog, Blogs, Props } from "@/types/blogs";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
-
-type Props = {
-  params: {
-    slug: string;
-  };
-};
 
 const options = {
   mdxOptions: {
