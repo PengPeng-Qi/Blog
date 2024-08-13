@@ -1,7 +1,13 @@
 import Tags from "@/components/Tags";
 import { getAllBlogs } from "@/lib/blogs";
 import { Blogs } from "@/types/blogs";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "碰碰漆的博客",
+  keywords: ["博客", "程序员"],
+};
 
 export default async function Home() {
   let allBlogs: Blogs = await getAllBlogs();
