@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const CanvasComponent = () => {
@@ -94,7 +95,15 @@ const CanvasComponent = () => {
     loadP5();
   }, []);
 
-  return <div ref={canvasRef} className="pointer-events-none fixed bottom-0 left-0 right-0 top-0 -z-10 dark:invert" />;
+  return (
+    <motion.div
+      ref={canvasRef}
+      className="pointer-events-none fixed bottom-0 left-0 right-0 top-0 -z-10 dark:invert"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2 }}
+    />
+  );
 };
 
 export default CanvasComponent;
