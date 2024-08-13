@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`bg-zinc-50 text-gray-700 dark:bg-neutral-950 dark:text-gray-300`}>
+      <body className={`bg-gary-100 text-gray-900 dark:bg-neutral-900 dark:text-gray-100`}>
         <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
           <div className="mx-8 mt-16 sm:mx-12 lg:mx-32">{children}</div>
