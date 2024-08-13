@@ -2,8 +2,19 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "碰碰漆的博客 - 项目",
-  keywords: ["项目", "碰碰漆的博客", "Prettier配置", "Next.js模板", "VSCode插件", "blog", "VSCode Extension"],
+  title: "碰碰漆的博客 - Projects",
+  keywords: [
+    "项目",
+    "Tools",
+    "碰碰漆的博客",
+    "Prettier 配置",
+    "Prettier Config",
+    "Next.js 模板",
+    "Next.js Template",
+    "VSCode 插件",
+    "blog",
+    "VSCode Extension",
+  ],
 };
 
 export default function Page() {
