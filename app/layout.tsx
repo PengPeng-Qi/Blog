@@ -25,10 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        suppressHydrationWarning={true}
-        className={`${jetBrains_mono.variable} bg-zinc-50 text-gray-700 dark:bg-neutral-950 dark:text-gray-300`}
-      >
+      <body className={`${jetBrains_mono.variable} bg-zinc-50 text-gray-700 dark:bg-neutral-950 dark:text-gray-300`}>
         <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
           <div className="mx-8 mt-16 sm:mx-12 lg:mx-32">{children}</div>
