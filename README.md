@@ -31,7 +31,7 @@
 ### Tool
 
 - [x] Prettier Config
-- [ ] NextJS Template
+- [x] NextJS Template
 - [ ] VSCode Extension
 
 ### 100 Demos
@@ -53,7 +53,7 @@
 
 ### SEO 优化
 
-- [ ] 每个文章的 SEO 优化
+- [x] 每个文章的 SEO 优化
 
 ### 移动端适配
 

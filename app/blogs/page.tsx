@@ -20,7 +20,7 @@ export default async function Home() {
     <div className="flex cursor-pointer justify-between">
       <div>
         <div className="mb-6 font-medium text-red-600">RECENTLY PUBLISHED</div>
-        {allBlogs.map(({ title, slug, createdTime }, index) => {
+        {allBlogs.map(({ title, slug, createdTime }) => {
           return (
             <div
               key={title + slug}
