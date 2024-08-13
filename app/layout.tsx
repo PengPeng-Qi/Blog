@@ -1,6 +1,6 @@
 import ArtDots from "@/components/ArtDots";
 import Header from "@/components/Header";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
