@@ -43,7 +43,7 @@ export default function Search() {
       <Button
         variant="outline"
         size="sm"
-        className="flex w-56 flex-1 justify-between dark:hover:bg-neutral-950"
+        className="flex w-56 flex-1 justify-between duration-0"
         onClick={() => setOpen(true)}
       >
         <span>Search ...</span>

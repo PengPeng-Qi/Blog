@@ -40,7 +40,7 @@ export default function DarkMode() {
             <RadioGroupItem value="system" id="r1" />
             <Label
               htmlFor="r1"
-              className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50 ${
+              className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
                 radio === "system" ? "text-neutral-900 dark:text-neutral-100" : ""
               }`}
             >
@@ -50,7 +50,7 @@ export default function DarkMode() {
             <RadioGroupItem value="light" id="r2" />
             <Label
               htmlFor="r2"
-              className={`mx-1 flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50 ${
+              className={`mx-1 flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
                 radio === "light" ? "text-neutral-900" : ""
               }`}
             >
@@ -60,7 +60,7 @@ export default function DarkMode() {
             <RadioGroupItem value="dark" id="r3" />
             <Label
               htmlFor="r3"
-              className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50 ${
+              className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
                 radio === "dark" ? "text-neutral-100" : ""
               }`}
             >
