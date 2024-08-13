@@ -26,23 +26,11 @@
 - [x] 强化 `mdx` 添加标题索引
 - [x] 通过创建文章和修改文章自动生成时间字段（待整理为文章）
 
-## Project
-
-### Tool
+## Projects
 
 - [x] Prettier Config
 - [x] NextJS Template
-- [ ] VSCode Extension
-
-### 100 Demos
-
-- [ ] dark mode
-- [ ] Logo 动画
-- [ ] 背景图
-
-### Products
-
-> 待产生灵感
+- [x] 100 days demo
 
 ## About Me
 

@@ -53,6 +53,10 @@ const Config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "underline": {
+          DEFAULT: "hsl(var(--underline))",
+          foreground: "hsl(var(--primary))",
+        },
         "dark-primary": "hsl(230deg, 100%, 69%)",
         "light-primary": "hsl(245deg, 100%, 60%)",
         "light-card-primary": "hsl(200deg, 75%, 80%)",

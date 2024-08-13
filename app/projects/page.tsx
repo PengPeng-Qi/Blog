@@ -1,44 +1,33 @@
+import { Button } from "@/components/ui/button";
 import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "碰碰漆的博客 - Projects",
-  keywords: [
-    "项目",
-    "Tools",
-    "碰碰漆的博客",
-    "Prettier 配置",
-    "Prettier Config",
-    "Next.js 模板",
-    "Next.js Template",
-    "VSCode 插件",
-    "blog",
-    "VSCode Extension",
-  ],
+  keywords: ["Prettier 配置", "Prettier Config", "Next.js 模板", "Next.js Template", "demos", "css demo", "前端 demo"],
 };
 
 export default function Page() {
   return (
     <div className="cursor-pointer">
-      <div className="mb-6 font-medium text-red-600">Tools</div>
+      <div className="mb-6 text-xl font-medium">Projects</div>
 
-      <div className="mb-3 flex leading-none hover:text-light-primary dark:hover:text-dark-primary">
-        <Link href="https://www.npmjs.com/package/coder-prettier-config" target="_blank">
-          <span className="font-medium">Prettier Config</span>
-        </Link>
-      </div>
-      <div className="mb-3 flex leading-none hover:text-light-primary dark:hover:text-dark-primary">
-        <Link href="https://pengpeng-qi.github.io/nextjs-tailwind-starter-template/" target="_blank">
-          <span className="font-medium">Next.js Tailwind Starter Template</span>
-        </Link>
-      </div>
-      <div className="mb-3 flex leading-none hover:text-light-primary dark:hover:text-dark-primary">
-        <div className="relative">
-          <span className="font-medium">VSCode Extension</span>
-          <span className="absolute -right-9 -top-2 rounded-full border border-neutral-400 px-1 text-xs text-neutral-400">
-            to do
-          </span>
-        </div>
+      <div className="text mt-9">
+        <Button variant="link" className="block pl-0">
+          <Link href="https://www.npmjs.com/package/coder-prettier-config" target="_blank">
+            Prettier Config
+          </Link>
+        </Button>
+        <Button variant="link" className="block pl-0">
+          <Link href="https://pengpeng-qi.github.io/nextjs-tailwind-starter-template/" target="_blank">
+            <span className="font-medium">Next.js Tailwind Starter Template</span>
+          </Link>
+        </Button>
+        <Button variant="link" className="block pl-0">
+          <Link href="https://pengpeng-qi.github.io/100-days-demo/" target="_blank">
+            <span className="font-medium">100 Days Demo</span>
+          </Link>
+        </Button>
       </div>
     </div>
   );
