@@ -30,7 +30,7 @@ export default async function Home() {
                 <span className="font-medium">{title}</span>
               </Link>
 
-              <div className="ml-2 text-xs text-gray-400 sm:mr-6">{createdTime}</div>
+              <div className="ml-2 text-xs text-neutral-400 sm:mr-6">{createdTime}</div>
             </div>
           );
         })}

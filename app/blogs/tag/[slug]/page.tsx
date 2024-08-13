@@ -15,7 +15,7 @@ export default async function Home({ params: { slug } }: Readonly<Props>) {
               <div>{title}</div>
             </Link>
 
-            <div className="text-gray-400">{createdTime}</div>
+            <div className="text-neutral-400">{createdTime}</div>
           </div>
         );
       })}

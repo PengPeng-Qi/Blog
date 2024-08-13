@@ -34,7 +34,7 @@ interface MDXComponentsProps {
 export const MdxComponents: MDXComponentsProps = {
   h1: (props) => <Heading level={1} className="mb-4 mt-6 text-4xl font-semibold" {...props} />,
   h2: (props) => (
-    <Heading level={2} className="mb-4 mt-6 border-b-2 border-gray-200 pb-2 text-3xl font-medium" {...props} />
+    <Heading level={2} className="mb-4 mt-6 border-b-2 border-neutral-200 pb-2 text-3xl font-medium" {...props} />
   ),
   h3: (props) => <Heading level={3} className="mb-4 mt-6 text-2xl font-medium" {...props} />,
   h4: (props) => <Heading level={4} className="mb-4 mt-6 text-xl font-medium" {...props} />,
@@ -43,7 +43,7 @@ export const MdxComponents: MDXComponentsProps = {
   a: ({ href, children }) => (
     <Link
       href={href as string}
-      className="text-gray-950 underline decoration-gray-300 underline-offset-8 transition-colors duration-500 ease-in-out hover:decoration-gray-800 dark:text-gray-100 dark:decoration-gray-900 dark:hover:decoration-gray-200"
+      className="text-neutral-950 underline decoration-neutral-300 underline-offset-8 transition-colors duration-500 ease-in-out hover:decoration-neutral-800 dark:text-neutral-100 dark:decoration-neutral-900 dark:hover:decoration-neutral-200"
     >
       {children}
     </Link>
@@ -55,7 +55,7 @@ export const MdxComponents: MDXComponentsProps = {
   code: (props) => <code className="rounded-md px-4" {...props} />,
   blockquote: (props) => (
     <blockquote
-      className="my-4 border-l-4 border-gray-600 bg-gray-100 p-2 pl-4 dark:border-gray-400 dark:bg-gray-950"
+      className="my-4 border-l-4 border-neutral-600 bg-neutral-100 p-2 pl-4 dark:border-neutral-400 dark:bg-neutral-950"
       {...props}
     />
   ),

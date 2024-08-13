@@ -35,7 +35,7 @@ export default function Page() {
       <div className="mb-3 flex leading-none hover:text-light-primary dark:hover:text-dark-primary">
         <div className="relative">
           <span className="font-medium">VSCode Extension</span>
-          <span className="absolute -right-9 -top-2 rounded-full border border-gray-400 px-1 text-xs text-gray-400">
+          <span className="absolute -right-9 -top-2 rounded-full border border-neutral-400 px-1 text-xs text-neutral-400">
             to do
           </span>
         </div>

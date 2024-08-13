@@ -46,7 +46,7 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
     <div>
       <div className="mb-10">
         <div className="mb-2 text-4xl font-bold">{blog?.title}</div>
-        <div className="text text-gray-400">{blog?.createdTime}</div>
+        <div className="text text-neutral-400">{blog?.createdTime}</div>
       </div>
 
       <div className="flex justify-between">
@@ -54,7 +54,7 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
           {blog && <MDXRemote source={blog.content} options={options} components={MdxComponents} />}
 
           <div className="mb-8 mt-12">
-            <div className="mb-1 text-xs text-gray-400">LAST UPDATED:</div>
+            <div className="mb-1 text-xs text-neutral-400">LAST UPDATED:</div>
             <div>{blog?.modifiedTime}</div>
           </div>
         </article>
