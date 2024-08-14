@@ -19,11 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system">
+        <ThemeProvider attribute="class">
           <Header />
           <div className="mx-8 mt-16 sm:mx-12 lg:mx-32">{children}</div>
-          <Toaster />
 
+          <Toaster />
           <ArtDots />
           {process.env.NODE_ENV === "production" ? <Analytics /> : <></>}
         </ThemeProvider>
