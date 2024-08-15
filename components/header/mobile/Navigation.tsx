@@ -1,8 +1,8 @@
 "use client";
+import DarkMode from "@/components/header/DarkMode";
+import DemoIcon from "@/components/header/DemoIcon";
+import GitHubIcon from "@/components/header/GithubIcon";
 import { motion } from "framer-motion";
-import DarkMode from "./DarkMode";
-import DemoIcon from "./DemoIcon";
-import GitHubIcon from "./GithubIcon";
 import { MenuItem } from "./MenuItem";
 
 const variants = {

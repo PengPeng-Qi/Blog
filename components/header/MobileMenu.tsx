@@ -1,6 +1,6 @@
 "use client";
 import { motion, useCycle } from "framer-motion";
-import { MenuToggle } from "./MenuToggle";
+import { MenuToggle } from "./mobile/MenuToggle";
 import { Navigation } from "./Navigation";
 
 const sidebar = {
