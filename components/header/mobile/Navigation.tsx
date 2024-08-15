@@ -2,6 +2,7 @@
 import DarkMode from "@/components/header/DarkMode";
 import DemoIcon from "@/components/header/DemoIcon";
 import GitHubIcon from "@/components/header/GithubIcon";
+import { MenuStructure } from "@/config/menu";
 import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
 
@@ -20,17 +21,12 @@ const variants = {
 };
 
 export const Navigation = () => {
-  const menus = [
-    { name: "Blogs", path: "/blogs" },
-    { name: "Projects", path: "/projects" },
-  ];
-
   return (
     <motion.ul variants={variants}>
       <div className="flex h-screen items-center">
         <div className={`my-60 flex h-2/3 w-screen flex-col justify-between py-8 pl-4`}>
           <div>
-            {menus.map((menu, index) => (
+            {MenuStructure.map((menu, index) => (
               <div className="relative mb-4 w-1/2 cursor-pointer" key={menu.name + index}>
                 <MenuItem menu={menu} index={index} />
               </div>

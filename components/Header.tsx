@@ -1,5 +1,6 @@
 "use client";
 
+import { MenuStructure } from "@/config/menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
@@ -14,7 +15,6 @@ import Search from "./header/Search";
 
 export default function Header() {
   const pathName = usePathname();
-  const menus = ["blogs", "projects"];
 
   const menuWithNodeMap = useMemo(() => new Map<string, HTMLElement>(), []); // 存储每个 menu 对应的 node 元素
   const annotatesMap = useMemo(() => new Map<string, RoughAnnotation>(), []); // 存储每个 menu 对应的线
@@ -22,7 +22,7 @@ export default function Header() {
   // 选中的菜单划线
   useEffect(() => {
     menuWithNodeMap.forEach((node, menuName) => {
-      if (pathName.includes(menuName)) {
+      if (pathName.includes(menuName.toLowerCase())) {
         // 如果从来没有划过线
         if (!annotatesMap.has(menuName)) {
           const activeNode = annotate(node, {
@@ -77,20 +77,19 @@ export default function Header() {
 
           <div className="hidden sm:ml-16 lg:block">
             <div className="flex items-center justify-center font-medium">
-              {menus.map((menu) => {
+              {MenuStructure.map(({ name, path }) => {
                 return (
                   <Link
-                    href={`/${menu}`}
-                    id={menu}
-                    key={menu}
+                    href={path}
+                    key={name}
                     ref={(node) => {
                       if (node) {
-                        menuWithNodeMap.set(menu, node);
+                        menuWithNodeMap.set(name, node);
                       }
                     }}
                     className="mr-8 hover:text-light-primary dark:hover:text-dark-primary sm:mr-10"
                   >
-                    {menu[0].toUpperCase() + menu.slice(1)}
+                    {name}
                   </Link>
                 );
               })}
