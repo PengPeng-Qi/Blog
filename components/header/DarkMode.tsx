@@ -9,9 +9,10 @@ import { useEffect, useState } from "react";
 type radioType = "dark" | "light" | "system";
 
 export default function DarkMode() {
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [radio, setRadio] = useState<radioType | undefined>(undefined);
 
+  // 初始值
   useEffect(() => {
     const storedTheme = window.localStorage.getItem("theme") as radioType;
 
@@ -19,6 +20,7 @@ export default function DarkMode() {
       setRadio(storedTheme);
     } else {
       setRadio("system");
+      setTheme("system");
     }
   }, []);
 
@@ -28,15 +30,21 @@ export default function DarkMode() {
     }
   }, [radio]);
 
+  useEffect(() => {
+    if (theme) {
+      setRadio(theme as radioType); // 将 theme 同步到 radio
+    }
+  }, [theme]);
+
   return (
     <div className="flex items-center">
       <div className="mx-3 flex h-7 items-center rounded-full border border-neutral-400">
         <RadioGroup
           value={radio}
+          className="flex items-center justify-center"
           onValueChange={(value) => {
             setRadio(value as radioType);
           }}
-          className="flex items-center justify-center"
         >
           <RadioGroupItem value="system" id="r1" />
           <Label
