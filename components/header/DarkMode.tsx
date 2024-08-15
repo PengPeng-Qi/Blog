@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 type radioType = "dark" | "light" | "system";
 
 export default function DarkMode() {
-  const Theme = useTheme();
+  const { setTheme } = useTheme();
   const [radio, setRadio] = useState<radioType | undefined>(undefined);
 
   useEffect(() => {
@@ -24,16 +24,18 @@ export default function DarkMode() {
 
   useEffect(() => {
     if (radio) {
-      Theme.setTheme(radio);
+      setTheme(radio);
     }
-  }, [radio, Theme]);
+  }, [radio]);
 
   return (
     <div className="flex items-center">
       <div className="mx-3 flex h-7 items-center rounded-full border border-neutral-400">
         <RadioGroup
           value={radio}
-          onValueChange={(value) => setRadio(value as radioType)}
+          onValueChange={(value) => {
+            setRadio(value as radioType);
+          }}
           className="flex items-center justify-center"
         >
           <RadioGroupItem value="system" id="r1" />

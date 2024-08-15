@@ -40,7 +40,7 @@ export const Navigation = () => {
           <div className="mb-4 flex w-1/2 cursor-pointer">
             <GitHubIcon />
             <DemoIcon />
-            <DarkMode />
+            {/* <DarkMode /> */}
           </div>
         </div>
       </div>

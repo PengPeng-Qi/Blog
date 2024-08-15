@@ -103,7 +103,7 @@ export default function Header() {
             <Search />
             <GitHubIcon />
             <DemoIcon />
-            {/* <DarkMode /> */}
+            <DarkMode />
           </div>
         </div>
 
