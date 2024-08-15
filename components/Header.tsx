@@ -8,6 +8,7 @@ import { RoughAnnotation } from "rough-notation/lib/model";
 import DarkMode from "./header/DarkMode";
 import DemoIcon from "./header/DemoIcon";
 import GitHubIcon from "./header/GithubIcon";
+import MobileMenu from "./header/MobileMenu";
 import MyLogo from "./header/MyLogo";
 import Search from "./header/Search";
 
@@ -65,43 +66,53 @@ export default function Header() {
   }, []);
 
   return (
-    <div
-      className={`sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-2 ${isScrolled ? "backdrop-blur" : ""} sm:px-6 lg:px-32`}
-    >
-      <div className="mx-3 flex items-center justify-center lg:mx-0">
-        <div className="h-8 w-8">
-          <MyLogo />
+    <>
+      <div
+        className={`sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-2 ${isScrolled ? "backdrop-blur" : ""} sm:px-6 lg:px-32`}
+      >
+        <div className="mx-3 flex items-center justify-center lg:mx-0">
+          <div className="h-8 w-8">
+            <MyLogo />
+          </div>
+
+          <div className="hidden sm:ml-16 lg:block">
+            <div className="flex items-center justify-center font-medium">
+              {menus.map((menu) => {
+                return (
+                  <Link
+                    href={`/${menu}`}
+                    id={menu}
+                    key={menu}
+                    ref={(node) => {
+                      if (node) {
+                        menuWithNodeMap.set(menu, node);
+                      }
+                    }}
+                    className="mr-8 hover:text-light-primary dark:hover:text-dark-primary sm:mr-10"
+                  >
+                    {menu[0].toUpperCase() + menu.slice(1)}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        <div className="hidden sm:ml-16 lg:block">
-          <div className="flex items-center justify-center font-medium">
-            {menus.map((menu) => {
-              return (
-                <Link
-                  href={`/${menu}`}
-                  id={menu}
-                  key={menu}
-                  ref={(node) => {
-                    if (node) {
-                      menuWithNodeMap.set(menu, node);
-                    }
-                  }}
-                  className="mr-8 hover:text-light-primary dark:hover:text-dark-primary sm:mr-10"
-                >
-                  {menu[0].toUpperCase() + menu.slice(1)}
-                </Link>
-              );
-            })}
+        <div className="hidden sm:block">
+          <div className="flex">
+            <Search />
+            <GitHubIcon />
+            <DemoIcon />
+            {/* <DarkMode /> */}
+          </div>
+        </div>
+
+        <div className="block sm:hidden">
+          <div className="fixed right-0 top-0 z-50">
+            <MobileMenu />
           </div>
         </div>
       </div>
-
-      <div className="flex flex-1 sm:flex-grow-0">
-        <Search />
-        <GitHubIcon />
-        <DemoIcon />
-        <DarkMode />
-      </div>
-    </div>
+    </>
   );
 }

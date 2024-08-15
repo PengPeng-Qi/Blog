@@ -30,44 +30,42 @@ export default function DarkMode() {
 
   return (
     <div className="flex items-center">
-      <div className="hidden sm:block">
-        <div className="mx-3 flex h-7 items-center rounded-full border border-neutral-400">
-          <RadioGroup
-            value={radio}
-            onValueChange={(value) => setRadio(value as radioType)}
-            className="flex items-center justify-center"
+      <div className="mx-3 flex h-7 items-center rounded-full border border-neutral-400">
+        <RadioGroup
+          value={radio}
+          onValueChange={(value) => setRadio(value as radioType)}
+          className="flex items-center justify-center"
+        >
+          <RadioGroupItem value="system" id="r1" />
+          <Label
+            htmlFor="r1"
+            className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
+              radio === "system" ? "text-neutral-900 dark:text-neutral-100" : ""
+            }`}
           >
-            <RadioGroupItem value="system" id="r1" />
-            <Label
-              htmlFor="r1"
-              className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
-                radio === "system" ? "text-neutral-900 dark:text-neutral-100" : ""
-              }`}
-            >
-              <GearIcon className="h-5 w-5" />
-            </Label>
+            <GearIcon className="h-5 w-5" />
+          </Label>
 
-            <RadioGroupItem value="light" id="r2" />
-            <Label
-              htmlFor="r2"
-              className={`mx-1 flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
-                radio === "light" ? "text-neutral-900" : ""
-              }`}
-            >
-              <SunIcon className="h-5 w-5" />
-            </Label>
+          <RadioGroupItem value="light" id="r2" />
+          <Label
+            htmlFor="r2"
+            className={`mx-1 flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
+              radio === "light" ? "text-neutral-900" : ""
+            }`}
+          >
+            <SunIcon className="h-5 w-5" />
+          </Label>
 
-            <RadioGroupItem value="dark" id="r3" />
-            <Label
-              htmlFor="r3"
-              className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
-                radio === "dark" ? "text-neutral-100" : ""
-              }`}
-            >
-              <MoonIcon className="h-5 w-5" />
-            </Label>
-          </RadioGroup>
-        </div>
+          <RadioGroupItem value="dark" id="r3" />
+          <Label
+            htmlFor="r3"
+            className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
+              radio === "dark" ? "text-neutral-100" : ""
+            }`}
+          >
+            <MoonIcon className="h-5 w-5" />
+          </Label>
+        </RadioGroup>
       </div>
     </div>
   );
