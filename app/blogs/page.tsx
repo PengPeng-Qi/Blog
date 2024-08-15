@@ -1,4 +1,5 @@
 import Tags from "@/components/Tags";
+import { Button } from "@/components/ui/button";
 import { getAllBlogs } from "@/lib/blogs";
 import { Blogs } from "@/types/blogs";
 import { Metadata } from "next";
@@ -19,18 +20,16 @@ export default async function Home() {
   return (
     <div className="flex cursor-pointer justify-between">
       <div>
-        <div className="mb-6 font-medium text-red-600">RECENTLY PUBLISHED</div>
+        <div className="mb-8 text-2xl font-medium">RECENTLY PUBLISHED</div>
+
         {allBlogs.map(({ title, slug, createdTime }) => {
           return (
-            <div
-              key={title + slug}
-              className="mb-3 flex leading-none hover:text-light-primary dark:hover:text-dark-primary"
-            >
-              <Link href={"/blogs/" + slug}>
-                <span className="font-medium">{title}</span>
-              </Link>
+            <div key={title + slug} className="flex">
+              <Button variant="link" className="text-light block pl-0 pr-2">
+                <Link href={"/blogs/" + slug}>{title}</Link>
+              </Button>
 
-              <div className="ml-2 text-xs text-neutral-400 sm:mr-6">{createdTime}</div>
+              <div className="py-2 text-xs text-neutral-400 sm:mr-6">{createdTime}</div>
             </div>
           );
         })}

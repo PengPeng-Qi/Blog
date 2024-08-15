@@ -28,7 +28,7 @@ export const Navigation = () => {
   return (
     <motion.ul variants={variants}>
       <div className="flex h-screen items-center">
-        <div className={`my-60 flex h-2/3 w-screen flex-col justify-between py-8 pl-6`}>
+        <div className={`my-60 flex h-2/3 w-screen flex-col justify-between py-8 pl-4`}>
           <div>
             {menus.map((menu, index) => (
               <div className="relative mb-4 w-1/2 cursor-pointer" key={menu.name + index}>
