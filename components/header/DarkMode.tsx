@@ -1,8 +1,9 @@
 "use client";
 
 import { Label } from "@/components/ui/label";
-import { GearIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -48,32 +49,56 @@ export default function DarkMode() {
 
   return (
     <div className="flex items-center">
-      <div className="mx-3 flex h-7 w-14 items-center rounded-full border border-neutral-400">
+      <div className="mx-3 flex h-7 w-7 items-center">
         {mounted && (
           <RadioGroup
             value={radio}
             className="flex items-center justify-center"
             onValueChange={(value) => updateTheme(value as radioType)}
           >
-            <RadioGroupItem value="light" id="r2" />
-            <Label
-              htmlFor="r2"
-              className={`mx-1 flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
-                radio === "light" ? "text-neutral-900" : ""
-              }`}
-            >
-              <SunIcon className="h-5 w-5" />
-            </Label>
-
-            <RadioGroupItem value="dark" id="r3" />
-            <Label
-              htmlFor="r3"
-              className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50 ${
-                radio === "dark" ? "text-neutral-100" : ""
-              }`}
-            >
-              <MoonIcon className="h-5 w-5" />
-            </Label>
+            {radio === "dark" ? (
+              <>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                  }}
+                  transition={{
+                    duration: 0.2,
+                    type: "spring",
+                  }}
+                >
+                  <Label
+                    htmlFor="r2"
+                    className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50`}
+                  >
+                    <MoonIcon className="h-5 w-5" />
+                  </Label>
+                </motion.div>
+                <RadioGroupItem value="light" id="r2" />
+              </>
+            ) : (
+              <>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                  }}
+                  transition={{
+                    duration: 0.2,
+                    type: "spring",
+                  }}
+                >
+                  <Label
+                    htmlFor="r3"
+                    className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50`}
+                  >
+                    <SunIcon className="h-5 w-5" />
+                  </Label>
+                </motion.div>
+                <RadioGroupItem value="dark" id="r3" />
+              </>
+            )}
           </RadioGroup>
         )}
       </div>
