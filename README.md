@@ -7,7 +7,7 @@
 - [ ] Project
 - [x] Search
 - [x] GitHub Link
-- [x] Dark Mode（待优化：改造三个模式）
+- [x] Dark Mode
 
 ## Article
 
@@ -51,4 +51,4 @@
 
 - [x] 背景
 - [x] logo
-- [x] 交互
+- [ ] dark theme 切换
