@@ -8,12 +8,57 @@ import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-type radioType = "dark" | "light";
+const svgVariants = {
+  hidden: () => {
+    return {
+      rotate: "-90deg",
+      scale: 1.65,
+      transition: { type: "spring", damping: 12 },
+    };
+  },
+  visible: () => {
+    return {
+      rotate: "90deg",
+      scale: 1.2,
+      transition: { type: "spring", damping: 18 },
+    };
+  },
+};
+const circleVariants = {
+  hidden: (index: number) => {
+    const angle = (index * Math.PI * 2) / 6; // 计算每个圆点的角度
+    const x = -Math.cos(angle) * 8; // 大圆的中心点
+    const y = -Math.sin(angle) * 8; // 大圆的中心点
+    return {
+      opacity: 0,
+      x: x,
+      y: y,
+      transition: { duration: 0.1 },
+    };
+  },
+  visible: (index: number) => {
+    return {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: { duration: 0.35, delay: 0.15 + index * 0.1, type: "spring", damping: 25, stiffness: 200 },
+    };
+  },
+};
+
+const circles = [
+  { cx: 16.5, cy: 9 },
+  { cx: 13, cy: 15.928203 },
+  { cx: 5, cy: 15.928203 },
+  { cx: 1.5, cy: 9 },
+  { cx: 5, cy: 2.071797 },
+  { cx: 13, cy: 2.071797 },
+];
 
 export default function DarkMode() {
-  const { theme, systemTheme, setTheme } = useTheme();
+  const { theme, systemTheme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [radio, setRadio] = useState<radioType | undefined>(undefined);
+  const [animateState, setAnimateState] = useState("visible");
   const [isUpdatedTheme, setIsUpdatedTheme] = useState(false);
 
   /**
@@ -28,17 +73,31 @@ export default function DarkMode() {
 
     // 如果当前值为系统值，则按钮跟随系统主题
     if (theme === "system") {
-      setRadio(systemTheme);
+      if (systemTheme === "dark") {
+        setAnimateState("hidden");
+      } else {
+        setAnimateState("visible");
+      }
+
       // 如果不为系统模式，则按钮跟随 theme
     } else if (["light", "dark"].includes(theme)) {
-      setRadio(theme as radioType);
+      if (theme === "dark") {
+        setAnimateState("hidden");
+      } else {
+        setAnimateState("visible");
+      }
     }
   }, [theme, systemTheme]);
 
   // 手动设置 theme
-  const updateTheme = (value: radioType) => {
-    setTheme(value);
+  const updateTheme = () => {
     setIsUpdatedTheme(true);
+
+    if (animateState === "hidden") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
   };
 
   // 如果已经修改过 theme 值，则系统颜色再变更的话跟随主题色
@@ -50,71 +109,50 @@ export default function DarkMode() {
 
   return (
     <div className="flex items-center">
-      <div className="mx-3 flex h-7 w-7 items-center">
+      <div className="mx-5 flex h-7 w-7 items-center">
         {mounted && (
-          <RadioGroup
-            value={radio}
-            className="flex items-center justify-center"
-            onValueChange={(value) => updateTheme(value as radioType)}
-          >
-            {radio === "dark" ? (
-              <>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  transition={{
-                    duration: 0.2,
-                    type: "spring",
-                  }}
-                >
-                  <HoverCard>
-                    <HoverCardTrigger>
-                      <Label
-                        htmlFor="r2"
-                        className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50`}
-                      >
-                        <MoonIcon className="h-5 w-5" />
-                      </Label>
-                    </HoverCardTrigger>
-                    <HoverCardContent className="w-28 border-0 bg-transparent p-0 text-center text-xs shadow-none">
-                      Activity light mode
-                    </HoverCardContent>
-                  </HoverCard>
-                </motion.div>
-                <RadioGroupItem value="light" id="r2" />
-              </>
-            ) : (
-              <>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  transition={{
-                    duration: 0.2,
-                    type: "spring",
-                  }}
-                >
-                  <HoverCard>
-                    <HoverCardTrigger>
-                      <Label
-                        htmlFor="r3"
-                        className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50`}
-                      >
-                        <SunIcon className="h-5 w-5" />
-                      </Label>
-                    </HoverCardTrigger>
-                    <HoverCardContent className="w-28 border-0 bg-transparent p-0 text-xs shadow-none">
-                      Activity dark mode
-                    </HoverCardContent>
-                  </HoverCard>
-                </motion.div>
-                <RadioGroupItem value="dark" id="r3" />
-              </>
-            )}
-          </RadioGroup>
+          <HoverCard>
+            <HoverCardTrigger>
+              <motion.svg
+                width="18"
+                height="18"
+                fontSize={24}
+                viewBox="0 0 18 18"
+                variants={svgVariants}
+                initial="hidden"
+                animate={animateState}
+                fill="hsl(0 0% 63.9%)"
+                whileHover={{
+                  fill: resolvedTheme === "dark" ? "hsl(0 0% 98%)" : "hsl(0 0% 3.9%)",
+                }}
+                onClick={updateTheme}
+              >
+                <motion.circle cx="9" cy="9" r="5" />
+                <motion.circle
+                  cx="12"
+                  cy="12"
+                  r="5"
+                  fill={resolvedTheme === "dark" ? "hsl(0 0% 3.9%)" : "transparent"}
+                />
+
+                {circles.map((circle, index) => (
+                  <motion.circle
+                    key={index}
+                    cx={circle.cx}
+                    cy={circle.cy}
+                    r="1.5"
+                    variants={circleVariants}
+                    custom={index}
+                    initial="hidden"
+                    animate={animateState}
+                  />
+                ))}
+              </motion.svg>
+            </HoverCardTrigger>
+            <HoverCardContent className="w-28 border-0 bg-transparent p-0 text-center text-xs shadow-none">
+              {animateState === "visible" ? "Activity dark mode" : "Activity light mode"}
+            </HoverCardContent>
+          </HoverCard>
         )}
       </div>
     </div>
