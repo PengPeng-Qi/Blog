@@ -1,5 +1,6 @@
 "use client";
 
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Label } from "@/components/ui/label";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
@@ -68,12 +69,19 @@ export default function DarkMode() {
                     type: "spring",
                   }}
                 >
-                  <Label
-                    htmlFor="r2"
-                    className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50`}
-                  >
-                    <MoonIcon className="h-5 w-5" />
-                  </Label>
+                  <HoverCard>
+                    <HoverCardTrigger>
+                      <Label
+                        htmlFor="r2"
+                        className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50`}
+                      >
+                        <MoonIcon className="h-5 w-5" />
+                      </Label>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-28 border-0 bg-transparent p-0 text-center text-xs shadow-none">
+                      Activity light mode
+                    </HoverCardContent>
+                  </HoverCard>
                 </motion.div>
                 <RadioGroupItem value="light" id="r2" />
               </>
@@ -89,12 +97,19 @@ export default function DarkMode() {
                     type: "spring",
                   }}
                 >
-                  <Label
-                    htmlFor="r3"
-                    className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50`}
-                  >
-                    <SunIcon className="h-5 w-5" />
-                  </Label>
+                  <HoverCard>
+                    <HoverCardTrigger>
+                      <Label
+                        htmlFor="r3"
+                        className={`flex h-6 w-6 cursor-pointer items-center justify-center text-neutral-400 duration-300 hover:text-neutral-950 dark:hover:text-neutral-50`}
+                      >
+                        <SunIcon className="h-5 w-5" />
+                      </Label>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-28 border-0 bg-transparent p-0 text-xs shadow-none">
+                      Activity dark mode
+                    </HoverCardContent>
+                  </HoverCard>
                 </motion.div>
                 <RadioGroupItem value="dark" id="r3" />
               </>

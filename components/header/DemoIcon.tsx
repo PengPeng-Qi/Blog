@@ -1,13 +1,20 @@
 import { CubeIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "../ui/hover-card";
 
-export default function GitHubIcon() {
+export default function DemoIcon() {
   return (
-    <div className="group relative ml-4 flex items-center">
-      <Link href="https://pengpeng-qi.github.io/100-days-demo/" target="_blank">
-        <CubeIcon className="h-5 w-5 text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50" />
-      </Link>
-      <div className="absolute right-2 top-8 hidden p-2 text-xs group-hover:block sm:left-2">Demos</div>
+    <div className="relative ml-4 flex items-center">
+      <HoverCard>
+        <HoverCardTrigger asChild>
+          <Link href="https://pengpeng-qi.github.io/100-days-demo/" target="_blank">
+            <CubeIcon className="h-5 w-5 text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50" />
+          </Link>
+        </HoverCardTrigger>
+        <HoverCardContent className="w-12 border-0 bg-transparent p-0 text-center text-xs shadow-none">
+          Demos
+        </HoverCardContent>
+      </HoverCard>
     </div>
   );
 }
