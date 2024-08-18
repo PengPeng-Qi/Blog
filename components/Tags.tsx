@@ -1,5 +1,6 @@
 import { getAllTags } from "@/lib/blogs";
 import Link from "next/link";
+import { Badge } from "./ui/badge";
 
 export default async function Tags() {
   const tags = await getAllTags();
@@ -8,12 +9,9 @@ export default async function Tags() {
     <div className="flex max-w-64 flex-wrap">
       {tags.map((tag) => (
         <div key={tag} className="mb-4 duration-300 hover:scale-110">
-          <Link
-            className="mb-2 mr-2 cursor-pointer rounded-lg bg-light-card-primary px-4 py-1 text-xs dark:bg-dark-card-primary"
-            href={`/blogs/tag/${tag.toLowerCase()}`}
-          >
-            {tag}
-          </Link>
+          <Badge variant="secondary" className="mr-2">
+            <Link href={`/blogs/tag/${tag.toLowerCase()}`}>{tag}</Link>
+          </Badge>
         </div>
       ))}
     </div>

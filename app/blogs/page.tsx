@@ -36,7 +36,7 @@ export default async function Home() {
       </div>
 
       <div className="hidden sm:block">
-        <div className="mb-6 font-medium text-red-600">TOP CATEGORIES</div>
+        <div className="mb-6 font-medium">TOP CATEGORIES</div>
         <Tags />
       </div>
     </div>
