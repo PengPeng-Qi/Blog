@@ -4,6 +4,10 @@ export const projectsStructure = [
     label: "Next.js Tailwind Starter Template",
     link: "https://pengpeng-qi.github.io/nextjs-tailwind-starter-template/",
   },
+  {
+    label: "Vue3.0 ElementPlus Starter Template",
+    link: "https://github.com/PengPeng-Qi/vue3.0-element_plus-starter-template",
+  },
   { label: "100 Days Demo", link: "https://pengpeng-qi.github.io/100-days-demo/" },
   {
     label: "WeiBo Chrome Extension",
