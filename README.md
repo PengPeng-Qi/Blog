@@ -5,7 +5,8 @@
 - [x] Logo
 - [ ] Article
 - [ ] Project
-- [x] Search
+- [ ] About
+- [x] Search（待优化：搜索内容需要加上文章）
 - [x] GitHub Link
 - [x] Dark Mode
 
