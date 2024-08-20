@@ -108,7 +108,7 @@ export default function DarkMode() {
   }, [systemTheme, setTheme]);
 
   return (
-    <div className="flex items-center">
+    <div className="flex select-none items-center border">
       <div className="mx-5 flex h-7 w-7 items-center">
         {mounted && (
           <HoverCard>
