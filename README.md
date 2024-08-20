@@ -12,6 +12,7 @@
 ## Article
 
 - [ ] 阅读量排序
+- [ ] Tag 排序
 - [ ] 文章渐入动画
 - [ ] 加深对 `next-mdx-remote` 的理解
 - [ ] `MongoDB` 存储每篇文章的用户数据
@@ -51,4 +52,4 @@
 
 - [x] 背景
 - [x] logo
-- [ ] dark theme 切换
+- [x] dark theme 切换
