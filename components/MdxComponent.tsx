@@ -15,15 +15,9 @@ const Heading: React.FC<HeadingProps> = ({ level, className, children }) => {
   const headingId = children?.toString().replaceAll(" ", "-") ?? "";
 
   return (
-    <div className="group relative cursor-pointer">
-      <a href={"#" + headingId} className="z-2 absolute -left-8 w-8 text-center opacity-0 group-hover:opacity-100">
-        #
-      </a>
-      <div className="-z-2 absolute -left-8 w-8"></div>
-      <HeadingTag id={headingId} className={className}>
-        {children}
-      </HeadingTag>
-    </div>
+    <HeadingTag id={headingId} className={className}>
+      {children}
+    </HeadingTag>
   );
 };
 
@@ -32,14 +26,19 @@ interface MDXComponentsProps {
 }
 
 export const MdxComponents: MDXComponentsProps = {
-  h1: (props) => <Heading level={1} className="mb-4 mt-6 text-4xl font-semibold" {...props} />,
-  h2: (props) => (
-    <Heading level={2} className="mb-4 mt-6 border-b-2 border-neutral-200 pb-2 text-3xl font-medium" {...props} />
+  h1: (props) => (
+    <Heading level={1} className="mb-4 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl" {...props} />
   ),
-  h3: (props) => <Heading level={3} className="mb-4 mt-6 text-2xl font-medium" {...props} />,
-  h4: (props) => <Heading level={4} className="mb-4 mt-6 text-xl font-medium" {...props} />,
-  h5: (props) => <Heading level={5} className="mb-4 mt-6 text-lg font-medium" {...props} />,
-  h6: (props) => <Heading level={6} className="mb-4 mt-6 text-base font-medium" {...props} />,
+  h2: (props) => (
+    <Heading
+      level={2}
+      className="mb-4 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
+      {...props}
+    />
+  ),
+  h3: (props) => <Heading level={3} className="mb-4 scroll-m-20 text-2xl font-semibold tracking-tight" {...props} />,
+  h4: (props) => <Heading level={4} className="mb-4 scroll-m-20 text-xl font-semibold tracking-tight" {...props} />,
+  p: (props) => <p className="leading-7 [&:not(:first-child)]:mt-6" {...props} />,
   a: ({ href, children }) => (
     <Link
       href={href as string}
@@ -48,17 +47,13 @@ export const MdxComponents: MDXComponentsProps = {
       {children}
     </Link>
   ),
-  ul: (props) => <ul className="mb-4 mt-0 list-disc pl-6" {...props} />,
-  ol: (props) => <ol className="mb-4 mt-0 list-decimal pl-8" {...props} />,
-  li: (props) => <li className="mb-2" {...props} />,
+  ul: (props) => <ul className="my-6 ml-6 list-disc [&>li]:mt-2" {...props} />,
+  ol: (props) => <ol className="my-6 ml-6 list-decimal [&>li]:mt-2" {...props} />,
   pre: (props) => <Pre {...props} />,
-  code: (props) => <code className="rounded-md px-4" {...props} />,
-  blockquote: (props) => (
-    <blockquote
-      className="my-4 border-l-4 border-neutral-600 bg-neutral-100 p-2 pl-4 dark:border-neutral-400 dark:bg-neutral-950"
-      {...props}
-    />
+  code: (props) => (
+    <code className="rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold" {...props} />
   ),
+  blockquote: (props) => <blockquote className="mt-6 border-l-2 pl-6 italic" {...props} />,
   Image: (props) => <Image className="p-3 sm:p-6" {...props} alt={props.alt} />,
   Header,
 };

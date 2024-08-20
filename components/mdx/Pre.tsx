@@ -50,7 +50,7 @@ const Pre: React.FC<PreProps> = (props) => {
         )}
       </div>
 
-      <pre {...props} className="my-4 overflow-x-auto rounded-2xl py-4 shadow">
+      <pre {...props} className="my-4 overflow-x-auto rounded-2xl border p-4 shadow">
         <div ref={codeRef}>{props.children}</div>
       </pre>
     </div>

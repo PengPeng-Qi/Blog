@@ -77,6 +77,7 @@
 .light pre,
 .light code {
   background-color: var(--shiki-light-bg);
+  font-weight: 500;
 }
 
 /* Dark mode styles */
@@ -87,4 +88,5 @@
 .dark pre,
 .dark code {
   background-color: var(--shiki-dark-bg);
+  font-weight: 500;
 }
