@@ -19,7 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="class">
+        {/* disableTransitionOnChange 在切换夜间模式的时候防止与 shadcn 时机不一致 */}
+        <ThemeProvider attribute="class" disableTransitionOnChange>
           <Header />
           <div className="mx-8 mt-16 sm:mx-12 lg:mx-32">{children}</div>
 

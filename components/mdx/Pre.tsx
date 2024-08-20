@@ -40,11 +40,11 @@ const Pre: React.FC<PreProps> = (props) => {
     <div className="relative">
       <div className="absolute right-4 top-4">
         {hasCopied ? (
-          <Button variant="ghost" size="icon" className="h-6 w-6">
+          <Button variant="outline" size="icon" className="h-6 w-6">
             <CheckIcon color="green" className="h-3 w-3" />
           </Button>
         ) : (
-          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={copyCode}>
+          <Button variant="outline" size="icon" className="h-6 w-6" onClick={copyCode}>
             <ClipboardIcon className="h-3 w-3" />
           </Button>
         )}

@@ -40,12 +40,7 @@ export default function Search() {
 
   return (
     <div className="mx-3 flex flex-1 select-none">
-      <Button
-        variant="outline"
-        size="sm"
-        className="flex w-56 flex-1 justify-between duration-0"
-        onClick={() => setOpen(true)}
-      >
+      <Button variant="outline" size="sm" className="flex w-56 flex-1 justify-between" onClick={() => setOpen(true)}>
         <span>Search ...</span>
         <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100">
           <span className="text-xs">⌘</span>K
