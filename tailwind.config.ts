@@ -84,6 +84,9 @@ const Config: Config = {
       height: {
         "66vh": "66vh",
       },
+      width: {
+        "656": "656px",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
