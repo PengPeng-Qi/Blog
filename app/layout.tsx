@@ -2,6 +2,7 @@ import ArtDots from "@/components/ArtDots";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
+import { generateSearchIndex } from "@/lib/blogs";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -16,6 +17,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  generateSearchIndex(); // 生成 json 文件，用于搜索使用
   return (
     <html lang="en" suppressHydrationWarning>
       <body>

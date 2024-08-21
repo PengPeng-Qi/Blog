@@ -8,7 +8,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import { getAllBlogs, initializeSearch, searchBlogs } from "@/lib/search";
+import { getAllBlogs } from "@/lib/search";
 import { Blog } from "@/types/blogs";
 import { FileIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
@@ -31,9 +31,7 @@ export default function Search() {
 
   useEffect(() => {
     async function fn() {
-      await initializeSearch();
-      const res = await getAllBlogs();
-      setResults(res);
+      setResults(await getAllBlogs());
     }
     fn();
   }, []);

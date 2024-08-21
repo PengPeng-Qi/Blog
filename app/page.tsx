@@ -1,9 +1,4 @@
-"use client";
-import { generateSearchIndex } from "@/lib/blogs";
-
 export default function Home() {
-  // generateSearchIndex();
-
   return (
     <div className="cursor-pointer">
       <div className="mb-5">Hi, I&apos;m Qi Peng, Welcome to my blog.</div>
