@@ -13,10 +13,10 @@
 ## Article
 
 - [ ] 阅读量排序
-- [ ] Tag 排序
 - [ ] 文章渐入动画
 - [ ] 加深对 `next-mdx-remote` 的理解
 - [ ] `MongoDB` 存储每篇文章的用户数据
+- [x] Tag 排序
 - [x] 搜索功能（待优化，目前基于题目进行搜索）
 - [x] `mdx` 代码复制功能
 - [x] 自定义 `code` 编辑器（接入`CodeSandbox`）
