@@ -24,7 +24,7 @@ export default function RootLayout({
         {/* disableTransitionOnChange 在切换夜间模式的时候防止与 shadcn 时机不一致 */}
         <ThemeProvider attribute="class" disableTransitionOnChange>
           <Header />
-          <div className="mx-8 mt-16 sm:mx-12 lg:mx-32">{children}</div>
+          <div className="mx-5 mt-16 sm:mx-10 lg:mx-32">{children}</div>
 
           <Toaster />
           <ArtDots />

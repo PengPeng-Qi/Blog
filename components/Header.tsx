@@ -75,7 +75,7 @@ export default function Header() {
             <MyLogo />
           </div>
 
-          <div className="hidden sm:ml-16 lg:block">
+          <div className="hidden sm:ml-6 sm:block md:ml-12">
             <div className="flex items-center justify-center font-medium">
               {MenuStructure.map(({ name, path }) => {
                 return (
