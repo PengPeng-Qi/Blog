@@ -7,7 +7,7 @@ export default function DemoIcon() {
     <div className="relative ml-4 flex items-center">
       <HoverCard>
         <HoverCardTrigger asChild>
-          <Link href="https://pengpeng-qi.github.io/100-days-demo/" target="_blank">
+          <Link href="https://100.qipeng8.cn/" target="_blank">
             <CubeIcon className="h-5 w-5 text-neutral-400 hover:text-neutral-950 dark:hover:text-neutral-50" />
           </Link>
         </HoverCardTrigger>
