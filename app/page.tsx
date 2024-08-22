@@ -1,5 +1,8 @@
 import GitHubIcon from "@/components/header/GithubIcon";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -54,12 +57,15 @@ export default function Home() {
             great user experiences. Let us connect and share ideas!
           </div>
 
-          <div className="mt-10 flex flex-wrap">
+          <div className="mt-10 flex">
             Find me on{" "}
             <div className="mx-2">
               <GitHubIcon />
             </div>{" "}
-            <div className="mr-2">Or mail me at </div> PengPengQ@outlook.com
+            Or mail me at
+            <Button variant="link" className="h-6 px-2 py-0">
+              <Link href="mailto:pengpengq@outlook.com">PengPengQ@outlook.com</Link>
+            </Button>
           </div>
         </div>
       </div>
