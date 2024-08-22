@@ -49,7 +49,7 @@ export default async function Page({ params: { slug } }: Readonly<Props>) {
         <div className="text text-neutral-400">{blog?.createdTime}</div>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex translate-y-10 animate-slideUp justify-between opacity-0">
         <article className="w-96 flex-grow overflow-x-auto">
           {blog && <MDXRemote source={blog.content} options={options} components={MdxComponents} />}
 

@@ -11,9 +11,11 @@ export default function Home() {
         <div className="mb-8 text-4xl font-semibold">Qi Peng</div>
 
         <div className="text-neutral-600 dark:text-neutral-300">
-          <div>Hi, I am Qi Peng, a passionate front-end engineer.</div>
+          <div className="translate-y-10 animate-slideUp opacity-0 delay-75">
+            Hi, I am Qi Peng, a passionate front-end engineer.
+          </div>
 
-          <div className="mt-8 space-y-3">
+          <div className="mt-8 translate-y-10 animate-slideUp space-y-3 opacity-0 delay-150">
             <div className="flex items-center space-x-2">
               <span>Working at</span>
               <Badge variant="secondary" className="rounded-sm">
@@ -52,20 +54,25 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 translate-y-10 animate-slideUp opacity-0 delay-200">
             My aim is to continuously enhance my skills, explore new technologies, and develop exceptional products with
             great user experiences. Let us connect and share ideas!
           </div>
 
-          <div className="mt-10 flex">
-            Find me on{" "}
-            <div className="mx-2">
-              <GitHubIcon />
-            </div>{" "}
-            Or mail me at
-            <Button variant="link" className="h-6 px-2 py-0">
-              <Link href="mailto:pengpengq@outlook.com">PengPengQ@outlook.com</Link>
-            </Button>
+          <div className="mt-10 flex translate-y-10 animate-slideUp flex-wrap opacity-0 delay-500">
+            <div className="flex">
+              Find me on{" "}
+              <div className="mx-2">
+                <GitHubIcon />
+              </div>{" "}
+              Or mail me at
+            </div>
+
+            <div>
+              <Button variant="link" className="h-6 px-2 py-0 text-xs xxs:text-base">
+                <Link href="mailto:pengpengq@outlook.com">PengPengQ@outlook.com</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

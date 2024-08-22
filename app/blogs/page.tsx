@@ -22,9 +22,13 @@ export default async function Home() {
       <div>
         <div className="mb-8 text-2xl font-medium">RECENTLY PUBLISHED</div>
 
-        {allBlogs.map(({ title, slug, createdTime }) => {
+        {allBlogs.map(({ title, slug, createdTime }, index) => {
           return (
-            <div key={title + slug} className="flex">
+            <div
+              key={title + slug}
+              style={{ transitionDelay: `${index * 100}ms`, animationDelay: `${index * 100}ms` }}
+              className="flex translate-y-10 animate-slideUp opacity-0"
+            >
               <Button variant="link" className="text-light block pl-0 pr-2">
                 <Link href={"/blogs/" + slug}>{title}</Link>
               </Button>

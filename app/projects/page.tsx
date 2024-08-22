@@ -12,13 +12,19 @@ export default function Page() {
   return (
     <div className="cursor-pointer">
       <div className="text mt-9">
-        {projectsStructure.map(({ label, link }) => {
+        {projectsStructure.map(({ label, link }, index) => {
           return (
-            <Button variant="link" className="block pl-0" key={label + link}>
-              <Link href={link} target="_blank">
-                {label}
-              </Link>
-            </Button>
+            <div
+              style={{ transitionDelay: `${index * 100}ms`, animationDelay: `${index * 100}ms` }}
+              key={label + link}
+              className="translate-y-10 animate-slideUp opacity-0"
+            >
+              <Button variant="link" className="block pl-0">
+                <Link href={link} target="_blank">
+                  {label}
+                </Link>
+              </Button>
+            </div>
           );
         })}
       </div>

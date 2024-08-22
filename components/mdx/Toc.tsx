@@ -69,7 +69,7 @@ const TOC = () => {
     <div>
       <div className="mb-5 mt-6 text-xl text-neutral-600 dark:text-neutral-300">TABLE OF CONTENTS</div>
 
-      <ul className="sticky right-0 top-0 cursor-pointer">
+      <ul className="sticky right-0 top-0 translate-y-10 animate-slideUp cursor-pointer opacity-0">
         {headings.map(({ text, id, level }) => (
           <li key={id + text} className={`my-2 ${level === "H3" ? "ml-4" : ""}`}>
             <span
