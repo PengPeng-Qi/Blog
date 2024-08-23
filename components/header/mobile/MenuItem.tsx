@@ -27,7 +27,7 @@ interface MenuItemProps {
 export const MenuItem: React.FC<MenuItemProps> = ({ menu, index }) => {
   return (
     <motion.li variants={variants} custom={index}>
-      <Link href={menu.path} className="text-xl">
+      <Link href={menu.path} className="text-3xl font-medium">
         {menu.name}
       </Link>
     </motion.li>
