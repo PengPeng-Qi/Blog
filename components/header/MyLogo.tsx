@@ -4,6 +4,8 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+const initialSunLogoColor = "#231815";
+const initialMoonLogoColor = "white";
 const draw = {
   hidden: (i: number) => {
     const delay = 7.2 - i * 0.5;
@@ -31,30 +33,36 @@ const draw = {
 
 const MyLogo = () => {
   const { resolvedTheme } = useTheme();
-  const [color, setColor] = useState("#231815");
+  const [color, setColor] = useState<typeof initialMoonLogoColor | typeof initialSunLogoColor>(initialSunLogoColor);
   const [animateState, setAnimateState] = useState("visible");
 
   useEffect(() => {
     if (resolvedTheme === "dark") {
-      setColor("white");
+      setColor(initialMoonLogoColor);
     } else {
-      setColor("#231815");
+      setColor(initialSunLogoColor);
     }
   }, [resolvedTheme]);
 
   useEffect(() => {
+    let timerId: NodeJS.Timeout;
     const cycleAnimation = () => {
       setAnimateState("visible"); // 显示动画
-      const timerId = setTimeout(() => {
+      timerId = setTimeout(() => {
         setAnimateState("hidden"); // 隐藏动画
         clearTimeout(timerId);
       }, 8000); // 8秒后隐藏动画
     };
 
     cycleAnimation(); // 初始化动画
-    const interval = setInterval(cycleAnimation, 16000); // 每 16 秒循环一次动画
+    const intervalId = setInterval(cycleAnimation, 16000); // 每 16 秒循环一次动画
 
-    return () => clearInterval(interval); // 清除定时器
+    return () => {
+      clearInterval(intervalId);
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    }; // 清除定时器
   }, []);
 
   return (
