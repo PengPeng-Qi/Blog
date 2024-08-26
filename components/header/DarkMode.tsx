@@ -1,9 +1,6 @@
 "use client";
 
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import { Label } from "@/components/ui/label";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
