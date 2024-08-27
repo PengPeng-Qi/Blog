@@ -85,6 +85,8 @@ export default function Header() {
                     ref={(node) => {
                       if (node) {
                         menuWithNodeMap.set(name, node);
+                      } else {
+                        menuWithNodeMap.delete(name);
                       }
                     }}
                     className="mr-8 hover:text-light-primary dark:hover:text-dark-primary sm:mr-10"
