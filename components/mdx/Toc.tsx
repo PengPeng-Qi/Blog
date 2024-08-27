@@ -1,9 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
+type HeadType = Array<{ text: string; id: string; level: string }>;
+
 const TOC = () => {
-  const [headings, setHeadings] = useState<{ text: string; id: string; level: string }[]>([]);
-  const [activeId, setActiveId] = useState<string>("");
+  const [headings, setHeadings] = useState<HeadType>([]);
+  const [activeId, setActiveId] = useState("");
   const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -11,7 +13,7 @@ const TOC = () => {
     if (!articleElement) return;
 
     // 获取菜单结构
-    const extractedHeadings = Array.from(articleElement.querySelectorAll("h2, h3")).map((heading) => ({
+    const extractedHeadings: HeadType = Array.from(articleElement.querySelectorAll("h2, h3")).map((heading) => ({
       text: heading.textContent ?? "",
       id: heading.id || "",
       level: heading.nodeName, // 'H2' or 'H3'
@@ -66,7 +68,7 @@ const TOC = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="mb-5 mt-6 text-xl text-neutral-600 dark:text-neutral-300">TABLE OF CONTENTS</div>
 
       <ul className="sticky right-0 top-0 translate-y-10 animate-slideUp cursor-pointer opacity-0">
@@ -83,7 +85,7 @@ const TOC = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
