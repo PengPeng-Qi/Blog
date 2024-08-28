@@ -58,14 +58,16 @@ export default function DarkMode() {
   const [animateState, setAnimateState] = useState("visible");
   const [isUpdatedTheme, setIsUpdatedTheme] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   /**
    * 设置按钮：
    *   1. 如果主题是系统模式则获取 systemTheme 的值
    *   2. 如果主题是其他模式，则直接获取值
    * */
   useEffect(() => {
-    setMounted(true);
-
     if (!theme) return;
 
     // 如果当前值为系统值，则按钮跟随系统主题
