@@ -24,7 +24,7 @@ const Pre: React.FC<PreProps> = (props) => {
     navigator.clipboard
       .writeText(textToCopy)
       .then(() => {
-        setHasCopied((value) => !value);
+        setHasCopied((h) => !h);
         toast("Copy Successful 🎉");
       })
       .catch((err) => {
@@ -32,7 +32,7 @@ const Pre: React.FC<PreProps> = (props) => {
       });
 
     setTimeout(() => {
-      setHasCopied((value) => !value);
+      setHasCopied((h) => !h);
     }, 2000);
   };
 
