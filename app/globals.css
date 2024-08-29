@@ -75,7 +75,7 @@
   color: var(--shiki-light);
 }
 .light pre,
-.light code {
+.light pre code {
   background-color: var(--shiki-light-bg);
   font-weight: 500;
 }
@@ -86,7 +86,7 @@
   color: var(--shiki-dark);
 }
 .dark pre,
-.dark code {
+.dark pre code {
   background-color: var(--shiki-dark-bg);
   font-weight: 500;
 }
