@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import BaiduAnalytics from "./baidu-analytics";
 import "./globals.css";
+import GoogleAnalytics from "./google-analytics";
 import { WebVitals } from "./web-vitals";
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default function RootLayout({
             <>
               <WebVitals />
               <BaiduAnalytics />
+              <GoogleAnalytics />
               <Analytics />
             </>
           ) : (
