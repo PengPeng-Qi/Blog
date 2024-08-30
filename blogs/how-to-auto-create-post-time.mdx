@@ -1,0 +1,79 @@
+---
+title: 如何自动生成博客文章时间
+tag:
+  - blog
+slug: p2nd05nxpy
+createdTime: "2024-08-30"
+modifiedTime: "2024-08-30 20:02:04"
+---
+
+当我们在自己的博客上新建一篇文章的时候，通常的做法是复制粘贴上一篇文章的结构。
+
+但是很多时间，会忘记修改文章的创建时间以及修改时间。
+
+这个时候，就需要一些自动化工具帮我们生成这些内容。
+
+## 实现思路
+
+1. 获取服务器的时间（存在部署后服务器与本地不一致的情况，所以不采用该方式）
+2. 在 `pre-commit` 的时候生成时间
+
+### pre-commit 生成时间
+
+直接上代码：
+
+```js
+// .husky/scripts/update-modified-time.js
+// ...
+
+// 获取在暂存盘中的文件
+const getStagedFiles = (extension) => {
+  const stdout = execSync("git diff --cached --name-only").toString();
+  return stdout.split("\n").filter((file) => path.extname(file).toLowerCase() === extension);
+};
+
+const updateTimestamps = (filePath) => {
+  const fileContents = fs.readFileSync(filePath, "utf8");
+
+  const { data, content } = matter(fileContents);
+
+  const date = new Date();
+  const createdFormattedDate = formatDate(date, false); // Without time
+  const modifiedFormattedDate = formatDate(date, true); // With time
+
+  // 增加时间信息
+  const updatedData = {
+    ...data,
+    slug: data.slug || generateSlug(),
+    createdTime: data.createdTime || createdFormattedDate,
+    modifiedTime: modifiedFormattedDate,
+  };
+
+  // 创建新的 matter 和 content
+  const newFrontMatter = matter.stringify(content, updatedData).replace(/"/g, """);
+  fs.writeFileSync(filePath, newFrontMatter, "utf8");
+
+  // 修改后再次 git add
+  execSync(`git add ${filePath}`);
+};
+
+const main = () => {
+  // 获取暂存盘中 mdx 文件
+  const mdxFiles = getStagedFiles(".mdx");
+
+  mdxFiles.forEach((filePath) => {
+    // 读取文件并修改时间
+    if (fs.existsSync(filePath)) {
+      updateTimestamps(filePath);
+    }
+  });
+};
+
+main();
+```
+
+这样，在每次 `commit` 的时候就会自动帮助我们生成新建时间以及修改时间。
+
+完整代码可参考：[blog](https://github.com/PengPeng-Qi/Blog/blob/main/.husky/scripts/update-modified-time.js)
+
+> 注意：该方式存在一个弊端，在开发的时候需要先进行 `commit` 才会生成时间字段。

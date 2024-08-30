@@ -27,17 +27,17 @@ interface MDXComponentsProps {
 
 export const MdxComponents: MDXComponentsProps = {
   h1: (props) => (
-    <Heading level={1} className="mb-4 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl" {...props} />
+    <Heading level={1} className="my-4 scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl" {...props} />
   ),
   h2: (props) => (
     <Heading
       level={2}
-      className="mb-4 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
+      className="my-4 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
       {...props}
     />
   ),
-  h3: (props) => <Heading level={3} className="mb-4 scroll-m-20 text-2xl font-semibold tracking-tight" {...props} />,
-  h4: (props) => <Heading level={4} className="mb-4 scroll-m-20 text-xl font-semibold tracking-tight" {...props} />,
+  h3: (props) => <Heading level={3} className="my-4 scroll-m-20 text-2xl font-semibold tracking-tight" {...props} />,
+  h4: (props) => <Heading level={4} className="my-4 scroll-m-20 text-xl font-semibold tracking-tight" {...props} />,
   p: (props) => <p className="leading-7 [&:not(:first-child)]:mt-6" {...props} />,
   a: ({ href, children }) => (
     <Link
