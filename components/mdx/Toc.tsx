@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type HeadType = Array<{ text: string; id: string; level: string }>;
 
@@ -48,7 +48,7 @@ const TOC = () => {
     };
   }, []);
 
-  const handleSmoothScroll = (id: string) => {
+  const handleSmoothScroll = useCallback((id: string) => {
     const element = document.getElementById(id);
     const offset = 80; // 菜单栏高度
 
@@ -65,7 +65,7 @@ const TOC = () => {
       // 更新 activeId
       setActiveId(id);
     }
-  };
+  }, []);
 
   return (
     <>

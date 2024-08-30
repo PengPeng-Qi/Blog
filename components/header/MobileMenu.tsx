@@ -28,7 +28,7 @@ export default function MobileMenu() {
           <Navigation />
         </motion.div>
 
-        <MenuToggle toggle={() => toggleOpen()} />
+        <MenuToggle toggle={toggleOpen} />
       </motion.nav>
     </div>
   );
