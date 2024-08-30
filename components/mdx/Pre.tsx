@@ -1,9 +1,7 @@
-"use client";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-
 import { CheckIcon, ClipboardIcon } from "@radix-ui/react-icons";
-import { ReactNode, useRef, useState } from "react";
+import { ReactNode, useCallback, useRef, useState } from "react";
+import { toast } from "sonner";
 
 interface PreProps {
   className: string;
@@ -14,7 +12,7 @@ const Pre: React.FC<PreProps> = (props) => {
   const [hasCopied, setHasCopied] = useState(false);
   const codeRef = useRef<HTMLDivElement>(null);
 
-  const copyCode = () => {
+  const copyCode = useCallback(() => {
     if (!codeRef.current) return;
 
     const textToCopy = Array.from(codeRef.current.querySelectorAll("span[data-line]"))
@@ -24,7 +22,7 @@ const Pre: React.FC<PreProps> = (props) => {
     navigator.clipboard
       .writeText(textToCopy)
       .then(() => {
-        setHasCopied((h) => !h);
+        setHasCopied(true);
         toast("Copy Successful 🎉");
       })
       .catch((err) => {
@@ -32,9 +30,9 @@ const Pre: React.FC<PreProps> = (props) => {
       });
 
     setTimeout(() => {
-      setHasCopied((h) => !h);
+      setHasCopied(false);
     }, 2000);
-  };
+  }, []);
 
   return (
     <div className="relative">
