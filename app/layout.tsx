@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { generateSearchIndex } from "@/lib/blogs";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
+import BaiduAnalytics from "./baidu-analytics";
 import "./globals.css";
 import { WebVitals } from "./web-vitals";
 
@@ -19,6 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   generateSearchIndex(); // 生成 json 文件，用于搜索使用
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
@@ -26,12 +28,12 @@ export default function RootLayout({
         <ThemeProvider attribute="class" disableTransitionOnChange>
           <Header />
           <div className="mx-5 mt-16 sm:mx-10 lg:mx-32">{children}</div>
-
           <Toaster />
           <ArtDots />
           {process.env.NODE_ENV === "production" ? (
             <>
               <WebVitals />
+              <BaiduAnalytics />
               <Analytics />
             </>
           ) : (
