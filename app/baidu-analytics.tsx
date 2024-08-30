@@ -1,8 +1,33 @@
 "use client";
+
 import Script from "next/script";
 
-function BaiduAnalytics({}) {
-  return <Script src="https://hm.baidu.com/hm.js?95581e2fe9bf8c05e72bcccbc42b0e7d" strategy="lazyOnload" />;
-}
+const BaiDuAnalytics = () => {
+  return (
+    <>
+      {process.env.NEXT_PUBLIC_BAIDU_TONGJI ? (
+        <>
+          <Script
+            id="baidu-tongji"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+              var _hmt = _hmt || [];
+              (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?${process.env.NEXT_PUBLIC_BAIDU_TONGJI}";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+              })();
+            `,
+            }}
+          />
+        </>
+      ) : (
+        <></>
+      )}
+    </>
+  );
+};
 
-export default BaiduAnalytics;
+export default BaiDuAnalytics;
