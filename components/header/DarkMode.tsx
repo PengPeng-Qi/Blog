@@ -3,7 +3,7 @@
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const svgVariants = {
   hidden: () => {
@@ -56,7 +56,7 @@ export default function DarkMode() {
   const { theme, systemTheme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [animateState, setAnimateState] = useState("visible");
-  const [isUpdatedTheme, setIsUpdatedTheme] = useState(false);
+  const isUpdatedTheme = useRef(false);
 
   useEffect(() => {
     setMounted(true);
@@ -89,19 +89,19 @@ export default function DarkMode() {
   }, [theme, systemTheme]);
 
   // 手动设置 theme
-  const updateTheme = () => {
-    setIsUpdatedTheme(true);
+  const updateTheme = useCallback(() => {
+    isUpdatedTheme.current = true;
 
     if (animateState === "hidden") {
       setTheme("light");
     } else {
       setTheme("dark");
     }
-  };
+  }, [animateState, setTheme]);
 
   // 如果已经修改过 theme 值，则系统颜色再变更的话跟随主题色
   useEffect(() => {
-    if (isUpdatedTheme) {
+    if (isUpdatedTheme.current) {
       setTheme("system");
     }
   }, [systemTheme, setTheme]);
