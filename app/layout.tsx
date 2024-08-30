@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
 import { generateSearchIndex } from "@/lib/blogs";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import BaiduAnalytics from "./baidu-analytics";
 import "./globals.css";
@@ -36,7 +36,7 @@ export default function RootLayout({
               <WebVitals />
               <BaiduAnalytics />
               <GoogleAnalytics />
-              <Analytics />
+              <VercelAnalytics />
             </>
           ) : (
             <></>
