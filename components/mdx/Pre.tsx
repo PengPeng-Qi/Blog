@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { CheckIcon, ClipboardIcon } from "@radix-ui/react-icons";
 import { ReactNode, useCallback, useRef, useState } from "react";
