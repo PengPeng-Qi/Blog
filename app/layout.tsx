@@ -6,6 +6,7 @@ import { generateSearchIndex } from "@/lib/blogs";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import "./globals.css";
+import { WebVitals } from "./web-vitals";
 
 export const metadata: Metadata = {
   title: `碰碰漆的博客`,
@@ -28,7 +29,14 @@ export default function RootLayout({
 
           <Toaster />
           <ArtDots />
-          {process.env.NODE_ENV === "production" ? <Analytics /> : <></>}
+          {process.env.NODE_ENV === "production" ? (
+            <>
+              <WebVitals />
+              <Analytics />
+            </>
+          ) : (
+            <></>
+          )}
         </ThemeProvider>
       </body>
     </html>
