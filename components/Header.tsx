@@ -7,11 +7,10 @@ import { useEffect, useMemo, useState } from "react";
 import { annotate } from "rough-notation";
 import { RoughAnnotation } from "rough-notation/lib/model";
 import DarkMode from "./header/DarkMode";
-import DemoIcon from "./header/DemoIcon";
-import GitHubIcon from "./header/GithubIcon";
 import MobileMenu from "./header/MobileMenu";
 import MyLogo from "./header/MyLogo";
 import Search from "./header/Search";
+import { DemoIcon, GitHubIcon } from "./social-icons/icons";
 
 export default function Header() {
   const pathName = usePathname();

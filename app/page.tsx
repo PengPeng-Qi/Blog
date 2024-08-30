@@ -1,4 +1,4 @@
-import GitHubIcon from "@/components/header/GithubIcon";
+import { GitHubIcon } from "@/components/social-icons/icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

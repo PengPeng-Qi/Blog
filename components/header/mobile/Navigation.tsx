@@ -1,7 +1,6 @@
 "use client";
 import DarkMode from "@/components/header/DarkMode";
-import DemoIcon from "@/components/header/DemoIcon";
-import GitHubIcon from "@/components/header/GithubIcon";
+import { DemoIcon, GitHubIcon } from "@/components/social-icons/icons";
 import { MenuStructure } from "@/config/menu";
 import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
