@@ -42,7 +42,7 @@ export const MdxComponents: MDXComponentsProps = {
   a: ({ href, children }) => (
     <Link
       href={href as string}
-      className="text-neutral-950 underline decoration-neutral-300 underline-offset-8 transition-colors duration-500 ease-in-out hover:decoration-neutral-800 dark:text-neutral-100 dark:decoration-neutral-900 dark:hover:decoration-neutral-200"
+      className="text-neutral-950 underline decoration-neutral-300 underline-offset-8 transition-colors duration-500 ease-in-out hover:decoration-neutral-800 dark:text-neutral-100 dark:decoration-neutral-800 dark:hover:decoration-neutral-200"
     >
       {children}
     </Link>
