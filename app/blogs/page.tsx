@@ -1,4 +1,4 @@
-import Tags from "@/components/Tags";
+import Tags from "@/components/tags";
 import { Button } from "@/components/ui/button";
 import { getAllBlogs } from "@/lib/blogs";
 import { Blogs } from "@/types/blogs";

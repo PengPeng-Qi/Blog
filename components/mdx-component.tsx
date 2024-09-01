@@ -1,5 +1,5 @@
-import Header from "@/components/Header";
-import Pre from "@/components/mdx/Pre";
+import Header from "@/components/header";
+import Pre from "@/components/mdx/pre";
 import Image from "next/image";
 import Link from "next/link";
 import React, { ReactNode } from "react";

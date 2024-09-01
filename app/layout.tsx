@@ -1,6 +1,6 @@
-import ArtDots from "@/components/ArtDots";
-import Header from "@/components/Header";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import ArtDots from "@/components/art-dots";
+import Header from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { generateSearchIndex } from "@/lib/blogs";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";

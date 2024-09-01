@@ -1,5 +1,5 @@
-import { MdxComponents } from "@/components/MdxComponent";
-import Toc from "@/components/mdx/Toc";
+import { MdxComponents } from "@/components/mdx-component";
+import Toc from "@/components/mdx/toc";
 import { getAllBlogs, getCurBlog } from "@/lib/blogs";
 import { Blog, Blogs, Props } from "@/types/blogs";
 import { MDXRemote } from "next-mdx-remote/rsc";

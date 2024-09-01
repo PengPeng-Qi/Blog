@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { annotate } from "rough-notation";
 import { RoughAnnotation } from "rough-notation/lib/model";
-import DarkMode from "./header/DarkMode";
-import MobileMenu from "./header/MobileMenu";
-import MyLogo from "./header/MyLogo";
-import Search from "./header/Search";
+import DarkMode from "./header/dark-mode";
+import MobileMenu from "./header/mobile-menu";
+import MyLogo from "./header/my-logo";
+import Search from "./header/search";
 import { DemoIcon, GitHubIcon } from "./social-icons/icons";
 
 export default function Header() {

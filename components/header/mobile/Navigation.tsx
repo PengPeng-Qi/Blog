@@ -1,9 +1,9 @@
 "use client";
-import DarkMode from "@/components/header/DarkMode";
+import DarkMode from "@/components/header/dark-mode";
 import { DemoIcon, GitHubIcon } from "@/components/social-icons/icons";
 import { MenuStructure } from "@/config/menu";
 import { motion } from "framer-motion";
-import { MenuItem } from "./MenuItem";
+import { MenuItem } from "./menu-item";
 
 const variants = {
   open: {
