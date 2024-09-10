@@ -12,6 +12,8 @@
 
 ## Article
 
+### Func
+
 - [ ] 阅读量排序
 - [ ] 加深对 `next-mdx-remote` 的理解
 - [ ] `MongoDB` 存储每篇文章的用户数据
@@ -28,11 +30,19 @@
 - [x] 强化 `mdx` 添加标题索引
 - [x] 通过创建文章和修改文章自动生成时间字段（待整理为文章）
 
+### Content
+
+- [ ] `Div` 与 `Image` 行内元素的问题
+- [ ] `Base64` 与常规图片的区别
+
 ## Projects
 
 - [x] Prettier Config
 - [x] NextJS Template
 - [x] 100 days demo
+- [ ] 图片管理服务
+- [ ] UI 组件库
+- [ ] H5 模板
 
 ## About Me
 
