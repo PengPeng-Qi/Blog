@@ -35,6 +35,7 @@
 - [ ] `Div` 与 `Image` 行内元素的问题
 - [ ] `Base64` 与常规图片的区别
 - [ ] `Switch Host` 与 `Clash Verge` 的基本原理
+- [ ] 文字渐变色实现
 
 ## Projects
 
