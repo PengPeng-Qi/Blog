@@ -50,7 +50,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 60) {
+      if (window.scrollY > 80) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -67,9 +67,9 @@ export default function Header() {
   return (
     <>
       <div
-        className={`sticky left-0 top-0 z-10 flex h-14 w-full cursor-pointer items-center justify-between px-2 ${isScrolled ? "backdrop-blur" : ""} sm:px-6 lg:px-32`}
+        className={`sticky left-0 top-0 z-10 flex h-20 w-full cursor-pointer items-center justify-between px-2 ${isScrolled ? "backdrop-blur" : ""} sm:px-6 lg:px-32`}
       >
-        <div className="mx-3 flex items-center justify-center lg:mx-0">
+        <div className="mx-3 flex items-center justify-center pb-6 lg:mx-0">
           <div className="h-8 w-8">
             <MyLogo />
           </div>
