@@ -3,6 +3,7 @@
 ## Menu
 
 - [x] Logo
+- [ ] 更新动画
 - [ ] Article
 - [ ] Project
 - [ ] About
