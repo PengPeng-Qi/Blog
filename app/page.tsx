@@ -1,9 +1,19 @@
+"use client";
+
 import { GitHubIcon } from "@/components/social-icons/icons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+  const boxRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.to(boxRef.current, { duration: 4, x: 560, rotation: 1080 });
+  }, []);
+
   return (
     <div className="cursor-pointer">
       <div className="mx-auto w-full sm:w-656">
@@ -73,6 +83,8 @@ export default function Home() {
               </Button>
             </div>
           </div>
+
+          <div ref={boxRef} className="h-8 w-8 rounded bg-neutral-500"></div>
         </div>
       </div>
     </div>
