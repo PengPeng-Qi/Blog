@@ -5,18 +5,24 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+
+gsap.registerPlugin(useGSAP);
 
 export default function Home() {
-  const boxRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    gsap.to(boxRef.current, { duration: 4, x: 560, rotation: 1080 });
-  }, []);
+  useGSAP(
+    () => {
+      gsap.to(".box", { duration: 4, x: 560, rotation: 1080 });
+    },
+    { scope: containerRef }
+  );
 
   return (
     <div className="cursor-pointer">
-      <div className="mx-auto w-full sm:w-656">
+      <div className="mx-auto w-full sm:w-656" ref={containerRef}>
         <div className="mb-8 text-4xl font-semibold">Qi Peng</div>
 
         <div className="text-neutral-600 dark:text-neutral-300">
@@ -84,7 +90,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div ref={boxRef} className="h-8 w-8 rounded bg-neutral-500"></div>
+          <div className="box h-8 w-8 rounded bg-neutral-500"></div>
         </div>
       </div>
     </div>
