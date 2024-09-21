@@ -34,9 +34,12 @@
 ### Content
 
 - [ ] 前端性能优化处理
+- [ ] 网络安全整理
+- [ ] 跨域问题整理（`switch host`、`vite proxy`）
 - [ ] `Div` 与 `Image` 行内元素的问题
 - [ ] `Base64` 与常规图片的区别
 - [ ] 文字渐变色实现
+- [ ] 整理 `package.json` 版本号相关问题
 
 ## Projects
 
