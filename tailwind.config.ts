@@ -20,47 +20,43 @@ const Config: Config = {
     },
     extend: {
       colors: {
-        "border": "hsl(var(--border))",
-        "input": "hsl(var(--input))",
-        "ring": "hsl(var(--ring))",
-        "background": "hsl(var(--background))",
-        "foreground": "hsl(var(--foreground))",
-        "primary": {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
-        "secondary": {
+        secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
-        "destructive": {
+        destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
-        "muted": {
+        muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        "accent": {
+        accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        "popover": {
+        popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
         },
-        "card": {
+        card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        "underline": {
+        underline: {
           DEFAULT: "hsl(var(--underline))",
           foreground: "hsl(var(--primary))",
         },
-        "dark-primary": "hsl(230deg, 100%, 69%)",
-        "light-primary": "hsl(245deg, 100%, 60%)",
-        "light-card-primary": "hsl(200deg, 75%, 80%)",
-        "dark-card-primary": "hsl(200deg, 50%, 20%)",
       },
       borderRadius: {
         lg: "var(--radius)",

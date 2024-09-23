@@ -2,50 +2,16 @@
 
 import { MenuStructure } from "@/config/menu";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
-import { annotate } from "rough-notation";
-import { RoughAnnotation } from "rough-notation/lib/model";
+import { useEffect, useState } from "react";
 import DarkMode from "./header/dark-mode";
 import MobileMenu from "./header/mobile-menu";
 import MyLogo from "./header/my-logo";
 import Search from "./header/search";
 import { DemoIcon, GitHubIcon } from "./social-icons/icons";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const pathName = usePathname();
-
-  const menuWithNodeMap = useMemo(() => new Map<string, HTMLElement>(), []); // 存储每个 menu 对应的 node 元素
-  const annotatesMap = useMemo(() => new Map<string, RoughAnnotation>(), []); // 存储每个 menu 对应的线
-
-  // 选中的菜单划线
-  useEffect(() => {
-    menuWithNodeMap.forEach((node, menuName) => {
-      if (pathName.includes(menuName.toLowerCase())) {
-        // 如果从来没有划过线
-        if (!annotatesMap.has(menuName)) {
-          const activeNode = annotate(node, {
-            type: "underline",
-            color: "hsl(53deg, 100%, 50%)",
-            strokeWidth: 2,
-          });
-
-          annotatesMap.set(menuName, activeNode);
-        }
-
-        annotatesMap.get(menuName)?.show();
-      } else {
-        annotatesMap.get(menuName)?.hide();
-      }
-    });
-
-    return () => {
-      annotatesMap.forEach((node) => {
-        node.hide();
-      });
-    };
-  }, [pathName, menuWithNodeMap, annotatesMap]);
-
   // 监听滚动事件，以便给 header 添加毛玻璃效果
   const [isScrolled, setIsScrolled] = useState(false);
   useEffect(() => {
@@ -81,14 +47,7 @@ export default function Header() {
                   <Link
                     href={path}
                     key={name}
-                    ref={(node) => {
-                      if (node) {
-                        menuWithNodeMap.set(name, node);
-                      } else {
-                        menuWithNodeMap.delete(name);
-                      }
-                    }}
-                    className="mr-8 hover:text-light-primary dark:hover:text-dark-primary sm:mr-10"
+                    className={`mr-8 hover:text-neutral-800 dark:hover:text-neutral-100 sm:mr-10 ${pathName === path ? "text-neutral-800 dark:text-neutral-100" : "text-neutral-400"} duration-200`}
                   >
                     {name}
                   </Link>
