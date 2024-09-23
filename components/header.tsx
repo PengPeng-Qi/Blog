@@ -57,7 +57,7 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="hidden sm:block">
+        <div className="hidden pb-6 sm:block">
           <div className="flex">
             <Search />
             <GitHubIcon />
