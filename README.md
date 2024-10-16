@@ -42,6 +42,7 @@
 - [ ] 整理 `package.json` 版本号相关问题
 - [ ] `Whistle` 工具整理
 - [ ] 文本超长兼容性整理
+- [ ] console.log 玩出花样
 
 ## Projects
 
