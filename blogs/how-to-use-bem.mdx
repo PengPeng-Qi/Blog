@@ -1,0 +1,238 @@
+---
+title: How to use bem
+tag:
+  - css
+slug: hn4q0h0w6u
+createdTime: "2024-10-25"
+modifiedTime: "2024-10-25 14:41:39"
+---
+
+BEM：块（Block）、元素（Element）、修饰符（Modifier）
+
+优势：帮助开发者更容易理解 `css` 与 `html` 之间的关系。
+
+### 块（Block）
+
+块的名称描述了块所使用的目的（`button`、`menu`），而不是状态（`red`、`big`）
+
+```html
+<!-- 正确的，error 块是语义化的 -->
+<div class="error"></div>
+
+<!-- 不正确，描述了外观 -->
+<div class="red-text"></div>
+```
+
+#### 嵌套块
+
+块可以互相进行嵌套
+
+```html
+<!-- header 块 -->
+<header class="header">
+  <!-- 嵌套的 logo 块 -->
+  <div class="logo">...</div>
+
+  <!-- 嵌套的 search-form 块 -->
+  <form class="search-form">...</form>
+</header>
+```
+
+### 元素（Element）
+
+元素是块的一部分，不能单独使用。
+
+1. 元素的名称描述了他是什么 (`item`、`text`)，也不是状态 (`red`、`big`)。
+2. 一个元素的全称应该是`block-name__element-name`，需要和块的名称间隔两个下划线。
+
+```html
+<!-- search-form 块 -->
+<form class="search-form">
+  <!-- search-form 块下的 input 元素 -->
+  <input class="search-form__input" />
+
+  <!-- search-form 块下的 button 元素 -->
+  <button class="search-form__button">Search</button>
+</form>
+```
+
+#### 嵌套的元素
+
+一个元素总是块的一部分，不能是另一个元素的一部分，意味着不能这样定义`block__elem1__elem2`.
+
+```html
+<!-- 正确的 -->
+<form class="search-form">
+  <div class="search-form__content">
+    <input class="search-form__input" />
+    <button class="search-form__button">Search</button>
+  </div>
+</form>
+
+<!-- 不正确的 -->
+<form class="search-form">
+  <div class="search-form__content">
+    <!-- 推荐使用：search-form__input 或 search-form__content-input -->
+    <input class="search-form__content__input" />
+
+    <!-- 推荐的使用 search-form__button 或 search-form__content-button -->
+    <button class="search-form__content__button">Search</button>
+  </div>
+</form>
+```
+
+> 块的命名定义了空间，它保证了元素必须依赖于块。
+
+如果之前的结构为：
+
+```html
+<div class="block">
+  <div class="block__elem1">
+    <div class="block__elem2">
+      <div class="block__elem3"></div>
+    </div>
+  </div>
+</div>
+```
+
+```css
+.block {
+}
+.block__elem1 {
+}
+.block__elem2 {
+}
+.block__elem3 {
+}
+```
+
+修改为这样，即使变更了结构，元素的规则及名称都可以保持不变。
+
+```html
+<div class="block">
+  <div class="block__elem1">
+    <div class="block__elem2"></div>
+  </div>
+
+  <div class="block__elem3"></div>
+</div>
+```
+
+#### 元素之间的关系
+
+**_元素总是块的一部分，不能单独使用元素。_**
+
+```html
+<!-- 正确的：元素只能是块的一部分-->
+<form class="search-form">
+  <!-- 在 search-form 块下的 input 元素 -->
+  <input class="search-form__input" />
+
+  <!-- 在 search-form 块下的 button 元素 -->
+  <button class="search-form__button">Search</button>
+</form>
+
+<!-- 不正确的：脱离块的元素 -->
+<form class="search-form"></form>
+
+<!-- 脱离 search-form 块的 input 元素 -->
+<input class="search-form__input" />
+
+<!-- 脱离 search-form 块的 button 元素 -->
+<button class="search-form__button">Search</button>
+```
+
+#### 可选的元素
+
+一个元素是一个可选的块级组件，不是所有的块都有元素。
+
+```html
+<!-- search-form 块 -->
+<div class="search-form">
+  <!-- input 块 -->
+  <input class="input" />
+
+  <!-- button 块 -->
+  <button class="button">Search</button>
+</div>
+```
+
+### 我应该创建一个块还是一个元素？
+
+#### 块
+
+- 如果一个代码块可能被重复使用且**不依赖于其他页面的组件。**
+
+#### 元素
+
+- 如果一段代码不能在没有父级的情况下单独使用。
+
+> 不能在元素中创建元素，在这种情况下，需要创建一个块。
+
+### 修饰符（Modifier）
+
+定义块或元素的外观、状态、或者行为，例如：什么大小（`Size`）、什么主题（`Theme`）、什么功能（`Disabled`）、什么行为或者
+方位（`directions_left-top`）。
+
+修饰符和块或者元素之间用一个下划线分割 `_`。
+
+修饰符全名的结构如下：
+
+- `block-name_modifier-name`
+- `block-name__element-name_modifier-name`
+
+```html
+<!-- 有 focused 修饰符的块 -->
+<form class="search-form search-form_focused">
+  <input class="search-form__input" />
+
+  <!-- 有 disabled 修饰符的元素 -->
+  <button class="search-form__button search-form__button_disabled">Search</button>
+</form>
+```
+
+#### key value
+
+当 `modifier` 的值很重要的时候使用 `key-value` 的形式，这时，结构如下：
+
+- `block-name_modifier-name_modifier-value`
+- `block-name__element-name_modifier-name_modifier-value`
+
+```html
+<!-- theme 为 islands 的 search-form 块 -->
+<form class="search-form search-form_theme_islands">
+  <input class="search-form__input" />
+
+  <!-- size 为 m 的 button 元素 -->
+  <button class="search-form__button search-form__button_size_m">Search</button>
+</form>
+
+<!-- 不能对同一个 modifier name 给不同的 value 值 -->
+<form class="search-form search-form_theme_islands search-form_theme_lite">
+  <input class="search-form__input" />
+
+  <button class="search-form__button search-form__button_size_s search-form__button_size_m">Search</button>
+</form>
+```
+
+修饰符不能独自使用。
+
+```html
+<!-- 正确的：修饰符 theme 为 islands -->
+<form class="search-form search-form_theme_islands">
+  <input class="search-form__input" />
+
+  <button class="search-form__button">Search</button>
+</form>
+
+<!-- 错误的：search-form_theme_islands 不能单独使用 -->
+<form class="search-form_theme_islands">
+  <input class="search-form__input" />
+
+  <button class="search-form__button">Search</button>
+</form>
+```
+
+### 参考
+
+1. [BEM Documentation](https://en.bem.info/methodology/quick-start/)
